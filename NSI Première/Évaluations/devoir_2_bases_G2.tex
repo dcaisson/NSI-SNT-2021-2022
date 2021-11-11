@@ -1,0 +1,100 @@
+\documentclass[a4paper,dvipsnames]{article}
+
+\input ../header
+
+\newcommand{\un}{\left(u_n\right)_{n\in\mathbb{N}}}
+\newcommand{\uns}{\left(u_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\vn}{\left(v_n\right)_{n\in\mathbb{N}}}
+\newcommand{\vns}{\left(v_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\wn}{\left(w_n\right)_{n\in\mathbb{N}}}
+\newcommand{\wns}{\left(w_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\tn}{\left(t_n\right)_{n\in\mathbb{N}}}
+\newcommand{\tns}{\left(t_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\qn}{\left(q_n\right)_{n\in\mathbb{N}}}
+\newcommand{\qns}{\left(q_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\N}{\mathbb{N}}
+
+\usepackage{dirtree}
+
+\title{Devoir 2 -- Représentation des entiers}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\renewcommand{\contentsname}{}
+
+\pagestyle{fancy}
+
+\begin{tcolorbox}[colframe=blue!75, colback=blue!45, valign=center, height=1.5cm, top=5mm]
+  \maketitle
+\end{tcolorbox}
+
+%\tableofcontents
+
+\vspace{1cm}
+
+\thispagestyle{fancy}
+
+\begin{exercice}{2 points}{}
+ \begin{enumerate}
+   \item Combien de valeurs différentes peut-on représenter à l'aide de $16$ bits ?
+   \item Quel est le plus grand entier naturel qu'on peut représenter à l'aide de $32$ bits ?
+ \end{enumerate} 
+\end{exercice}
+
+\medskip
+
+\begin{exercice}{4 points}{}
+  Voici un court extrait de la biographie de Grace Hopper:
+
+  \begin{center}
+    \begin{tabular}{|p{12cm}}
+      Grace Murray Hopper, née le 9 décembre 1906 à New York et morte le 1\ier{} janvier 1992 dans le comté d'Arlington, est une informaticienne américaine et Rear admiral (lower half) de la marine américaine. Elle est la conceptrice du premier compilateur en 1951 (A-0 System) et du langage Cobol en 1959.
+    \end{tabular}
+
+    \smallskip
+
+    \begin{minipage}{12cm}
+      \flushright\textit{Source : Wikipédia}
+    \end{minipage}
+  \end{center}
+
+  \begin{enumerate}
+    % base 10 vers la base 2
+    \item Écrire le mois de naissance de Grace Hopper en base $2$.
+      % réponse : 1100
+    % base 10 vers la base 16
+    \item Écrire l'année de l'invention du langage Cobol en base $16$.
+      % réponse : 7a7
+    % base 2 vers la base 10
+    \item Le 22 novembre $\overline{11111100000}^2$, Barack Obama lui décerne à titre posthume la médaille présidentielle de la Liberté. Écrire cette année en base $10$.
+      % réponse : 2016
+    % base 2 vers la base 10
+    \item En $\overline{7\text{b}5}$, Grace Hopper est nommée \og{}membre émérite\fg{} (\textit{distinguished fellow}) de la British Computer Society. Écrire  cette année en base $10$.
+      % réponse : 1973
+  \end{enumerate}
+\end{exercice}
+
+\medskip
+
+\begin{exercice}{1 point}{}
+ \begin{enumerate}
+   \item Convertir $\overline{1\,1011\,0100}^2$ en base $16$.
+   \item Écrire $\overline{\text{F}\text{D}}$ en base $2$.
+ \end{enumerate} 
+\end{exercice}
+
+\medskip
+
+\begin{exercice}{2 points}{}
+ On utilise la méthode du complément à 2 sur un octet :
+ \begin{enumerate}
+   \item Représenter $49$.
+   \item Représenter $-73$. 
+   \item Quel entier est représenté par $\overline{1011\,1100}^2$ ?
+ \end{enumerate}
+\end{exercice}
+
+\end{document}

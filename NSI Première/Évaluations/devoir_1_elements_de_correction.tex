@@ -1,0 +1,128 @@
+\documentclass[a4paper,dvipsnames]{article}
+
+\input ../header
+
+\newcommand{\un}{\left(u_n\right)_{n\in\mathbb{N}}}
+\newcommand{\uns}{\left(u_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\vn}{\left(v_n\right)_{n\in\mathbb{N}}}
+\newcommand{\vns}{\left(v_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\wn}{\left(w_n\right)_{n\in\mathbb{N}}}
+\newcommand{\wns}{\left(w_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\tn}{\left(t_n\right)_{n\in\mathbb{N}}}
+\newcommand{\tns}{\left(t_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\qn}{\left(q_n\right)_{n\in\mathbb{N}}}
+\newcommand{\qns}{\left(q_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\N}{\mathbb{N}}
+
+\newenvironment{correction}{\color{blue}}{}
+
+\title{Devoir à rendre 1}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\renewcommand{\contentsname}{}
+
+\pagestyle{fancy}
+
+\begin{tcolorbox}[colframe=blue!75, colback=blue!45, valign=center, height=1.5cm, top=5mm]
+  \maketitle
+\end{tcolorbox}
+
+%\tableofcontents
+
+\vspace{1cm}
+
+\thispagestyle{fancy}
+
+\begin{exercice}{}{}
+  Soient $\un$ et $\vns$ les deux suites définies par :
+  \begin{itemize}
+    \item pour tout $n$ appartenant à $\N$, $u_n=10n^2-3n-7$ ;
+    \item $v_1=6$ et, pour tout $n$ appartenant à $\N$, $v_{n+1}=-3v_n+10$.
+  \end{itemize}
+  \begin{enumerate}
+    \item De quelle façon est définie la suite $\un$ ? la suite $\vns$ ?
+
+      \begin{correction}
+	La suite $\un$ est définie de façon explicite tandis que la suite $\vns$ est définie par récurrence.
+      \end{correction}
+
+    \item Calculer $u_5$ et $v_4$.
+
+      \begin{correction}
+	\begin{itemize}
+	  \item On a $u_5=10\times5^2-3\times5-7=228$.
+	  \item On trouve successivement $v_2=-3v_1+10=-3\times6+10=-8$, $v_3=34$ et $v_4=-92$.
+	\end{itemize}
+      \end{correction}
+  \end{enumerate}
+\end{exercice}
+
+\bigskip
+
+\begin{exercice}[breakable]{}{}
+  Soit $\wns$ la suite définie par $w_n=\dfrac{n^2+1}{2n^2}$ pour tout $n$ appartenant à $\N^\ast$.
+  \begin{enumerate}
+    \item Étudier le sens de variation de la suite $\wns$.
+
+      \begin{correction}
+	On utilise la méthode vue en cours. Soit $n$ un entier naturel non nul.  
+	\[
+	  \begin{aligned}
+	    w_{n+1}-w_n &= \dfrac{(n+1)^2+1}{2(n+1)^2}-\dfrac{n^2+1}{2n^2}\\
+			&= \dfrac{n^2+2n+2}{2(n+1)^2}-\dfrac{n^2+1}{2n^2}\\
+			&= \dfrac{(n^2+2n+2){\color{red}\times n^2}}{2(n+1)^2{\color{red}\times n^2}}-\dfrac{(n^2+1){\color{red}\times(n+1)^2}}{2n^2{\color{red}\times(n+1)^2}}\\
+			&= \dfrac{(n^2+2n+2)\times n^2-(n^2+1)\times(n+1)^2}{2(n+1)^2\times n^2}\\
+			&= \dfrac{n^4+2n^3+2n^2-(n^2+1)(n^2+2n+1)}{2(n+1)^2\times n^2}\\
+			&= \dfrac{n^4+2n^3+2n^2-(n^4+2n^3+n^2+n^2+2n+1)}{2(n+1)^2\times n^2}\\
+			&= \dfrac{n^4+2n^3+2n^2-n^4-2n^3-n^2-n^2-2n-1}{2(n+1)^2\times n^2}\\
+			&= \dfrac{-2n-1}{2(n+1)^2\times n^2}\\
+			&= \dfrac{-(2n+1)}{2(n+1)^2\times n^2}
+	  \end{aligned}
+	\]
+	On remarque que :
+        \begin{itemize}
+          \item $-1<0$ ;
+	  \item $2n+1$ est la somme de deux nombres positifs donc $2n+1>0$ ;
+	  \item $2>0$ ;
+	  \item $(n+1)^2>0$;
+	  \item $\color{blue}n^2>0$,
+        \end{itemize}
+
+	\vphantom{1}\color{blue}donc $\dfrac{-(2n+1)}{2(n+1)^2\times(2n^2)}<0$.\\
+	Pour tout entier naturel non nul $n$, $w_{n+1}-w_n<0$ donc la suite $\wns$ est strictement décroissante.
+      \end{correction}
+      
+    \item (bonus) Montrer que pour tout entier naturel non nul, $w_n\leq 1$.
+
+      \textit{Indication : on pourra étudier le signe de $w_n-1$ (où $n\in\N^\ast$).}
+
+      \begin{correction}
+	Soit $n$ un entier naturel non nul.
+	\[
+	  \begin{aligned}
+	    w_n - 1 &= \dfrac{n^2+1}{2n^2}-1\\
+		    &= \dfrac{n^2+1}{2n^2}-\dfrac{2n^2}{2n^2}\\
+		    &= \dfrac{n^2+1-2n^2}{2n^2}\\
+		    &= \dfrac{1-n^2}{2n^2}\\
+		    &= \dfrac{(1-n)(1+n)}{2n^2}
+	  \end{aligned}
+	\]
+	On remarque que :
+	\begin{itemize}
+	  \item $n\geq 1$ donc $1-n\leq 0$;
+	  \item $n+1$ est la somme de deux nombres positifs donc $n+1\geq 0$;
+	  \item $2>0$ ;
+	  \item $n^2\geq 0$,
+	\end{itemize}
+	donc $\dfrac{(1-n)(1+n)}{2n^2}\leq 0$. Par conséquent $w_n-1\leq 0$, et on en déduit $w_n\leq 1$.
+
+	On a donc montré que, pour tout entier naturel $n$ non nul, $w_n\leq 1$.
+      \end{correction}
+  \end{enumerate}
+\end{exercice}
+
+\end{document}

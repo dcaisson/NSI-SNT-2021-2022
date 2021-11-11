@@ -1,0 +1,181 @@
+\documentclass[a4paper,dvipsnames]{article}
+
+\input ../header
+
+\newcommand{\un}{\left(u_n\right)_{n\in\mathbb{N}}}
+\newcommand{\uns}{\left(u_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\vn}{\left(v_n\right)_{n\in\mathbb{N}}}
+\newcommand{\vns}{\left(v_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\wn}{\left(w_n\right)_{n\in\mathbb{N}}}
+\newcommand{\wns}{\left(w_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\tn}{\left(t_n\right)_{n\in\mathbb{N}}}
+\newcommand{\tns}{\left(t_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\qn}{\left(q_n\right)_{n\in\mathbb{N}}}
+\newcommand{\qns}{\left(q_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\N}{\mathbb{N}}
+
+\usepackage{dirtree}
+
+\title{Devoir 3 -- Complément à 2, programmation Python}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\renewcommand{\contentsname}{}
+
+\pagestyle{fancy}
+
+\begin{tcolorbox}[colframe=blue!75, colback=blue!45, valign=center, height=1.5cm, top=5mm]
+  \maketitle
+\end{tcolorbox}
+
+%\tableofcontents
+
+\vspace{1cm}
+
+\thispagestyle{fancy}
+
+\begin{exercice}{4 points}{}
+  Cet exercice est un QCM. Pour chaque question, une seule des réponses proposées est correcte. Une mauvaise réponse, l'absence de réponse ou choisir plusieurs réponses ne rapporte, ni n'enlève aucun point.
+  Écrire sur votre copie le numéro de la question ainsi que la réponse choisie.
+  \begin{enumerate}
+    \item On considère les instructions suivantes :
+      \begin{minted}[xleftmargin=1cm,xrightmargin=1cm]{python}
+ch = "Donovan"
+c = ch[4]
+      \end{minted}
+      Que contient la variable \mintinline{python}{c} ?
+      \vspace*{-2mm}
+      \begin{multicols}{4}
+        \begin{enumerate}
+	  \item \mintinline{python}{"D"}
+	  \item \mintinline{python}{"o"}
+	  \item \mintinline{python}{"n"}
+	  \item \mintinline{python}{"v"}
+        \end{enumerate}
+      \end{multicols}
+    \item On considère l'instruction \mintinline{python}{liste_mystere = [2 + i for i in range(5)]}. Que contient la variable \mintinline{python}{liste_mystere} ?
+      \vspace*{-2mm}
+      \begin{multicols}{2}
+        \begin{enumerate}
+	  \item \mintinline{python}{[2, 3, 4, 5]}
+	  \item \mintinline{python}{[2, 3, 4]}
+	  \item \mintinline{python}{[2, 3, 4, 5, 6, 7]}
+	  \item \mintinline{python}{[2, 3, 4, 5, 6]}
+        \end{enumerate}
+      \end{multicols}
+    \item On considère les instructions suivantes :
+      \begin{minted}[xleftmargin=1cm,xrightmargin=1cm]{python}
+ch = "J'aime les tests de NSI."
+c = ch[-1]
+      \end{minted}
+      Que contient la variable \mintinline{python}{c} ?
+      \vspace*{-2mm}
+      \begin{multicols}{2}
+        \begin{enumerate}
+	  \item \mintinline{python}{"J"}
+	  \item \mintinline{python}{"."}\columnbreak
+	  \item \mintinline{python}{"I"}
+	  \item Rien, le code donné produit une erreur.
+        \end{enumerate}
+      \end{multicols}
+    \item On considère les instructions suivantes :
+      \begin{minted}[xleftmargin=1cm,xrightmargin=1cm]{python}
+prenom = ["Aika", "Marie", "Vaitiare", "Mana"]
+p = prenom[1][3]
+      \end{minted}
+      Que contient la variable \mintinline{python}{p} ?
+      \vspace*{-2mm}
+      \begin{multicols}{4}
+        \begin{enumerate}
+	  \item \mintinline{python}{"M"}
+	  \item \mintinline{python}{"r"}
+	  \item \mintinline{python}{"k"}
+	  \item \mintinline{python}{"V"}
+        \end{enumerate}
+      \end{multicols}
+  \end{enumerate}
+\end{exercice}
+
+\medskip
+
+\begin{exercice}{3 points}{}
+ On utilise la méthode du complément à 2 sur un octet :
+ \begin{enumerate}
+   \item Représenter $49$.
+   \item Représenter $-73$. 
+   \item Quel entier est représenté par $\overline{1011\,1000}^2$ ?
+ \end{enumerate}
+\end{exercice}
+
+\medskip
+
+\begin{exercice}{3 points}{}
+  On souhaite écrire une fonction \mintinline{python}{liste_aleatoire(n, a , b)} qui renvoie une liste de taille \mintinline{python}{n} contenant des entiers tirés au hasard entre deux entiers \mintinline{python}{a} et \mintinline{python}{b} (ces deux entiers étant inclus).
+  \begin{enumerate}
+    \item Donner un exemple de liste renvoyée par l'appel \mintinline{python}{liste_aleatoire(6, 3, 20)}.
+    \item Écrire la fonction \mintinline{python}{liste_aleatoire(n, a, b)}.
+  \end{enumerate}
+\end{exercice}
+
+\medskip
+
+\begin{exercice}{3 points}{}
+  On souhaite écrire une fonction \mintinline{python}{occurrences(v, L)} qui renvoie le nombre d'occurrences de la valeur \mintinline{python}{v} dans la liste \mintinline{python}{L}.
+  \begin{enumerate}
+    \item Proposer trois tests pour la fonction \mintinline{python}{occurrences(v, L)} en utilisant \mintinline{python}{assert}.
+    \item Écrire la fonction \mintinline{python}{occurrences}.
+  \end{enumerate}
+\end{exercice}
+
+\medskip
+
+\begin{exercice}{3 points}{}
+  On modélise la représentation binaire d'un entier positif ou nul par un tableau d'entiers dont les éléments sont $0$ ou $1$. Par exemple, le tableau \mintinline{python}{[1, 0, 1, 0, 0, 1, 1]} représente l'écriture binaire de l'entier dont l'écriture décimale est :
+
+  \begin{center}
+    \mintinline{python}{2**6 + 2**4 + 2**1 + 2**0 = 83}.    
+  \end{center}
+
+  Écrire la fonction \mintinline{python}{convertir(T)} répondant aux spécifications suivantes :
+
+  \begin{minted}[xleftmargin=1cm,xrightmargin=1cm]{python}
+def convertir(T):
+    """
+    T est un tableau d'entiers, dont les éléments sont 0 ou 1, 
+    représentant un entier écrit en binaire.
+    Renvoie l'écriture décimale de l'entier positif dont la 
+    représentation binaire est donnée par T.
+    """
+  \end{minted}
+
+  \tcblower
+
+  Quelques exemples :
+
+  \begin{itemize}
+    \item \mintinline{python}{convertir([1, 0, 1, 0, 0, 1, 1])} renvoie \mintinline{python}{83} ;
+    \item \mintinline{python}{convertir([1, 0, 0, 0, 0, 0, 1, 0])} renvoie \mintinline{python}{130}.
+  \end{itemize}
+
+\end{exercice}
+
+\medskip
+
+\begin{exercice}{4 points}{}
+  Écrire une fonction \mintinline{python}{recherche(L, n)} qui prend en paramètre une liste non vide \mintinline{python}{L} d'entiers et un entier \mintinline{python}{n}, et qui renvoie l'\textbf{indice} de la dernière occurrence de l'élément cherché. Si l'élément n'est pas présent, la fonction renvoie la longueur de la liste.
+
+  \tcblower
+
+  Quelques exemples :
+
+  \begin{itemize}
+    \item \mintinline{python}{recherche([5, 3], 1)} renvoie \mintinline{python}{2} ;
+    \item \mintinline{python}{recherche([2, 4], 2)} renvoie \mintinline{python}{0} ;
+    \item \mintinline{python}{recherche([2, 3, 5, 2, 4], 2)} renvoie \mintinline{python}{3}.
+  \end{itemize}
+\end{exercice}
+
+\end{document}

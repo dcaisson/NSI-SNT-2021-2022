@@ -1,0 +1,198 @@
+\documentclass[a4paper,dvipsnames]{article}
+
+\input ../header
+
+\newcommand{\un}{\left(u_n\right)_{n\in\mathbb{N}}}
+\newcommand{\uns}{\left(u_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\vn}{\left(v_n\right)_{n\in\mathbb{N}}}
+\newcommand{\vns}{\left(v_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\wn}{\left(w_n\right)_{n\in\mathbb{N}}}
+\newcommand{\wns}{\left(w_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\tn}{\left(t_n\right)_{n\in\mathbb{N}}}
+\newcommand{\tns}{\left(t_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\qn}{\left(q_n\right)_{n\in\mathbb{N}}}
+\newcommand{\qns}{\left(q_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\N}{\mathbb{N}}
+
+\usepackage{dirtree}
+
+\newenvironment{correction}{\color{blue}}{}
+
+\title{Devoir 1 -- Commandes Linux -- Éléments de correction}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\renewcommand{\contentsname}{}
+
+\pagestyle{fancy}
+
+\begin{tcolorbox}[colframe=blue!75, colback=blue!45, valign=center, height=1.5cm, top=5mm]
+  \maketitle
+\end{tcolorbox}
+
+%\tableofcontents
+
+\vspace{1cm}
+
+\thispagestyle{fancy}
+
+\begin{exercice}{}{}
+  On considère l'arborescence suivante :
+
+  \bigskip
+
+  \dirtree{%
+    .1 \textbf{Téléchargements}.
+    .2 \textbf{Documents}.
+    .3 linux.pdf.
+    .3 outils\_python.ipynb.
+    .2 \textbf{Vidéos}.
+    .3 \textbf{Vacances}.
+    .4 sky\_tower.mp4.
+    .4 rotorua.mp4.
+    .2 \textbf{Musique}.
+    .3 \textbf{Beatles}.
+    .3 \textbf{Clapton}.
+    .4 wonderful\_tonight.mp3.
+    .4 tears\_in\_heaven.mp3.
+    .3 \textbf{ABBA}.
+    .4 dancing\_queen.mp3.
+  }
+
+  \bigskip
+
+  Le chemin absolu vers le dossier \mintinline{bash}{Téléchargements} est \mintinline{bash}{/home/eleve/Téléchargements}.
+
+  \begin{enumerate}
+    \item Donner le chemin absolu vers le fichier \mintinline{bash}{tears_in_heaven.mp3}.
+
+      \begin{correction}
+	\begin{center}
+	  \mintinline{bash}{/home/eleve/Téléchargements/Musique/Clapton/tears_in_heaven.mp3} 
+	\end{center}
+      \end{correction}
+      
+    \item On se trouve dans le dossier \mintinline{bash}{Téléchargements}. Donner le chemin relatif vers le fichier \mintinline{bash}{rotorua.mp4}.
+
+      \begin{correction}
+	\begin{center}
+	  \mintinline{bash}{Vidéos/Vacances/rotorua.mp4}
+	\end{center}
+      \end{correction}
+      
+    \item On se trouve dans le dossier \mintinline{bash}{Musique}. Donner le chemin relatif vers le fichier \mintinline{bash}{linux.pdf}.
+
+      \begin{correction}
+	\begin{center}
+	  \mintinline{bash}{../Documents/linux.pdf}
+	\end{center}
+      \end{correction}
+      
+  \end{enumerate}
+\end{exercice}
+
+\smallskip
+
+\begin{exercice}[breakable]{}{}
+  
+  \begin{enumerate}
+    \item Un élève se trouve dans le répertoire \mintinline{bash}{Documents}. Il entre les commandes suivantes dans un terminal :
+
+      \begin{minted}{bash}
+$ mkdir Dossier_1
+$ mkdir Dossier_2
+$ cd Dossier_1
+$ touch fichier_1
+$ touch fichier_2
+      \end{minted}
+
+      Préciser le contenu du répertoire \mintinline{bash}{Documents} après ces commandes.
+
+      \begin{correction}
+	\begin{minipage}{2cm}
+	  \dirtree{%
+	    .1 \textbf{Documents}. 
+	    .2 \textbf{Dossier\_1}. 
+	    .3 fichier\_1. 
+	    .3 fichier\_2. 
+	    .2 \textbf{Dossier\_2}. 
+	  }
+	\end{minipage}
+      \end{correction}
+
+
+    \item Les commandes suivantes sont entrées :
+
+      \begin{minted}{bash}
+$ cd ..
+$ cp Dossier_1/fichier_1 Dossier_2/fichier_1
+$ mkdir Dossier_3
+$ mv Dossier_1/fichier_2 Dossier_3/fichier_3
+      \end{minted}
+
+      Préciser le contenu du répertoire \mintinline{bash}{Documents} après ces commandes.
+
+      \begin{correction}
+	\begin{minipage}{2cm}
+	  \dirtree{%
+	    .1 \textbf{Documents}. 
+	    .2 \textbf{Dossier\_1}. 
+	    .3 fichier\_1. 
+	    .2 \textbf{Dossier\_2}. 
+	    .3 fichier\_1. 
+	    .2 \textbf{Dossier\_3}. 
+	    .3 fichier\_3. 
+	  }
+	\end{minipage}
+      \end{correction}
+    \item Écrire une commande permettant d'effacer le dossier \mintinline{bash}{Dossier_2}.
+
+      \begin{correction}
+	\begin{center}
+	  \mintinline{bash}{rm -rf Dossier_2}
+	\end{center}  
+      \end{correction}
+
+  \end{enumerate}
+\end{exercice}
+
+\smallskip
+
+\begin{exercice}{}{}
+  On se trouve dans un répertoire vide \mintinline{bash}{Travail}. Écrire des commandes permettant d'obtenir l'arborescence suivante :
+  
+  \bigskip
+
+  \dirtree{%
+    .1 \textbf{Travail}.
+    .2 \textbf{NSI}.
+    .3 commandes.
+    .3 aide-memoire.
+    .2 \textbf{Mathématiques}.
+    .3 \textbf{Devoirs}.
+    .4 dm1.
+    .4 dm2.
+  }
+
+  \begin{correction}
+      \begin{minted}{bash}
+$ mkdir NSI
+$ cd NSI
+$ touch commandes
+$ touch aide-memoire
+$ cd ..
+$ mkdir Mathématiques
+$ cd Mathématiques
+$ mkdir Devoirs
+$ cd Devoirs
+$ touch dm1
+$ touch dm2
+      \end{minted}
+  \end{correction}
+  
+
+\end{exercice}
+\end{document}
