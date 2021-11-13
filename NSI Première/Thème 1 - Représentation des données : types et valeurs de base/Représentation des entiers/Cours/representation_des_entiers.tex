@@ -1,0 +1,380 @@
+\documentclass[a4paper,dvipsnames]{article}
+
+\input ../header
+
+\newcommand{\un}{\left(u_n\right)_{n\in\mathbb{N}}}
+\newcommand{\uns}{\left(u_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\vn}{\left(v_n\right)_{n\in\mathbb{N}}}
+\newcommand{\vns}{\left(v_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\wn}{\left(w_n\right)_{n\in\mathbb{N}}}
+\newcommand{\wns}{\left(w_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\tn}{\left(t_n\right)_{n\in\mathbb{N}}}
+\newcommand{\tns}{\left(t_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\qn}{\left(q_n\right)_{n\in\mathbb{N}}}
+\newcommand{\qns}{\left(q_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\N}{\mathbb{N}}
+
+\usepackage{dirtree}
+\newcommand{\basthon}[1]{{\href{https://notebook.basthon.fr/?from=#1}{Lien Basthon}}}
+\newcommand{\basthonC}[1]{{\href{https://notebook.basthon.fr/?from=#1}{Corrigé}}}
+
+\title{Représentation des entiers}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\renewcommand{\contentsname}{}
+
+\pagestyle{fancy}
+
+\begin{tcolorbox}[colframe=blue!75, colback=blue!45, valign=center, height=1.5cm, top=5mm]
+  \maketitle
+\end{tcolorbox}
+
+\tableofcontents
+
+\vspace{1cm}
+
+\thispagestyle{fancy}
+
+\section{Introduction}
+
+Dans un ordinateur, toutes les informations (données ou programmes) sont représentées à l'aide de {\color{red}deux chiffres $0$ et $1$}, appelés chiffres binaires ou {\color{red}bits} (de l'anglais \textit{binary digits}).
+
+\smallskip
+
+Dans la mémoire d'un ordinateur (RAM, ROM, registres des microprocesseurs, etc.), ces chiffres binaires sont regroupés en {\color{red}octets} (c'est-à-dire par \og{}paquets\fg{} de $8$, qu'on appelle des \textit{bytes} en anglais) puis organisés en mots machine de $2$, $4$ ou $8$ octets pour les machines les plus courantes. Par exemple, une machine dite de $32$ bits est un ordinateur qui manipule directement des mots de $4$ octets lorsqu'il effectue des opérations.
+
+\smallskip
+
+Ce regroupement de bits en octets ou mots machine permet de {\color{red}représenter d'autres données} que des $0$ et des $1$, comme {\color{red}par exemple des nombres entiers, des (approximations de) nombres réels, des caractères.}
+\section{Représentation des entiers naturels}
+
+\subsection{Représentation en base $10$}
+
+Le principe de la numération en base $10$ (numération décimale) que nous utilisons quotidiennement est de regrouper ce que l'on compte par paquets de $10$. Ainsi, en base $10$, les nombres sont représentés en utilisant des \og{}colonnes\fg{} qui représentent les puissances successives de $10$.
+
+\medskip
+
+\begin{exemple}[sidebyside]{}{}
+  Le nombre $203$ est égal à :
+  \[2\times 10^2 + 0\times 10^2 + 3\times 10^0.\]
+
+  \tcblower
+
+  \begin{center}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{|*{3}{>{\centering}m{6mm}|}}
+      \multicolumn{1}{c}{\color{red}\footnotesize$\times 10^2$} & \multicolumn{1}{c}{\color{red}\footnotesize$\times 10^1$} & \multicolumn{1}{c}{\color{red}\footnotesize$\times 10^0$} \tabularnewline
+      \hline
+      $2$ & $0$ & $3$\tabularnewline
+      \hline
+    \end{tabular}
+  \end{center}
+\end{exemple}
+
+\subsection{Représentation en base $2$}
+
+La numération en base $2$ fonctionne de la même façon mais on fait des paquets dès que l'on a $2$ éléments.
+
+\begin{remarque}{}{}
+  En base $2$ :
+  \begin{itemize}
+    \item on n'utilise donc que {\color{red}deux chiffres} : $0$ et $1$ ;
+    \item au lieu des puissances successives de $10$, on travaille avec des {\color{red}puissances successives de $2$}.
+  \end{itemize}
+\end{remarque}
+
+\smallskip
+
+\begin{notation}{}{}
+  Pour indiquer qu'un nombre est écrit en base $2$, on le notera de la façon suivante : $\overline{1001}^2$.
+\end{notation}
+
+\smallskip
+
+\begin{methode}[sidebyside]{passer de la base $2$ à la base $10$}{}
+  Pour passer de la base $2$ à la base $10$, on peut utiliser un \og{}tableau\fg{} :
+  \begin{center}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{|*{4}{>{\centering}m{6mm}|}}
+      \multicolumn{1}{c}{\color{red}\footnotesize$\times 2^3$} & \multicolumn{1}{c}{\color{red}\footnotesize$\times 2^2$} & \multicolumn{1}{c}{\color{red}\footnotesize$\times 2^1$} & \multicolumn{1}{c}{\color{red}\footnotesize$\times 2^0$}\tabularnewline
+      \hline
+      $1$ & $0$ & $0$ & $1$\tabularnewline
+      \hline
+    \end{tabular}
+  \end{center}
+  \tcblower
+  Le nombre $\overline{1001}^2$ est donc égal à :
+  \[1\times 2^3 + 0\times 2^2 + 0\times 2^1 + 1\times 2^0 = 8 + 0 + 0 + 1 = 9.\]
+  On écrira $\overline{1001}^2=9$.
+\end{methode}
+
+\smallskip
+
+\begin{exercice}{passer de la base $2$ à la base $10$}{}
+  \begin{enumerate}
+    \item Déterminer la représentation en base $10$ de $\overline{1111\,1111}^2$.
+    \item Déterminer la représentation en base $10$ de $\overline{1001\,0110}^2$.
+    \item Isaac Asimov est né en $\overline{111\,1000\,0000}$. Écrire cette année de naissance en base $10$.
+    \item 
+      \begin{enumerate}
+	\item En écrivant \mintinline{python}{0b11111111} en Python, on peut vérifier le résultat de la question 1. Le faire.
+	\item De même, vérifier le résultat des questions 2. et 3.
+      \end{enumerate}
+  \end{enumerate} 
+\end{exercice}
+
+\smallskip
+
+\begin{exercice}{ordres de grandeurs}{}
+  Compléter le tableau suivant :
+  \begin{center}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{@{}cc@{}}
+      Avec des mots de : & on peut représenter les entiers naturels compris entre :\tabularnewline
+      \midrule
+      8 bits & \tabularnewline
+      16 bits & \tabularnewline
+      32 bits & \tabularnewline
+      64 bits & \tabularnewline
+    \end{tabular}
+  \end{center}
+\end{exercice}
+
+\smallskip
+
+\begin{exercice}{un peu de Python}{}
+  \begin{enumerate}
+    \item Écrire le calcul permettant d'obtenir la représentation en base $10$ de $\overline{1011}^2$.
+    \item Compléter la fonction ci-dessous afin qu'elle permette la conversion de la base $2$ vers la base $10$ : 
+\begin{minted}[linenos,frame=single,xleftmargin=0.5cm,xrightmargin=0.5cm]{python}
+def bin2dec(n):
+    """ Permet la conversion de la base $2$ vers la base $10$
+        Entrée : une chaine de caractères n qui donne l'écriture 
+                 d'un nombre en base 2
+        Sortie : le nombre en base 10
+    """
+    longueur = len(n)
+    decimal = 0
+    for i in range(longueur):
+        pass
+\end{minted}       
+\basthon{https://raw.githubusercontent.com/dcaisson/Notebooks-Jupyter-NSI/main/Th\%C3\%A8me\%201\%20-\%20Repr\%C3\%A9sentation\%20des\%20donn\%C3\%A9es\%20\%3A\%20types\%20et\%20valeurs\%20de\%20base/Repr\%C3\%A9sentation\%20des\%20entiers/bin2dec.ipynb} -- 
+\basthonC{https://raw.githubusercontent.com/dcaisson/Notebooks-Jupyter-NSI/main/Th\%C3\%A8me\%201\%20-\%20Repr\%C3\%A9sentation\%20des\%20donn\%C3\%A9es\%20\%3A\%20types\%20et\%20valeurs\%20de\%20base/Repr\%C3\%A9sentation\%20des\%20entiers/bin2dec_C.ipynb}
+  \end{enumerate}
+\end{exercice}
+
+\smallskip
+
+\begin{methode}{passer de la base $10$ à la base $2$}{}
+  Pour passer de la base $10$ à la base $2$, on effectue des divisions successives par $2$. Par exemple :
+  \[42=\overline{101010}^2.\]
+
+  Retrouver l'explication détaillée \href{https://peertube-lyclpg.ddns.net:9443/videos/watch/4c93481e-da2d-4cdd-b274-9ed67ce998f5}{ici} (lien PeerTube).
+\end{methode}
+
+\smallskip
+
+\begin{exercice}{passer de la base $10$ à la base $2$}{}
+  \begin{enumerate}
+    \item Déterminer la représentation en base $2$ du nombre $436$.
+    \item Déterminer la représentation en base $2$ du nombre $1000$.
+    \item Que fait la fonction \mintinline{python}{bin} de Python ?
+  \end{enumerate}
+\end{exercice}
+
+\smallskip
+
+\begin{exercice}{un peu de Python}{}
+  \begin{enumerate}
+    \item Que fait la fonction \mintinline{python}{str} de Python ?
+    \item Compléter la fonction suivante afin qu'elle permette la conversion de la base $10$ vers la base $2$ :
+\begin{minted}[linenos,frame=single,xleftmargin=0.5cm,xrightmargin=0.5cm]{python}
+def dec2bin(n):
+    """ Permet la conversion de la base $10$ vers la base $2$
+        Entrée : un entier naturel n
+        Sortie : une chaine de caractères qui donne l'écriture
+                 de n en base 2
+    """
+    if n == 0:
+        return "0"
+    else:
+        b = ""
+        while n != 0:
+            pass
+\end{minted}       
+\basthon{https://raw.githubusercontent.com/dcaisson/Notebooks-Jupyter-NSI/main/Th\%C3\%A8me\%201\%20-\%20Repr\%C3\%A9sentation\%20des\%20donn\%C3\%A9es\%20\%3A\%20types\%20et\%20valeurs\%20de\%20base/Repr\%C3\%A9sentation\%20des\%20entiers/dec2bin.ipynb} --
+\basthonC{https://raw.githubusercontent.com/dcaisson/Notebooks-Jupyter-NSI/main/Th\%C3\%A8me\%201\%20-\%20Repr\%C3\%A9sentation\%20des\%20donn\%C3\%A9es\%20\%3A\%20types\%20et\%20valeurs\%20de\%20base/Repr\%C3\%A9sentation\%20des\%20entiers/dec2bin_C.ipynb}
+  \end{enumerate}
+\end{exercice}
+
+\subsection{Représentation en base $16$}
+
+Pour écrire en base $16$, on a besoin de 16 \og{}chiffres\fg{} notés : $0$, $1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$, $9$, A (dix), B (onze), C (douze), D (treize), E (quatorze) et F (quinze).
+
+\smallskip
+
+\begin{methode}[sidebyside]{passer de la base $16$ à la base $10$}{}
+  Pour passer de la base $16$ à la base $10$, on peut utiliser un \og{}tableau\fg{} :
+  \begin{center}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{|*{4}{>{\centering}m{6mm}|}}
+      \multicolumn{1}{c}{\color{red}\footnotesize$\times 16^3$} & \multicolumn{1}{c}{\color{red}\footnotesize$\times 16^2$} & \multicolumn{1}{c}{\color{red}\footnotesize$\times 16^1$} & \multicolumn{1}{c}{\color{red}\footnotesize$\times 16^0$}\tabularnewline
+      \hline
+      $2$ & $9$ & A & F\tabularnewline
+      \hline
+    \end{tabular}
+  \end{center}
+  \tcblower
+  Le nombre $\overline{29\text{AF}}^{16}$ est donc égal à :
+  \[2\times 16^3 + 9\times 16^2 + 10\times 16^1 + 15\times 16^0 = \np{10671}.\]
+  On a donc $\overline{29\text{AF}}^{16}=\np{10671}$.
+\end{methode}
+
+\smallskip
+
+\begin{exercice}{passer de la base $16$ à la base $10$}{}
+  \begin{enumerate}
+    \item Déterminer la représentation en base $10$ du nombre $\overline{23\text{A}}^{16}$.
+    \item Déterminer la représentation en base $10$ du nombre $\overline{\text{FABE}51}^{16}$.
+    \item Vérifer la première réponse grâce à l'instruction \mintinline{python}{0h23A}.
+    \item De la même façon, vérifier la deuxième réponse.
+  \end{enumerate}
+\end{exercice}
+
+\smallskip
+
+\begin{methode}{passer de la base $10$ à la base $16$}{}
+  Pour passer de la base $10$ à la base $16$, on effectue des divisions successives par $16$. Par exemple :
+  \[315=\overline{13\text{B}}^{16}.\]
+  Retrouver l'explication détaillée \href{https://peertube-lyclpg.ddns.net:9443/videos/watch/5e212b29-e6c0-4a50-a822-97349a733643}{ici} (lien PeerTube).
+\end{methode}
+
+\smallskip
+
+\begin{exercice}{passer de la base $10$ à la base $16$}{}
+ \begin{enumerate}
+   \item Donner la représentation en base $16$ du nombre $324$.
+   \item Donner la représentation en base $16$ du nombre $\np{56026}$.
+   \item L'instruction \mintinline{python}{hex(324)} permet de vérifier la première réponse. Vérifier vos réponses.
+ \end{enumerate} 
+\end{exercice}
+
+\subsection{Liens entre la base $2$ et la base $16$}
+
+\begin{methode}{passer de la base $2$ à la base $16$}{}
+  Pour passer de la base $2$ à la base $16$, on groupe les bits par paquets de $4$ (de la droite vers la gauche) :
+  \[\overline{\underbrace{1101}_{\text{D}}\,\underbrace{0110}_{6}}^{2}.\]
+  On a donc $\overline{1101\,0110}^2=\overline{\text{D}6}^{16}$.
+\end{methode}
+
+\smallskip
+
+\begin{exercice}{passer de la base $2$ à la base $16$}{}
+  Écrire les nombres $\overline{1011\,1101}^2$ et $\overline{1100\,1001\,1010}^2$ en base $16$.
+\end{exercice}
+
+\smallskip
+
+\begin{methode}{passer de la base $16$ à la base $2$}{}
+  Pour passer de la base $16$ à la base $2$, on procède de la façon inverse :
+  \[\overline{\underbrace{\text{F}}_{1111}\underbrace{5}_{0101}}^{16}.\]
+  On a donc $\overline{\text{F}5}^{16}=\overline{1111\,0101}^2$.
+\end{methode}
+
+\smallskip
+
+\begin{exercice}{passer de la base $16$ à la base $2$}{}
+  Écrire les nombres $\overline{23\text{D}5}^{16}$ et $\overline{7\text{CF}21}^{16}$ en base $2$.
+\end{exercice}
+
+\smallskip
+
+\begin{exercice}{adresse MAC}{}
+  \begin{enumerate}
+    \item De combien de bits est constituée une adresse MAC ?
+    \item Consulter ce \href{https://www.frameip.com/ethernet-oui-ieee/}{site} et l'essayer avec l'adresse MAC qui vous a servi à enregistrer votre tablette sur le réseau du lycée.
+  \end{enumerate}
+\end{exercice}
+
+\section{Représentation des entiers relatifs}
+
+Question : comment représenter les entiers relatifs ? Il s'agit de trouver une représentation des entiers relatifs {\color{red}compatible avec la représentation des entiers naturels} vue précédemment.
+
+\subsection{Un bit pour le signe}
+Imaginons qu'on code des nombres entiers avec un octet. Grâce à ces $8$ bits, on peut coder les entiers naturels compris entre $0$ et $255$. Une idée est tentante :
+
+\begin{itemize}
+  \item utiliser {\color{red}le premier bit pour indiquer le signe} du nombre : $0$ pour un nombre positif et $1$ pour un nombre négatif ;
+  \item utiliser les $7$ bits restants pour écrire la {\color{red}valeur absolue} de l'entier représenté.
+\end{itemize}
+
+\smallskip
+
+\begin{exemple}{}{}
+  Avec cette approche, $17$ s'écrit $\overline{0001\,0001}^2$ et $-17$ s'écrit $\overline{1001\,0001}^2$ (de la même façon que $17$, mais avec le {bit \color{red}de poids fort} égal à $1$ au lieu de $0$).
+\end{exemple}
+
+\smallskip
+
+\begin{exercice}{}{}
+  En utilisant l'idée précédente, écrire, en utilisant un octet, les nombres $127$, $-31$, $-4$, $3$ et $0$.
+\end{exercice}
+
+\smallskip
+
+\begin{remarque}{un premier problème}{}
+  Un premier problème apparaît avec cette idée : le nombre $0$ admet deux représentations différentes. Lesquelles ?
+\end{remarque}
+
+\smallskip
+
+\begin{remarque}{un second problème}{}
+  \begin{enumerate}
+    \item Écrire $4$ et $3$ sur un octet puis effectuer l'addition bit à bit. Qu'obtient-on ?
+    \item Faire de même avec $4$ et $-3$.
+    \item Décrire alors le problème rencontré.
+  \end{enumerate}
+\end{remarque}
+
+\subsection{Une autre approche : le complément à $2$}
+
+Nous allons décrire une autre approche dans le cas où nous disposons d'un octet. Un octet permet de représenter $256$ valeurs différentes. Avec cette approche, appelée {\color{red}\og{}complément à $2$\fg{}}, avec un octet, on représente :
+\begin{itemize}
+  \item $128$ entiers strictement négatifs : $-128$, $-127$, \dots{} , $-1$ ;
+  \item $128$ entiers positifs ou nuls : $0$, $1$, \dots{} , $127$.
+\end{itemize}
+
+\smallskip
+
+\begin{methode}{complément à $2$}{}
+  \begin{itemize}
+    \item On représente {\color{red}un entier positif ou nul de la même façon} que dans le paragraphe $2$ :
+      \[42 = \overline{0010\,1010}^2.\]
+    \item On représenter {\color{red}un entier strictement négatif} en deux étapes. Par exemple, pour représenter~$-42$ avec la méthode du complément à $2$ :
+      \begin{enumerate}
+	\item On commence par {\color{red}inverser tous les bits} de l'écriture en base $2$ de $42$ :
+	  \[\overline{1101\,0101}^2.\]
+	\item Puis {\color{red}on ajoute $1$} au résultat obtenu :
+	  \[\overline{1101\,0110}^2.\]
+	  L'entier relatif $-42$ s'écrit donc $\overline{1101\,0110}^2$.
+      \end{enumerate}
+  \end{itemize}
+\end{methode}
+
+\smallskip
+
+\begin{exercice}{}{}
+  En utilisant la méthode du complément à $2$, écrire, sur un octet, les entiers $-5$, $-45$ et $-68$.
+\end{exercice}
+
+\smallskip
+
+\begin{exercice}{}{}
+  Vérifier que le problème de l'addition bit à bit ne se pose plus pour $4+(-3)$.
+\end{exercice}
+
+\end{document}
