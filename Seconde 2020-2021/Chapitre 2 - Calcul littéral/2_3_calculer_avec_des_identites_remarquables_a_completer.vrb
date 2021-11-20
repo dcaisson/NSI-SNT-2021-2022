@@ -1,0 +1,21 @@
+\textit{Exemples. --
+    \begin{enumerate}[fragile]
+      \item Développer puis réduire les expressions suivantes :
+^^I\begin{multicols}{3}
+^^I  \begin{itemize}
+^^I    \item[(a)] $(2x+4)^2$
+^^I    \item[(b)] $(x-7)^2$
+^^I    \item[(c)] $(10x+2)(10x-2)$
+^^I    \end{itemize}^^I
+^^I\end{multicols}
+      \item Factoriser les expressions suivantes :
+^^I\begin{multicols}{3}
+^^I  \begin{itemize}
+^^I    \item[(a)] $y^2-10y+25$
+^^I    \item[(b)] $4x^2-36$
+^^I    \item[(c)] $4c^2+16c+16$
+^^I  \end{itemize}
+^^I\end{multicols}
+^^I\item Les lignes suivantes permettent de développer en utilisant Python :
+    \end{enumerate}
+  }
