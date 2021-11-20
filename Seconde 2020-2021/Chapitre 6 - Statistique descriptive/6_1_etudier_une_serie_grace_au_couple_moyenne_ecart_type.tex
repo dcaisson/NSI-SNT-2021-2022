@@ -1,0 +1,171 @@
+\documentclass[handout]{beamer}
+
+% Lignes réponses
+\usepackage{pgffor} % pour la commande \foreach permettant de réaliser une boucle
+\newcommand{\pointilles}{{\\\rule{0pt}{1pt}\dotfill\rule{0pt}{1pt}}}
+\newcommand{\rep}[1]{\foreach \n in {1,...,#1} {\pointilles}}
+
+% Commandes pour cacher/révéler du texte facilement à l'aide d'un booléen
+\usepackage{xstring}
+\usepackage{ifthen}
+
+\newboolean{reveal}
+\setboolean{reveal}{false}
+
+\newlength{\stextwidth} % une nouvelle longueur
+
+\newcommand\x{6}
+
+\newcommand{\guess}[1]{\ifthenelse{\boolean{reveal}}{{\color{red}#1}}{\settowidth{\stextwidth}{#1}\makebox[\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmath}[1]{\ifthenelse{\boolean{reveal}}{\textcolor{red}{#1}}{\settowidth{\stextwidth}{$#1$}\makebox[1\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmathbin}[1]{\ifthenelse{\boolean{reveal}}{\mathbin{\color{red}#1}}{\settowidth{\stextwidth}{$#1$}\makebox[2\stextwidth]{\dotfill}}}
+
+% ========================================================================%
+
+\usetheme{focus}
+
+\usepackage{pgfpages}
+\pgfpagesuselayout{4 on 1}[a4paper,landscape]
+
+\usepackage[french]{babel}
+
+\usepackage{xcolor}
+
+\usepackage{pstricks,pst-plot,pst-text,pst-tree,pst-eps,pst-fill,pst-node,pst-math}
+\usepackage{pstricks-add,pst-xkey}
+
+\input ../tabvar
+
+\usepackage{multicol}
+\usepackage[np]{numprint}
+
+\usepackage{booktabs}
+
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+\newcommand{\Oij}{\left(O;\vect{i},\vect{j}\right)}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+
+\begin{document}
+
+\title{}
+
+\date{}
+
+\begin{frame}
+  \frametitle{1. Moyenne d'une série statistique}
+  \textbf{Définition. --}   La \guess{moyenne} pondérée de la série statistique 
+
+  \begin{center}
+    \begin{tabular}{@{}ccccc@{}}
+      \toprule
+      \text{Valeur} & $x_1$ & $x_2$ & $\hdots$ & $x_p$\\
+      \midrule
+      \text{Effectif} & $n_1$ & $n_2$ & $\hdots$ & $n_p$\\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+
+  est le réel $\bar{x}$ tel que:\pause{} \[\bar{x}=\guessmath{\dfrac{n_1\times x_1 + n_2\times x_2 + \hdots + n_p\times x_p}{N}},\]\pause{}
+  où $N$ est \guess{l'effectif total}. 
+\end{frame}
+
+\begin{frame}
+  \textit{Exemple. -- Le tableau ci-dessous donne la répartition des magasins d'une enseigne de prêt-à-porter en fonction de leur nombre d'employés. 
+    \begin{center}
+      \begin{tabular}{@{}cccccccc@{}}
+	\toprule
+	Nombre d'employés & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$\\
+	\midrule
+	Effectif & $2$ & $10$ & $48$ & $90$ & $54$ & $14$ & $4$\\
+	\bottomrule
+      \end{tabular}
+    \end{center}
+    \begin{enumerate}
+      \item Interpréter la valeur $90$ présente dans le tableau.\rep{2}
+      \item Déterminer la moyenne de cette série statistique (on donnera la valeur exacte puis une valeur arrondie à $0,01$ près).\rep{2}
+    \end{enumerate}
+  }
+\end{frame}
+
+\begin{frame}
+  \textbf{Propriété. --} On peut calculer la moyenne $\bar{x}$ à partir de la distribution des fréquences :
+
+  \begin{center}
+    \begin{tabular}{@{}ccccc@{}}
+      \toprule
+      \text{Valeur} & $x_1$ & $x_2$ & $\hdots$ & $x_p$\\
+      \midrule
+      \text{Effectif} & $f_1$ & $f_2$ & $\hdots$ & $f_p$\\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+
+  \[\bar{x}=\guessmath{n_1\times f_1 + n_2\times f_2 + \hdots + n_p\times f_p}.\]
+\end{frame}
+
+\begin{frame}
+  \textit{Exemple. -- On a soumis une liste de $10$ questions à un groupe de candidats à un jeu télévisé. Voici les résultats :
+    \begin{center}
+      \begin{tabular}{@{}cccccccc@{}}
+	\toprule
+	Réponses justes & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ & $10$\\
+	\midrule
+	Fréquence & $0,05$ & $0$ & $0,175$ & $0,35$ & $0,275$ & $0,125$ & $0,025$\\
+	\bottomrule
+      \end{tabular}
+    \end{center}
+    \begin{enumerate}
+      \item Interpréter la valeur $0,175$ présente dans le tableau précédent.\rep{2}
+      \item Déterminer le nombre moyen de bonnes réponses données.\rep{2}
+    \end{enumerate}
+  }
+\end{frame}
+
+\begin{frame}
+  \textit{Remarque. -- La moyenne permet de résumer une série statistique à l'aide d'un seul nombre mais elle ne donne aucune information sur la \guess{répartition} des valeurs.}
+
+  \bigskip
+
+  \textbf{Proposition (linéarité de la moyenne). --} 
+  \begin{itemize}
+    \item Si on multiplie toutes les valeurs d'une série statistique par un nombre $a$, alors la moyenne de cette série \guess{est multipliée par $a$}.
+    \item Si on ajoute un même nombre $b$ à toutes les valeurs d'une série statistique, \guess{alors la moyenne de cette série augmente de $b$}.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \textit{Exemple. -- Dans la classe de Seconde 3, la moyenne au dernier devoir commun de mathématiques est catastrophique : 6,25/20 ! Dans la classe de Seconde 1, les élèves sont bien meilleurs et la moyenne de cette classe est 12,25/20.\\
+  Le professeur de la Seconde 3 décide alors de multiplier toutes les notes par 2, tandis que le professeur de la Seconde 1 décide d'ajouter 1 point à chaque élève. Après modification des notes, quelle classe aura la meilleure moyenne ?\rep{4}}
+\end{frame}
+
+\begin{frame}
+  \frametitle{2. Variance et écart-type}
+  \textbf{Définition. --} Avec les notations du paragraphe 1., la variance $V$ de la série statistique est calculée grâce à :
+  \[V=\guessmath{\dfrac{n_1\times x_1^2 + n_2\times x_2^2 + \hdots + n_p\times x_p^2}{N} - \bar{x}^2}.\]
+  L'écart-type de la série statistique est le nombre $\sigma$ défini par :
+  \[\sigma=\guessmath{\sqrt{V}}.\]
+\end{frame}
+
+\begin{frame}
+  \textit{Exemple. -- On a relevé l'âge des participants à une compétition inter académique de judo. On a obtenu les résultats ci-dessous :
+    \begin{center}
+      \begin{tabular}{@{}ccccc@{}}
+	\toprule
+	Âge & $15$ & $16$ & $17$ & $18$\\
+	\midrule
+	Nombre de judokas & $24$ & $29$ & $35$ & $22$\\
+	\bottomrule
+      \end{tabular}
+    \end{center}
+    Déterminer l'écart-type de cette série à $0,01$ près.\rep{8}
+  }
+\end{frame}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
