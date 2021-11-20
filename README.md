@@ -21,3 +21,4 @@ Proposer aux élèves :
 
 - Le [forum](https://mooc-forums.inria.fr/moocnsi/) NSI
 - [Générateur](https://genumsi.inria.fr/) de QCM
+- [Basthon](http://www.basthon.fr) : permet aux élèves de travailler sur des notebooks Jupyter sans installation.
