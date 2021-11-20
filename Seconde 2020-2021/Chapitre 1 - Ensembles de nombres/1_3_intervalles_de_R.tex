@@ -1,0 +1,191 @@
+\documentclass[handout]{beamer}
+
+% Lignes réponses
+\usepackage{pgffor} % pour la commande \foreach permettant de réaliser une boucle
+\newcommand{\pointilles}{{\\\rule{0pt}{1pt}\dotfill\rule{0pt}{1pt}}}
+\newcommand{\rep}[1]{\foreach \n in {1,...,#1} {\pointilles}}
+
+% Commandes pour cacher/révéler du texte facilement à l'aide d'un booléen
+\usepackage{xstring}
+\usepackage{ifthen}
+
+\newboolean{reveal}
+\setboolean{reveal}{true}
+
+\newlength{\stextwidth} % une nouvelle longueur
+
+\newcommand\x{6}
+
+\newcommand{\guess}[1]{\ifthenelse{\boolean{reveal}}{{\color{red}#1}}{\settowidth{\stextwidth}{#1}\makebox[\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmath}[1]{\ifthenelse{\boolean{reveal}}{\textcolor{red}{#1}}{\settowidth{\stextwidth}{$#1$}\makebox[1.9\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmathbin}[1]{\ifthenelse{\boolean{reveal}}{\mathbin{\color{red}#1}}{\settowidth{\stextwidth}{$#1$}\makebox[2\stextwidth]{\dotfill}}}
+
+% ========================================================================%
+
+\usetheme{focus}
+
+\usepackage{pgfpages}
+\pgfpagesuselayout{4 on 1}[a4paper,landscape]
+
+\usepackage[french]{babel}
+
+\usepackage{xcolor}
+
+\usepackage{pstricks,pst-plot,pst-text,pst-tree,pst-eps,pst-fill,pst-node,pst-math}
+\usepackage{pstricks-add,pst-xkey}
+
+\input ../tabvar
+
+\usepackage{multicol}
+\usepackage[np]{numprint}
+
+\begin{document}
+
+\title{}
+
+\date{}
+
+\begin{frame}
+  \frametitle{Intervalles de $\mathbb{R}$}
+  \textbf{Définition. --} Soient $a$ et $b$ deux nombres réels tels que $a<b$. L'intervalle $[a;b]$ est l'ensemble des réels tels que $a\leq x\leq b$. On définit de même les intervalles $[a;b[$, $]a;b]$ et $]a;b[$.
+
+  \bigskip
+
+  \begin{center}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{|>{\centering}m{2cm}|>{\centering}m{4cm}|>{\centering}m{4cm}|}
+      \hline
+      \textbf{Intervalles} & \textbf{Ensemble des réels $x$ tels que \dots} & \textbf{Représentation graphique}\tabularnewline
+      \hline
+      $[a;b]$ & $a\leq x\leq b$ & \tabularnewline
+      \hline
+      $[a;b[$ & & \tabularnewline
+      \hline
+      $]a;b]$ & & \tabularnewline
+      \hline
+      $]a;b[$ & & \tabularnewline
+      \hline
+    \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \textit{Exemples. --} Représenter (sur quatre graphiques différents) les intervalles $[0;5]$, $]-2;4[$, $[-3;-1[$ et $]-1;8]$.\rep{3}
+
+  \medskip
+
+  Compléter à l'aide des symboles $\in$ et $\notin$ :
+  \begin{multicols}{4}
+    \scriptsize
+    \begin{enumerate}
+      \item [] $0\guessmathbin{\in}[0;5]$\columnbreak
+      \item [] $5\guessmathbin{\in}[0;5]$\columnbreak
+      \item [] $2\guessmathbin{\in}[0;5]$\columnbreak
+      \item [] $7\guessmathbin{\in}[0;5]$
+    \end{enumerate}
+  \end{multicols}
+
+  \begin{multicols}{4}
+    \scriptsize
+    \begin{enumerate}
+      \item [] $-2\guessmathbin{\notin}]-2;4[$ \columnbreak
+      \item [] $4\guessmathbin{\notin}]-2;4[$\columnbreak
+      \item [] $1\guessmathbin{\in}]-2;4[$\columnbreak
+      \item [] $-3\guessmathbin{\notin}]-2;4[$
+    \end{enumerate}
+  \end{multicols}
+
+  \begin{multicols}{4}
+    \scriptsize
+    \begin{enumerate}
+      \item [] $-3\guessmathbin{\in}[-3;-1[$\columnbreak
+      \item [] $-1\guessmathbin{\notin}[-3;-1[$\columnbreak
+      \item [] $0\guessmathbin{\notin}[-3;-1[$\columnbreak
+      \item [] $-2\guessmathbin{\in}[-3;-1[$
+    \end{enumerate}
+  \end{multicols}
+
+  \begin{multicols}{4}
+    \scriptsize
+    \begin{enumerate}
+      \item [] $5\guessmathbin{\in}]-1;8]$\columnbreak
+      \item [] $8\guessmathbin{\in}]-1;8]$\columnbreak
+      \item [] $-1\guessmathbin{\notin}]-1;8]$\columnbreak
+      \item [] $-4\guessmathbin{\notin}]-1;8]$
+    \end{enumerate} 
+  \end{multicols}
+\end{frame}
+
+\begin{frame}
+  \textbf{Définition. --} Soit $a$ un nombre réel. L'intervalle $[a;+\infty[$ est l'ensemble des réels tels que $x\geq a$. On définit de la même façon les intervalles $]a;+\infty[$, $]-\infty;a]$ et $]-\infty;a[$.
+
+  \begin{center}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{|>{\centering}m{2cm}|>{\centering}m{4cm}|>{\centering}m{4cm}|}
+      \hline
+      \textbf{Intervalles} & \textbf{Ensemble des réels $x$ tels que \dots} & \textbf{Représentation graphique}\tabularnewline
+      \hline
+      $[a;+\infty[$ & $x\geq a$ & \tabularnewline
+      \hline
+      $]a;+\infty[$ & & \tabularnewline
+      \hline
+      $]-\infty;a]$ & & \tabularnewline
+      \hline
+      $]-\infty;a[$ & & \tabularnewline
+      \hline
+    \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \textit{Exemples. -- Représenter (sur quatre graphiques différents) les intervalles $[10;+\infty[$, $]-1;+\infty[$, $]-\infty;-5]$ et $]-\infty;2[$.}\rep{3}\\
+
+  \medskip
+
+  \textit{Compléter à l'aide des symboles $\in$ et $\notin$ :}
+
+  \begin{multicols}{3}
+    \scriptsize
+    \begin{enumerate}
+      \item [] $10\guessmathbin{\in}[10;+\infty[$\columnbreak
+      \item [] $12\guessmathbin{\in}[10;+\infty[$\columnbreak
+      \item [] $2\guessmathbin{\notin}[10;+\infty[$
+    \end{enumerate}
+  \end{multicols}
+
+  \begin{multicols}{3}
+    \scriptsize
+    \begin{enumerate}
+      \item [] $-1\guessmathbin{\notin}]-1;+\infty[$ \columnbreak
+      \item [] $3\guessmathbin{\in}]-1;+\infty[$ \columnbreak
+      \item [] $-3\guessmathbin{\notin}]-1;+\infty[$ 
+    \end{enumerate}
+  \end{multicols}
+
+  \begin{multicols}{3}
+    \scriptsize
+    \begin{enumerate}
+      \item [] $-5\guessmathbin{\in}]-\infty;-5]$\columnbreak
+      \item [] $-3\guessmathbin{\notin}]-\infty;-5]$\columnbreak
+      \item [] $-10\guessmathbin{\in}]-\infty;-5]$
+    \end{enumerate}
+  \end{multicols}
+
+  \begin{multicols}{3}
+    \scriptsize
+    \begin{enumerate}
+      \item [] $2\guessmathbin{\notin}]-\infty;2[$\columnbreak
+      \item [] $-1\guessmathbin{\in}]-\infty;2[$\columnbreak
+      \item [] $3\guessmathbin{\notin}]-\infty;2[$
+    \end{enumerate} 
+  \end{multicols}
+\end{frame}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

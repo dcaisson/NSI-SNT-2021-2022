@@ -1,0 +1,149 @@
+\documentclass[handout]{beamer}
+
+% Lignes réponses
+\usepackage{pgffor} % pour la commande \foreach permettant de réaliser une boucle
+\newcommand{\pointilles}{{\\\rule{0pt}{1pt}\dotfill\rule{0pt}{1pt}}}
+\newcommand{\rep}[1]{\foreach \n in {1,...,#1} {\pointilles}}
+
+% Commandes pour cacher/révéler du texte facilement à l'aide d'un booléen
+\usepackage{xstring}
+\usepackage{ifthen}
+
+\newboolean{reveal}
+\setboolean{reveal}{true}
+
+\newlength{\stextwidth} % une nouvelle longueur
+
+\newcommand\x{6}
+
+\newcommand{\guess}[1]{\ifthenelse{\boolean{reveal}}{{\color{red}#1}}{\settowidth{\stextwidth}{#1}\makebox[\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmath}[1]{\ifthenelse{\boolean{reveal}}{\textcolor{red}{#1}}{\settowidth{\stextwidth}{$#1$}\makebox[1.9\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmathbin}[1]{\ifthenelse{\boolean{reveal}}{\mathbin{\color{red}#1}}{\settowidth{\stextwidth}{$#1$}\makebox[2\stextwidth]{\dotfill}}}
+
+% ========================================================================%
+
+\usetheme{focus}
+
+\usepackage{pgfpages}
+\pgfpagesuselayout{4 on 1}[a4paper,landscape]
+
+\usepackage[french]{babel}
+
+\usepackage{xcolor}
+
+\usepackage{pstricks,pst-plot,pst-text,pst-tree,pst-eps,pst-fill,pst-node,pst-math}
+\usepackage{pstricks-add,pst-xkey}
+
+\input ../tabvar
+
+\usepackage{multicol}
+\usepackage[np]{numprint}
+
+\begin{document}
+
+\title{}
+
+\date{}
+
+\begin{frame}
+  \frametitle{Connaître les ensembles de nombres}
+  \textbf{Définition. --} Les entiers naturels sont\ les nombres \guess{entiers positifs ou nuls}.\ L'ensemble des entiers naturels est noté $\guessmath{\mathbb{N}}$.\
+  \[\mathbb{N}=\left\{0;1;2;\hdots\right\}\]\
+
+  \textit{Notation. --} On écrit par exemple $2\guessmathbin{\in}\mathbb{N}$\ (se lit \og{}$2$ \guess{appartient} à $\mathbb{N}$\fg{}).
+\end{frame}
+
+\begin{frame}
+\textbf{Définition. --} Les entiers \guess{relatifs} sont\ les \guess{entiers positifs, nuls ou} \guess{négatifs}.\ L'ensemble des entiers relatifs est noté $\guessmath{\mathbb{Z}}$.\
+  \[\mathbb{Z}=\left\{\hdots;-3;-2;-1;0;1;2;3;\hdots\right\}\]\
+
+  \bigskip
+
+  \textbf{Proposition. --} Tout entier \guess{naturel} est aussi un entier \guess{relatif} :\ on dit que l'ensemble des entiers \guess{naturels} $\guessmath{\mathbb{N}}$ est \guess{inclus} dans l'ensemble des entiers \guess{relatifs} $\guessmathbin{\mathbb{Z}}$.\ Cette inclusion se note :
+
+  \[\mathbb{N}\guessmathbin{\subset}\mathbb{Z}\]
+\end{frame}
+
+\begin{frame}
+  \textbf{Définition. --} Les nombres décimaux sont\ les nombres qui s'écrivent comme quotient d'un entier (relatif) par une puissance de $10$, c'est-à-dire par $1$, $10$, $100$, $\np{1000}$ etc (ou plus généralement $10^k$ où $k$ est un entier naturel).\
+  L'ensemble des nombres décimaux est noté $\mathbb{D}$.\
+
+  \bigskip
+
+  \textit{Exemples. --} \begin{enumerate}
+    \item Par exemple, $0,2$ est un nombre décimal car on peut écrire $0,2=\dfrac{2}{10}$. Donner deux autres exemples de nombres décimaux.
+    \item L'entier naturel $4$ est-il un nombre décimal ? Et l'entier relatif $-7$ ?
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \textbf{Proposition. --} L'ensemble des \guess{entiers relatifs} est \guess{inclus} dans l'ensemble des \guess{nombres décimaux} : $\mathbb{Z}\guessmathbin{\subset}\mathbb{D}$.\ On a donc :
+
+  \[\mathbb{N}\guessmathbin{\subset}\mathbb{Z}\guessmathbin{\subset}\mathbb{D}\]
+\end{frame}
+
+\begin{frame}
+  \textbf{Définition. --} Les nombres \guess{rationnels} sont\ les nombres qui s'écrivent comme le quotient de \guess{deux entiers}.\ L'ensemble des nombres rationnels est noté $\guessmathbin{\mathbb{Q}}$.\
+
+ \bigskip
+
+ \textit{Exemples. --} 
+ \begin{enumerate}
+   \item Le nombre $\dfrac{2}{3}$ est le quotient des entiers $2$ et $3$ donc $\dfrac{2}{3}$ est un nombre rationnel.
+   \item Les nombres $\dfrac{4}{7}$, $3$, $-4$ et $0,23$ sont-ils des nombres rationnels?
+ \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \textbf{Proposition. --} L'ensemble des nombres \guess{décimaux} est inclus dans l'ensemble des nombres \guess{rationnels} :\ $\guessmath{\mathbb{D}}\subset\guessmath{\mathbb{Q}}$.\ On a donc :
+
+  \[\guessmath{\mathbb{N}}\subset\guessmath{\mathbb{Z}}\subset\guessmath{\mathbb{D}}\subset\guessmath{\mathbb{Q}}\]
+\end{frame}
+
+\begin{frame}
+  \textbf{Définition. --} À chaque point de la droite graduée ci-dessous, on a associé un nombre unique, qui est appelé\ son \guess{abscisse}.\ Inversement, à chaque nombre correspond un unique point de la droite graduée.\
+
+  \begin{center}
+    \newrgbcolor{ududff}{0.30196078431372547 0.30196078431372547 1.}
+    \psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.6pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(-5.,-1.)(5.,1.)
+      \psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=false,Dx=10.,Dy=1.,ticksize=-2pt 0]{->}(0,0)(-5.,-1.)(5.,1.)
+      \begin{scriptsize}
+	\psline[linewidth=1pt,linecolor=blue](-3.33,-0.1)(-3.33,0.1)
+	\uput[u](-3.33,0){\ududff{$A$}}
+	\uput[d](-3.33,-0.07){\color{blue}$-\dfrac{11}{3}$}
+	\psline[linewidth=1pt,linecolor=blue](-2,-0.1)(-2,0.1)
+	\uput[u](-2,0){\ududff{$B$}}
+	\uput[d](-2,-0.07){\color{blue}$-2$}
+	\psline[linewidth=1pt,linecolor=blue](1.73,-0.1)(1.73,0.1)
+	\uput[u](1.73,0){\ududff{$C$}}
+	\uput[d](1.73,-0.07){\color{blue}$\sqrt{3}$}
+	\psline[linewidth=1pt,linecolor=blue](3.14,-0.1)(3.14,0.1)
+	\uput[u](3.14,0){\ududff{$D$}}
+	\uput[d](3.14,-0.07){\color{blue}$\pi$}
+	\psline[linewidth=1pt,linecolor=blue](4.6024,-0.1)(4.6024,0.1)
+	\uput[u](4.6024,0){\ududff{$E$}}
+	\uput[d](4.6024,-0.07){\color{blue}${4,6024}$}
+	\uput[d](0,-0.07){\color{red}$0$}
+	\uput[d](1,-0.07){\color{red}$1$}
+	\psline[linewidth=1pt,linecolor=red](0,-0.1)(0,0.1)
+	\psline[linewidth=1pt,linecolor=red](1,-0.1)(1,0.1)
+      \end{scriptsize}
+    \end{pspicture*}  
+  \end{center}\
+
+  Les nombres \guess{réels} sont les abscisses de tous les points d'une droite graduée.\ L'ensemble des nombres réels est noté $\guessmathbin{\mathbb{R}}$.
+\end{frame}
+
+\begin{frame}
+  \textbf{Proposition. --} Il existe des nombres réels\ qui ne sont pas rationnels, comme\ $\guessmath{\sqrt{2}}$\ (il faudra savoir le démontrer) ou\ $\guessmathbin{\pi}$.\ Ces nombres sont appelés des nombres \guess{irrationnels}.
+\end{frame}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

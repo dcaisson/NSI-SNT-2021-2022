@@ -1,0 +1,108 @@
+\documentclass[a4paper,dvipsnames]{article}
+
+\input ../header
+\newcommand{\checkedbox}{\makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}$\checkmark$}}
+\newcommand{\checkbox}{\makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}}\hspace{3mm}}
+
+\usepackage{gensymb}
+
+\begin{document}
+
+\title{Activité -- Écarts de température à Lyon}
+
+\date{}
+\author{}
+
+\maketitle{}
+
+\thispagestyle{empty}
+\pagestyle{empty}
+
+\section{Rappels sur les symboles $\leq$, $\geq$, $<$ et $>$}
+
+Compléter le tableau suivant :
+
+\begin{center}
+  \begin{tabular}{@{}cc@{}}
+    \toprule
+    Symbole & se lit \\
+    \midrule
+    $\leq$ & est inférieur ou égal à \\
+    $\geq$ & \\
+    $<$ & \\
+    $>$ & \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+Parmi les inégalités suivantes, dire lesquelles sont vraies :
+
+\begin{multicols}{4}
+  \begin{enumerate}
+    \item[\checkbox] $1\leq 2$
+    \item[\checkbox] $3\leq 2$
+    \item[\checkbox] $2\leq 2$
+    \item[\checkbox] $5\geq 4$ 
+    \item[\checkbox] $3\geq 4$
+    \item[\checkbox] $4\geq 4$
+    \item[\checkbox] $9<10$
+    \item[\checkbox] $11<10$
+    \item[\checkbox] $10<10$
+    \item[\checkbox] $21>20$
+    \item[\checkbox] $19>20$
+    \item[\checkbox] $20>20$
+  \end{enumerate}
+\end{multicols}
+
+\section{Activité}
+
+Marama apprend que les températures à Lyon en 2018 ont oscillé entre $-10\degree{}$C et $34\degree$C. Il pose à ses amis Mihiau et Paul la question suivante :
+
+\begin{center}
+  \og{}Quelle notation pourrait-on utiliser pour représenter rapidement l'ensemble des nombres compris entre $-10$ (inclus) et $34$ (inclus)?\fg{}
+\end{center}
+
+Mihiau propose de tracer, comme ci-dessous, la droite numérique et d'hachurer l'ensemble des nombres compris entre $-10$ et $34$.
+
+\begin{center}
+  \psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.6pt,arrowsize=3pt 2,arrowinset=0.25}
+  \begin{pspicture*}(-2.,-0.6)(4.,0.6)
+    \psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=false,labels=y,Dx=10,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-2.,-0.6)(4.,0.6)
+    \psline[linewidth=1.pt,linecolor=red](-1.,0.)(3.4,0.)
+    \psline[linewidth=1.pt,linecolor=red](-0.9,0.2)(-1.,0.2)
+    \psline[linewidth=1.pt,linecolor=red](-1.,0.2)(-1.,-0.2)
+    \psline[linewidth=1.pt,linecolor=red](-1.,-0.2)(-0.9,-0.2)
+    \psline[linewidth=1.pt,linecolor=red](3.3,0.2)(3.4,0.2)
+    \psline[linewidth=1.pt,linecolor=red](3.4,0.2)(3.4,-0.2)
+    \psline[linewidth=1.pt,linecolor=red](3.4,-0.2)(3.3,-0.2)
+    \uput[d](-1,-0.2){\color{red}$-10$}
+    \uput[d](0,0){$0$}
+    \uput[d](3.4,-0.2){\color{red}$34$}
+    \begin{scriptsize}
+      \psdots[dotsize=4pt 0,dotstyle=*,linecolor=darkgray](0.,0.)
+    \end{scriptsize}
+  \end{pspicture*}  
+\end{center}
+
+Paul propose alors d'écrire l'ensemble de ces nombres de la manière suivante : \[\color{red}[-10;34].\] Il l'appelle \textit{intervalle fermé}.
+
+\begin{enumerate}
+  \item Marama, satisfait de la proposition de son amie, lui demande : \og{}Comment écrirais-tu alors l'ensemble des nombres réels $x$ tels que $0\leq x\leq 8$ ?\fg{} Que va répondre Paul ?
+    \rep{2}
+  \item Marama demande : \og{}Paul, comment peut-on noter l'ensemble des nombres $x$ tels que $0\leq x<8$ ? Paul répond : $[0;8]$. Mihiau affirme que sa proposition ne convient pas.
+    \begin{enumerate}
+      \item Pourquoi Mihiau a-t-elle raison ?\rep{2}
+      \item Pourquoi ne pourrait-on pas écrire $[0;7,9]$ ?\rep{2}
+      \item Mihiau propose comme réponse : $[0;8[$. Elle explique que le \og{}crochet ouvert\fg{} en $8$ signifie qu'on exclut ce nombre. Comment note-t-on l'ensemble des nombres compris entre $0$ (inclus) et $15$ (exclu) ?\rep{2}
+      \item Comment note-t-on l'ensemble des nombres compris entre $0$ (exclu) et $15$ (inclu)?\rep{2}
+    \end{enumerate}
+  \item Marama demande enfin : \og{}Quelle notation peut-on donner à l'ensemble des nombres supérieurs ou égaux à $2$ ?\fg{}. Paul, qui a déjà rencontré ce cas, propose alors $[2;+\infty[$, le symbole $\infty$ représentant \og{}l'infini\fg{}.
+    \begin{enumerate}
+      \item Comment note-t-on l'ensemble des nombres supérieurs ou égaux à $10$ ?\rep{2}
+      \item Comment note-t-on l'ensemble des nombres strictement supérieurs à $10$ ?\rep{2}
+      \item Comment note-t-on l'ensemble des nombres inférieurs ou égaux à $3$ ?\rep{2}
+      \item Comment note-t-on l'ensemble des nombres strictement inférieurs à $3$ ?\rep{2}
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}
