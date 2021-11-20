@@ -1,0 +1,204 @@
+\documentclass[handout]{beamer}
+
+% Lignes réponses
+\usepackage{pgffor} % pour la commande \foreach permettant de réaliser une boucle
+\newcommand{\pointilles}{{\\\rule{0pt}{1pt}\dotfill\rule{0pt}{1pt}}}
+\newcommand{\rep}[1]{\foreach \n in {1,...,#1} {\pointilles}}
+
+% Commandes pour cacher/révéler du texte facilement à l'aide d'un booléen
+\usepackage{xstring}
+\usepackage{ifthen}
+
+\newboolean{reveal}
+\setboolean{reveal}{false}
+
+\newlength{\stextwidth} % une nouvelle longueur
+
+\newcommand\x{6}
+
+\newcommand{\guess}[1]{\ifthenelse{\boolean{reveal}}{{\color{red}#1}}{\settowidth{\stextwidth}{#1}\makebox[\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmath}[1]{\ifthenelse{\boolean{reveal}}{\textcolor{red}{#1}}{\settowidth{\stextwidth}{$#1$}\makebox[1.3\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmathbin}[1]{\ifthenelse{\boolean{reveal}}{\mathbin{\color{red}#1}}{\settowidth{\stextwidth}{$#1$}\makebox[2\stextwidth]{\dotfill}}}
+
+% ========================================================================%
+
+\usetheme{focus}
+
+\usepackage{pgfpages}
+\pgfpagesuselayout{4 on 1}[a4paper,landscape]
+
+\usepackage[french]{babel}
+
+\usepackage{xcolor}
+
+\usepackage{pstricks,pst-plot,pst-text,pst-tree,pst-eps,pst-fill,pst-node,pst-math}
+\usepackage{pstricks-add,pst-xkey}
+
+\input ../tabvar
+
+\usepackage{multicol}
+\usepackage[np]{numprint}
+
+\usepackage{booktabs}
+
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+\newcommand{\Oij}{\left(O;\vect{i},\vect{j}\right)}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+
+\begin{document}
+
+\title{}
+
+\date{}
+\begin{frame}
+  \frametitle{1. Proportion et pourcentage}
+  \textbf{Définition. --} Une population un ensemble d'éléments appelés les \guess{individus}. Une sous-population est \guess{une partie de la population}.
+
+  \bigskip
+
+  \textit{Exemple. -- L'ensemble des élèves de Seconde du lycée Paul Gauguin est une \guess{population}. Chaque élève de Seconde du lycée est un \guess{individu}. L'ensemble des élèves de la Seconde 1 est une \guess{sous-population}.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{1.2 Proportion d'une sous-population}
+  \textit{Exemple. -- Un sondage sur les habitudes alimentaires est effectué auprès de $\np{1200}$ personnes. $174$ personnes se déclarent vegan et $26\%$ des personnes interrogées disent suivre un régime.}
+
+  \begin{enumerate}
+    \item Identifier une population et deux sous-populations.\rep{4}
+    \item Quelle est la proportion, exprimée en pourcentage, des personnes interrogées qui sont vegan ?\rep{4}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \begin{enumerate}
+    \setcounter{enumi}{2}
+    \item Combien de personnes interrogées suivent un régime ?\rep{8}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{1.3 Pourcentage de pourcentage}
+  \textit{Exemples. --}
+  \begin{enumerate}
+    \item $60\%$ des élèves d'un lycée sont des filles. Parmi ces filles, $34\%$ portent des lunettes. Déterminer la proportion de filles portant des lunettes dans ce lycée.\rep{8}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \begin{enumerate}
+    \setcounter{enumi}{1}
+  \item Dans une entreprise, $70\%$ des employés partent en vacances en juillet et, parmi eux, $60\%$ partent au bord de la mer. Quelle proportion des employés de cette entreprise partent en vacances au bord de la mer en juillet ?\rep{8}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{2. Variations d'une quantité}
+  % Schéma à faire
+  % V_I et V_F
+  % Variation absolue : V_F - V_I
+  % Variation relative (ou taux d'évolution) : t = (V_F - V_I) / V_I
+  % Coefficient multiplicateur : c = 1 + t = V_F / V_I
+\end{frame}
+
+\begin{frame}
+  \textit{Exemple. -- Le prix d'une paire de chaussures valant initialement $\np{12000}$ XPF a baissé durant les soldes. Cette paire des chaussures est vendue, soldée, à $\np{8400}$ XPF.}
+  \begin{enumerate}
+    \item Déterminer la variation absolue puis la variation relative.\rep{4}
+    \item Compléter la phrase suivante : \og{}Le prix de cette paire de chaussures a $\hdots\hdots\hdots$ de $\hdots\hdots\hdots$\fg{}
+    \item Par quel nombre le prix de la paire de chaussures a-t-il été multiplié ? \rep{3}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \textit{Exemple. -- En janvier 2018, l'application Tik Tok comptait $40$ millions d'utilisateurs quotidiens. En six mois, le nombre d'utilisateurs quotidiens a été multiplié par $3,75$.}
+  \begin{enumerate}
+    \item Déterminer le nombre d'utilisateurs quotidiens de Tik Tok en juillet 2018.\rep{4}
+    \item Calculer le taux d'évolution du nombre d'utilisateurs quotidiens de Tik Tok entre janvier et juillet 2018.\rep{4}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \textit{Remarques. -- Dans le cas d'une augmentation :
+    \begin{itemize}
+      \item le taux d'évolution est \guess{positif};
+      \item le coefficient multiplicateur est \guess{supérieur à $1$}.
+    \end{itemize}
+    Dans le cas d'une diminution :
+    \begin{itemize}
+      \item le taux d'évolution est \guess{négatif};
+      \item le coefficient multiplicateur est \guess{inférieur à $1$}.
+    \end{itemize}
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{3. Évolutions successives}
+  \textit{Exemple. -- Le prix d'un litre d'essence a augmenté de $15\%$ entre janvier et juillet, puis de $10\%$ entre juillet et décembre.}
+  \begin{enumerate}
+    \item Déterminer le coefficient multiplicateur correspondant à chacune des deux évolutions, puis en déduire le coefficient multiplicateur global.\rep{8}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \begin{enumerate}
+    \setcounter{enumi}{1}
+  \item En déduire le pourcentage d'augmentation du prix du litre d'essence entre janvier et décembre.\rep{5}
+  \item Le prix du litre d'essence a-t-il augmenté de $25\%$ entre janvier et décembre ?\rep{5}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \textit{Exemple. -- La première semaine des soldes, un magasin propose $40\%$ de réduction sur tous les vêtements. Lors de la deuxième démarque, le magasin accorde $20\%$ de remise supplémentaire.}
+  \begin{enumerate}
+    \item Déterminer le taux d'évolution global des prix des vêtements de ce magasin.\rep{4}
+    \item Les prix des vêtements ont-il baissé de $60\%$ ?\rep{4}
+  \end{enumerate}
+
+  \bigskip
+
+  \textit{Remarque. -- Dans le cas d'évolutions successives, il ne faut en général pas \guess{ajouter les taux d'évolution}.}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{4. Évolution réciproque}
+
+  \textbf{Définition. --} Deux évolutions sont dites réciproques lorsque le coefficient multiplicateur global de ces deux évolutions \guess{est égal à $1$}.
+
+  \bigskip
+
+  \textit{Exemples. -- Déterminer le taux d'évolution réciproque, arrondi à $0,1\%$ près, des évolutions suivantes : 
+    \begin{itemize}
+      \item une hausse de $20\%$;\rep{3}
+      \item une baisse de $8\%$;\rep{3}
+    \end{itemize}
+  }
+\end{frame}
+
+\begin{frame}
+  \textit{
+    \begin{itemize}
+      \item une augmentation de $12,5\%$;\rep{4}
+      \item une diminution de $36\%$.\rep{4}
+    \end{itemize}
+  }
+\end{frame}
+
+
+\begin{frame}
+  \textit{Exemple. -- \og{}Journée noire pour Airbus Group, dont l'action a perdu $10,42\%$ en bourse.\fg{} (source : LesEchos.fr)\\
+  Quelle évolution permettra à l'action de retrouver sa valeur initiale ?\rep{8}}
+\end{frame}
+
+\begin{frame}
+  \textit{Exemple. -- Les ventes d'un article ont baissé de $20\%$ de 2017 à 2018. Quelle évolution des ventes de cet article faudrait-il atteindre de 2018 à 2019 pour revenir à la même quantité qu'en 2017 ?\rep{8}}
+\end{frame}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
