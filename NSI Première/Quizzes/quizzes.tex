@@ -1,0 +1,124 @@
+\documentclass{beamer}
+
+\usetheme[numbering=none]{metropolis}
+
+\input ../../header_beamer
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Ns}{\mathbb{N}^\ast}
+\newcommand{\un}{(u_n)_{n\in\N}}
+\newcommand{\uns}{(u_n)_{n\in\Ns}}
+\newcommand{\vn}{(v_n)_{n\in\N}}
+\newcommand{\vns}{(v_n)_{n\in\Ns}}
+\newcommand{\wn}{(w_n)_{n\in\N}}
+\newcommand{\wns}{(w_n)_{n\in\Ns}}
+
+\setsansfont[BoldFont={Fira Sans SemiBold}]{Fira Sans Book}
+
+\usepackage{xcolor}
+%\definecolor{bleudane}{RGB}{5,100,160}
+%\definecolor{bleudane2}{RGB}{25,134,193}
+\definecolor{bleu}{RGB}{101,126,228}
+\setbeamercolor{frametitle}{bg=bleu}
+\setbeamercolor{normal text}{fg=black}
+
+\metroset{titleformat=smallcaps}
+
+\newenvironment{correction}{\pause{}\color{blue}}{\pause{}}
+
+\begin{document}
+
+\section{Quizz 1}
+
+\begin{frame}
+  \frametitle{Quizz 1}
+  \begin{enumerate}
+    \item On considère la liste \mintinline{python}{L = [3, 4, 1, 2, 5]}. Que vaut \mintinline{python}{L[-1]} ?
+    \item En utilisant une boucle, créer une liste contenant $10$ zéros.
+    \item Écrire une fonction \mintinline{python}{minimum()} qui prend en paramètre une liste de nombres et qui renvoie la valeur minimal de ces nombres. On n'utilisera pas la fonction \mintinline{python}{min()} de Python.
+    \item Écrire une fonction \mintinline{python}{position_minimum()} qui prend en paramètre une liste de nombres et qui renvoie la position de la valeur minimale de ces nombres.
+  \end{enumerate}
+\end{frame}
+
+\section{Quizz 2}
+
+\begin{frame}
+  \frametitle{Quizz 2}
+  \begin{enumerate}
+    \item En utilisant une boucle, créer la liste des premiers cubes jusqu'à $125$ inclus : \mintinline{python}{[0, 1, 8, 27, 64, 125]}.\pause{}
+    \item Créer la même liste par compréhension.\pause{}
+    \item Écrire une fonction \mintinline{python}{moyenne_ponderee(notes, coefficients)} qui prend en paramètres :
+      \begin{itemize}
+	\item une liste de notes \mintinline{python}{notes} ;
+	\item une liste de coefficients \mintinline{python}{coefficients},
+      \end{itemize}
+      et qui renvoie la moyenne pondérée des notes pondérées par les coefficients.
+  \end{enumerate}
+\end{frame}
+
+\section{Quizz 3}
+
+\begin{frame}[fragile]
+  \frametitle{Quizz 3}
+  \begin{enumerate}
+    \item On considère la liste ci-dessous :
+      \begin{minted}{python}
+liste_1 = [
+      ["Maryam", "Alexandre", "Jacques"],
+      ["Joseph", "Michael", "Jean-Pierre"],
+      ["Pierre", "Leonhard", "Henri"],
+      ["David", "Paul", "Pierre-Simon"]
+     ]
+      \end{minted}
+      \begin{enumerate}
+	\item[--] Que vaut \mintinline{python}{liste_1[3][2]} ?
+	\item[--] Comment peut-on obtenir, de manière similaire, \mintinline{python}{"Paul"} ?
+      \end{enumerate}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+  \begin{enumerate}
+    \setcounter{enumi}{1}
+    \item En utilisant une ou plusieurs boucles, créer la liste suivante :
+      \begin{minted}{python}
+liste_2 = [
+      [1, 2, 3, 4, 5, 6, 7, 8],
+      [2, 4, 8, 10, 12, 14, 16],
+      [3, 6, 9, 12, 15, 18, 21],
+      [4, 8, 12, 16, 20, 24, 28, 32]
+]
+      \end{minted}
+  \end{enumerate}
+\end{frame}
+
+\section{Quizz 4}
+
+\begin{frame}
+  \frametitle{Quizz 4}
+  \begin{enumerate}
+    \item Écrire une fonction \mintinline{python}{contient_valeur()} qui prend en paramètres une liste d'entiers et un entier \mintinline{python}{n}, et qui renvoie \mintinline{python}{True} si \mintinline{python}{n} figure dans la liste, \mintinline{python}{False} sinon.
+    \item Écrire une fonction \mintinline{python}{positions_valeur()} qui prend en paramètres une liste d'entiers et un entier \mintinline{python}{n}, et qui renvoie la liste des positions auxquelles \mintinline{python}{n} apparaît dans la liste (la fonction renvoie une liste vide si l'entier \mintinline{python}{n} n'apparaît pas dans la liste).
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+  \begin{enumerate}
+    \setcounter{enumi}{2}
+  \item Préciser \mintinline{python}{liste} après les lignes suivantes :
+      \begin{minted}{python}
+liste = []
+for i in range(3):
+    ligne = []
+    for j in range(4):
+        ligne.append(i - j) 
+    liste.append(ligne)
+      \end{minted}
+  \end{enumerate}
+\end{frame}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
