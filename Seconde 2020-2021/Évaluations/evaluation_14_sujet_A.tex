@@ -1,0 +1,178 @@
+\documentclass[a4paper]{article}
+
+\input ../header
+\setlength{\multicolsep}{2pt}
+
+\begin{document}
+
+\title{Évaluation 14 -- Sujet A}
+
+\pagestyle{empty}
+
+\date{}
+\author{}
+
+\maketitle{}
+
+\thispagestyle{empty}
+
+\exo[5 points] Cet exercice est un questionnaire à choix multiples (QCM). Pour chaque question posée, une seule des réponses proposées est correcte. Une réponse juste rapporte $1$ point ; une réponse fausse ou l'absence de réponse ne rapporte ni n'enlève de point. Répondre sur le sujet.
+\begin{enumerate}
+  \begin{multicols}{2}
+  \item Le repère $(O,I,J)$ ci-contre :
+    \begin{enumerate}
+      \item est quelconque
+      \item est orthogonal mais pas orthonormé
+      \item est orthonormé
+    \end{enumerate}
+    \vspace*{1.5cm}\columnbreak
+    \psset{xunit=0.5cm,yunit=0.5cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=0.8pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(-4.,-4.)(4.,4.)
+      \multips(0,-4)(0,1.0){9}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.,0)(4.,0)}
+      \multips(-4,0)(1.0,0){9}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-4.)(0,4.)}
+      \psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0]{->}(0,0)(-4.,-4.)(4.,4.)
+      \psdots[dotstyle=x](1,0)
+      \psdots[dotstyle=x](0,2)
+      \begin{scriptsize}
+	\uput[dl](0,0){$O$} \uput[u](1,0){$I$} \uput[r](0,2){$J$}
+      \end{scriptsize}
+    \end{pspicture*}
+  \end{multicols}
+
+  \item Dans le repère $(O,I,J)$ ci-dessous, le point $A$ a pour coordonnées :
+    \begin{center}
+      \psset{xunit=0.5cm,yunit=0.5cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=0.8pt,arrowsize=3pt 2,arrowinset=0.25}
+      \begin{pspicture*}(-4.,-2.)(4.,3.)
+	\multips(0,-3)(0,1.0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.,0)(4.,0)}
+	\multips(-4,0)(1.0,0){9}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-2.)(0,3.)}
+	\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=10.,Dy=10.,ticksize=-2pt 0]{->}(0,0)(-4.,-2.)(4.,3.)
+	\begin{scriptsize}
+	  \psdots[dotstyle=x,dotsize=4pt](-3,2)
+	  \psdots[dotstyle=x,dotsize=4pt](1.,0)
+	  \psdots[dotstyle=x,dotsize=4pt](0,1.)
+	  \uput[dl](0,0){$O$}
+	  \uput[d](1,0){$I$}
+	  \uput[l](0,1){$J$}
+	  \uput[d](-3,2){$A$}
+	\end{scriptsize}
+      \end{pspicture*}
+    \end{center}
+
+    \begin{multicols}{4}
+      \begin{enumerate}
+	\item $(2;3)$
+	\item $(2;-3)$
+	\item $(-3;2)$
+	\item $(3;-2)$
+      \end{enumerate}
+    \end{multicols}
+\end{enumerate}
+
+\begin{enumerate}[resume]
+  \item Dans un repère orthonormé, on considère les points $A(-38;14)$ et $B(-6;28)$. Le milieu de $[AB]$ a pour coordonnées:
+    \begin{multicols}{4}
+      \begin{enumerate}
+	\item $(-22;21)$
+	\item $(16;7)$
+	\item $(-16;-7)$
+	\item aucune des réponses précédentes
+      \end{enumerate}
+    \end{multicols}
+  \item Soient $E(9;-13)$ et $D(5;-9)$ dans un repère orthonormé. La distance $ED$ est égale à:
+    \begin{multicols}{4}
+      \begin{enumerate}
+	\item $8$
+	\item $\sqrt{32}$
+	\item $\sqrt{16}$
+	\item aucune des réponses précédentes
+      \end{enumerate}
+    \end{multicols}
+  \item Le calcul $\sqrt{(-6+1)^{2}+(7-8)^{2}}$ est celui de la distance $AB$ pour :
+    \begin{multicols}{2}
+      \begin{enumerate}
+	\item $A(-6;1)$ et $B(7;-8)$
+	\item $A(7;1)$ et $B(8;-6)$
+	\item $A(-1;8)$ et $B(-6;7)$
+	\item $A(7;-1)$ et $B(-8;-6)$
+      \end{enumerate}
+    \end{multicols}
+\end{enumerate}
+
+\bigskip
+
+\exo[4 points] Dans un repère orthonormé, on considère les points $E$, $F$ et $G$ de coordonnées respectives $(42;52)$, $(45;50)$ et $(50;56)$. Le triangle $EFG$ est-il rectangle en $F$ ?\rep{16}
+
+\pagebreak
+
+\exo[5 points] Dans le plan muni d'un repère orthonormé, on considère les points $A(1;3)$, $B(1;-2)$, $C(5;-5)$ et $D(5;0)$.
+\begin{enumerate}
+  \item Compléter la figure suivante :
+    \begin{center}
+      \psset{xunit=0.5cm,yunit=0.5cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=0.8pt,arrowsize=3pt 2,arrowinset=0.25}
+      \begin{pspicture*}(-6.,-6.)(12.,6.)
+	\multips(0,-6)(0,1.0){13}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-6.,0)(12.,0)}
+	\multips(-6,0)(1.0,0){19}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-6.)(0,6.)}
+	\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0]{->}(0,0)(-6.,-6.)(12.,6.)
+	% \psline(1.,3.)(1.,-2.)
+	% \psline(1.,-2.)(5.,-5.)
+	% \psline(5.,-5.)(5.,0.)
+	% \psline(5.,0.)(1.,3.)
+	% \pscircle(5.,0.){3.5}
+	% \begin{scriptsize}
+	%   \psdots[dotstyle=*,linecolor=blue](1.,3.)
+	%   \rput[bl](1.08,3.2){\blue{$A$}}
+	%   \psdots[dotstyle=*,linecolor=blue](1.,-2.)
+	%   \rput[bl](1.08,-1.8){\blue{$B$}}
+	%   \psdots[dotstyle=*,linecolor=blue](5.,-5.)
+	%   \rput[bl](5.08,-4.8){\blue{$C$}}
+	%   \psdots[dotstyle=*,linecolor=blue](5.,0.)
+	%   \rput[bl](5.08,0.2){\blue{$D$}}
+	% \end{scriptsize}
+      \end{pspicture*}
+    \end{center}
+  \item Quelle conjecture peut-on faire sur la nature du quadrilatère $ABCD$ ?\rep{6}
+  \item Déterminer les coordonnées du milieu $I$ du segment $[BD]$.\rep{6}
+  \item Démontrer que $ABCD$ est un parallélogramme.\rep{6}
+  \item (bonus) Le point $E(4;5)$ appartient-il au cercle de centre $D$ passant par $A$ ?\rep{6}
+\end{enumerate}
+
+\bigskip
+
+\exo[3 points] Résoudre les inéquations suivantes :
+\begin{multicols}{2}
+  \begin{enumerate}
+    \item $2x-3\leq 23$
+    \item $5x+1 > 10x+26$
+  \end{enumerate}
+\end{multicols}
+\dotfill\rep{9}
+
+\bigskip
+
+\exo[3 points] Un agriculteur souhaite clôturer une partie de son domaine en deux parties : une partie carrée de côté $L$ (mètres), et une partie rectangulaire :
+
+\begin{center}
+  \psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+  \begin{pspicture*}(0.,0.)(6.,6.)
+    \psline[linewidth=1.pt](1.,3.)(1.,1.)
+    \psline[linewidth=1.pt](1.,1.)(3.,1.)
+    \psline[linewidth=1.pt](3.,1.)(3.,3.)
+    \psline[linewidth=1.pt](3.,3.)(1.,3.)
+    \psline[linewidth=1.pt](1.,3.)(1.,5.)
+    \psline[linewidth=1.pt](1.,5.)(5.,5.)
+    \psline[linewidth=1.pt](5.,5.)(5.,3.)
+    \psline[linewidth=1.pt](5.,3.)(3.,3.)
+    \psline{<->}(1,0.7)(3,0.7)
+    \uput[d](2,0.7){$L$}
+    \psline{<->}(3,2.7)(5,2.7)
+    \uput[d](4,2.7){$L$}
+  \end{pspicture*}
+\end{center}
+
+Le passage entre la partie rectangulaire et la partie carrée n'est pas clôturé. Cet agriculteur dispose de $\np{8400}$ mètres de fil. Quelle est la valeur maximale de $L$ ?\rep{20}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

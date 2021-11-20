@@ -1,0 +1,157 @@
+\documentclass[a4paper,dvipsnames]{article}
+
+\input ../header
+\newcommand{\checkedbox}{\makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}$\checkmark$}}
+\newcommand{\checkbox}{\makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}}\hspace{3mm}}
+
+% Intervalle
+\def\intervalleFF(#1,#2){\psline[linecolor=red]{[-]}(#1,0)(#2,0)}
+\def\intervalleOO(#1,#2){\psline[linecolor=red]{]-[}(#1,0)(#2,0)}
+\def\intervalleFO(#1,#2){\psline[linecolor=red]{[-[}(#1,0)(#2,0)}
+\def\intervalleOF(#1,#2){\psline[linecolor=red]{]-]}(#1,0)(#2,0)}
+\def\intervalleFpI(#1,#2){\psline[linecolor=red]{[-}(#1,0)(#2,0)}
+\def\intervalleOpI(#1,#2){\psline[linecolor=red]{]-}(#1,0)(#2,0)}
+\def\intervalleFmI(#1,#2){\psline[linecolor=red]{-]}(#1,0)(#2,0)}
+\def\intervalleOmI(#1,#2){\psline[linecolor=red]{-[}(#1,0)(#2,0)}
+
+\begin{document}
+
+\title{Évaluation 8 -- Sujet A}
+\author{}
+\date{}
+
+\maketitle{}
+
+\pagestyle{empty}
+\thispagestyle{empty}
+
+% Exercice sur les ensembles de nombres
+\exo[2 points] 
+Compléter les phrases suivantes :
+\begin{enumerate}
+  \item L'ensemble $\mathbb{N}$ est l'ensemble des \dotfill
+  \item L'ensemble $\hdots\hdots\hdots$ est l'ensemble des nombres rationnels.
+\end{enumerate}
+
+\bigskip
+
+% Exercice sur les ensembles de nombres
+\exo[2 points] Compléter le schéma suivant avec les nombres de votre choix :
+
+\begin{center}
+  \psset{xunit=0.7cm,yunit=0.6cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.2pt,arrowsize=3pt 2,arrowinset=0.25}
+  \begin{pspicture*}(-1.,-3.)(17.,11.)
+    \rput{0.}(4.,4.){\psellipse[linecolor=red,linewidth=1.2pt](0,0)(1.9898733422917,1.7203476155600472)}
+    \rput{0.}(5.,4.){\psellipse[linecolor=blue,linewidth=1.2pt](0,0)(3.6055512754639873,3.)}
+    \rput{0.}(6.,4.){\psellipse[linecolor=orange,linewidth=1.2pt](0,0)(5.,4.)}
+    \rput{0.}(7.,4.){\psellipse[linecolor=Green,linewidth=1.2pt](0,0)(6.403124237432849,5.)}
+    \rput{0.}(8.,4.){\psellipse[linecolor=Fuchsia,linewidth=1.2pt](0,0)(7.810249675906654,6.)}
+    \uput[u](5.4,5.4){\color{red}\fbox{$\mathbb{N}$}}
+    \uput[u](7.6,6.4){\color{blue}\fbox{$\mathbb{Z}$}}
+    \uput[u](9.2,7.3){\color{orange}\fbox{$\mathbb{D}$}}
+    \uput[u](10.6,8.2){\color{Green}\fbox{$\mathbb{Q}$}}
+    \uput[u](12,9.4){\color{Fuchsia}\fbox{$\mathbb{R}$}}
+    \uput[u](4,4){$\hdots$}
+    \uput[u](7,4){$\hdots$}
+%    \uput[u](6.8,2.6){$\hdots$}
+    \uput[u](9.8,3.6){$\hdots$}
+%    \uput[u](9,2){$\hdots$}
+    \uput[u](12.2,3.5){$\hdots$}
+%    \uput[u](11.5,1.7){$\hdots$}
+    \uput[u](14.3,2.1){$\hdots$}
+  \end{pspicture*}
+\end{center} 
+
+\bigskip
+
+% Exercice sur la valeur absolue, les encadrements et les intervalles
+\exo[3 points] Compléter le tableau suivant :
+\begin{center}
+  \begin{tabular}{@{}>{\centering}p{3.8cm}cp{4.5cm}@{}}
+    \toprule
+    Encadrement / Inégalité & Représentation & Appartenance à un intervalle\\
+    \midrule
+    \addlinespace[2mm]
+    \vspace*{-6mm}$-10<x\leq21$ & \psset{xunit=0.5cm,yunit=0.5cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.2pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(1.,-1)(8.,.5)
+      \psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=10.,Dy=1.,ticksize=-2pt 0]{->}(0,0)(1.,-1.)(8.,1.)
+      \intervalleOF(3,6)
+      \uput[d](3,-0.1){$\color{red}-10$}
+      \uput[d](6,-0.1){$\color{red}21$}
+    \end{pspicture*} & \vspace*{-6mm}\centering{}$x\in]-10;21]$\tabularnewline
+    \addlinespace[2mm]
+				& \psset{xunit=0.5cm,yunit=0.5cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.2pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(1.,-1)(8.,.5)
+      \psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=10.,Dy=1.,ticksize=-2pt 0]{->}(0,0)(1.,-1.)(8.,1.)
+      \intervalleFF(3,6)
+      \uput[d](3,-0.1){$\color{red}-3$}
+      \uput[d](6,-0.1){$\color{red}1$}
+    \end{pspicture*} &\tabularnewline
+%    \addlinespace[2mm]
+%    $1<x<7$ &&\tabularnewline
+    \addlinespace[4mm]
+	    && \centering{}$x\in]42;+\infty[$\tabularnewline
+%    \addlinespace[4mm]
+%	    & \psset{xunit=0.5cm,yunit=0.5cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.2pt,arrowsize=3pt 2,arrowinset=0.25}
+%    \begin{pspicture*}(1.,-1)(8.,.5)
+%      \psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=10.,Dy=1.,ticksize=-2pt 0]{->}(0,0)(1.,-1.)(8.,1.)
+%      \intervalleOmI(1,6)
+%      \uput[d](6,-0.1){$\color{red}-2$}
+%    \end{pspicture*} &\tabularnewline
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+\pagebreak
+
+% Exercice sur la valeur absolue
+\exo[3 points] Traduire les égalités et inégalités suivantes à l'aide d'une distance, puis représenter l'ensemble des réels $x$ tels que :
+
+\begin{multicols}{2}
+  \begin{enumerate}
+    \item $|x-5|=2$\rep{8}
+    \item $|x-12|<1$\rep{8}
+  \end{enumerate}
+\end{multicols}
+
+\bigskip
+
+\exo[3 points] \vspace{-2mm} 
+\begin{enumerate}
+  \item Écrire $\sqrt{300}$ sous la forme $a\sqrt{b}$, où $a$ est un entier et $b$ l'entier naturel le plus petit possible.\rep{6}
+  \item Écrire $\dfrac{5}{\sqrt{6}-1}$ sans racine carrée au dénominateur.\rep{6}
+  \item Donner une valeur arrondie de $\dfrac{3}{\sqrt{7}}$ à $10^{-4}$ près.\rep{4}
+\end{enumerate}
+
+\bigskip
+
+% Exercice de probabilités
+\exo[3 points] Vaitiare lance un dé cubique équilibré un peu particulier : le dé comporte deux faces avec le numéro $1$, une face avec le $4$, deux faces avec le $5$ et une face avec le $6$. Vaitiare note le numéro obtenu.
+\begin{enumerate}
+  \item Modéliser cette expérience aléatoire.\rep{8}
+  \item Teiki affirme qu'avec un dé cubique \og{}classique\fg{} (les faces sont numérotées de $1$ à $6$), non truqué, il a plus de chance d'obtenir un numéro supérieur ou égal à $5$. Que penser de son affirmation ?\rep{8}
+\end{enumerate}
+
+\pagebreak
+
+% Exercice Python : fonction et if, Black Friday
+\exo[4 points] Aujourd'hui, c'est Black Friday ! Henua S. réunit toutes ses économies et se rend dans son magasin de surf préféré. La remise effectuée dépend du prix de l'article acheté :
+\begin{itemize}
+  \item pour un article coûtant moins de \np{7500} XPF, une remise de $40\%$ est effectuée ;
+  \item pour un article coûtant \np{7500} XPF ou plus, une remise de $30\%$ est effectuée.
+\end{itemize}
+\begin{enumerate}
+  \item Compléter la fonction Python suivante afin qu'elle renvoie le montant de la remise effectuée pour un article dont le prix est donné en paramètre de la fonction :
+    \begin{minted}{python}
+def calculer_remise(P):
+    if ...............:
+        remise = ...........
+    else:
+        .................
+    return ..........
+    \end{minted}
+  \item Quel appel permet de déterminer le montant de la remise pour un article coûtant $\np{5000}$ XPF ?\rep{4}
+  \item Déterminer ce montant.\rep{6}
+\end{enumerate}
+
+\end{document}

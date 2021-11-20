@@ -1,0 +1,87 @@
+\documentclass[a4paper,dvipsnames]{article}
+
+\input ../header
+\newcommand{\checkedbox}{\makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}$\checkmark$}}
+\newcommand{\checkbox}{\makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}}\hspace{3mm}}
+
+\begin{document}
+
+\title{Évaluation 1 -- Sujet A -- Éléments de correction}
+
+\maketitle{}
+
+\pagestyle{empty}
+
+\setcounter{exercice}{1}
+
+\exo[3 points]
+Compléter en utilisant $\in$ ou $\notin$ :
+\begin{multicols}{3}
+  \begin{enumerate}
+    \item $-2\notin\mathbb{N}\vphantom{\dfrac{1}{3}}$
+    \item $\dfrac{1}{3}\in\mathbb{Q}$
+    \item $\dfrac{4}{7}\notin\mathbb{D}$
+    \item $\sqrt{3}\notin\mathbb{D}\vphantom{\dfrac{1}{3}}$
+    \item $\sqrt{16}\in\mathbb{Z}$
+    \item $\np{321}\times10^{-5}\in\mathbb{D}\vphantom{\dfrac{1}{3}}$
+  \end{enumerate}
+\end{multicols}
+
+\bigskip
+
+\exo[2 points]
+Compléter le tableau suivant en utilisant V (vrai) ou F (faux) :
+\begin{center}
+  \begin{tabular}{@{}cccccc@{}}
+    \toprule
+    & $\in\mathbb{N}$ & $\in\mathbb{Z}$ & $\in\mathbb{D}$ & $\in\mathbb{Q}$ & $\in\mathbb{R}$\\
+    \cmidrule(lr){2-6}
+    $-\dfrac{6}{2}$ & F & V & V & V & V\\
+    \addlinespace[2mm]
+    $\sqrt{7}$ & F & F & F & F & V\\
+    \addlinespace[1mm]
+    $-19\times10^{-19}$ & F & F & V & V & V\\
+    \addlinespace[1mm]
+    $\np{2020}$ & V & V & V & V & V\\
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+\bigskip
+
+\exo[2 points] Compléter le schéma suivant avec les nombres de votre choix :
+
+\begin{center}
+  \psset{xunit=0.7cm,yunit=0.6cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.2pt,arrowsize=3pt 2,arrowinset=0.25}
+  \begin{pspicture*}(-1.,-3.)(17.,11.)
+    \rput{0.}(4.,4.){\psellipse[linecolor=red,linewidth=1.2pt](0,0)(1.9898733422917,1.7203476155600472)}
+    \rput{0.}(5.,4.){\psellipse[linecolor=blue,linewidth=1.2pt](0,0)(3.6055512754639873,3.)}
+    \rput{0.}(6.,4.){\psellipse[linecolor=orange,linewidth=1.2pt](0,0)(5.,4.)}
+    \rput{0.}(7.,4.){\psellipse[linecolor=Green,linewidth=1.2pt](0,0)(6.403124237432849,5.)}
+    \rput{0.}(8.,4.){\psellipse[linecolor=Fuchsia,linewidth=1.2pt](0,0)(7.810249675906654,6.)}
+    \uput[u](5.4,5.4){\color{red}\fbox{$\mathbb{N}$}}
+    \uput[u](7.6,6.4){\color{blue}\fbox{$\mathbb{Z}$}}
+    \uput[u](9.2,7.3){\color{orange}\fbox{$\mathbb{D}$}}
+    \uput[u](10.6,8.2){\color{Green}\fbox{$\mathbb{Q}$}}
+    \uput[u](12,9.4){\color{Fuchsia}\fbox{$\mathbb{R}$}}
+    \uput[u](4,4){$1$}
+    \uput[u](7,4){$-2$}
+    \uput[u](6.8,2.6){$-10$}
+    \uput[u](9.8,3.6){$0,1$}
+    \uput[u](9,2){$12,3$}
+    \uput[u](12.2,3.5){$\dfrac{1}{3}$}
+    \uput[u](11.5,1.7){$\dfrac{4}{7}$}
+    \uput[u](14.3,2.1){$\pi$}
+  \end{pspicture*}
+\end{center}
+
+\bigskip
+
+\exo[1 point] 
+Dire, sans justifier, si chacune des phrases suivantes est vraie (V) ou fausse (F) :
+\begin{enumerate}
+  \item V \checkedbox{} F \checkbox{} Tout entier relatif est un nombre rationnel. 
+  \item V \checkedbox{} F \checkbox{} Il existe des nombres décimaux qui sont des entiers naturels.
+\end{enumerate}
+
+\end{document}
