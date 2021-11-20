@@ -1,0 +1,97 @@
+\documentclass[handout]{beamer}
+
+% Lignes réponses
+\usepackage{pgffor} % pour la commande \foreach permettant de réaliser une boucle
+\newcommand{\pointilles}{{\\\rule{0pt}{1pt}\dotfill\rule{0pt}{1pt}}}
+\newcommand{\rep}[1]{\foreach \n in {1,...,#1} {\pointilles}}
+
+% Commandes pour cacher/révéler du texte facilement à l'aide d'un booléen
+\usepackage{xstring}
+\usepackage{ifthen}
+
+\newboolean{reveal}
+\setboolean{reveal}{false}
+
+\newlength{\stextwidth} % une nouvelle longueur
+
+\newcommand\x{6}
+
+\newcommand{\guess}[1]{\ifthenelse{\boolean{reveal}}{{\color{red}#1}}{\settowidth{\stextwidth}{#1}\makebox[\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmath}[1]{\ifthenelse{\boolean{reveal}}{\textcolor{red}{#1}}{\settowidth{\stextwidth}{$#1$}\makebox[1.3\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmathbin}[1]{\ifthenelse{\boolean{reveal}}{\mathbin{\color{red}#1}}{\settowidth{\stextwidth}{$#1$}\makebox[2\stextwidth]{\dotfill}}}
+
+% ========================================================================%
+
+\usetheme{focus}
+
+\usepackage{pgfpages}
+\pgfpagesuselayout{4 on 1}[a4paper,landscape]
+
+\usepackage[french]{babel}
+
+\usepackage{xcolor}
+
+\usepackage{pstricks,pst-plot,pst-text,pst-tree,pst-eps,pst-fill,pst-node,pst-math}
+\usepackage{pstricks-add,pst-xkey}
+
+\input ../tabvar
+
+\usepackage{multicol}
+\usepackage[np]{numprint}
+
+\usepackage{booktabs}
+
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+\newcommand{\Oij}{\left(O;\vect{i},\vect{j}\right)}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+
+\begin{document}
+
+\title{}
+
+\date{}
+
+\begin{frame}
+  \frametitle{1. Définition}
+  \textbf{Définition. --} Soient $M$ un point et $\mathcal{D}$ une droite.
+    \begin{itemize}
+      \item Si le point $M$ n'appartient pas à $\mathcal{D}$, alors le projeté orthogonal du point $M$ sur la droite $\mathcal{D}$ est le point $P$ tel que\\
+	\dotfill
+      \item Si le point $M$ appartient à $\mathcal{D}$, alors le projeté orthogonal du point $M$ sur la droite $\mathcal{D}$ est le point $M$.
+    \end{itemize}
+
+    \medskip
+
+    \textit{Remarque. -- Pour construire le projeté orthogonal d'un point sur une droite, j'ai souvent besoin d'utiliser \dotfill}
+\end{frame}
+
+\begin{frame}
+  \textit{Exemple. -- Tracer une droite $\mathcal{D}$, placer un point $M$ n'appartenant pas à la droite $\mathcal{D}$ puis construire le projeté orthogonal $M'$ de $M$ sur $\mathcal{D}$.}
+  \vspace{7cm}
+\end{frame}
+
+\begin{frame}
+  \textit{Exemple. -- Soit $ABC$ un triangle rectangle en $B$. Que peut-on dire :
+    \begin{itemize}
+      \item du projeté orthogonal de $A$ sur la droite $(BC)$ ?
+      \item du projeté orthogonal de $C$ sur la droite $(AB)$ ?
+    \end{itemize}
+    \dotfill\rep{4}
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{2. Propriété du projeté orthogonal}
+  \textbf{Proposition. --} Le projeté orthogonal d'un point $M$ sur une droite $\mathcal{D}$ est le point de la droite $\mathcal{D}$ \dotfill
+
+  \vspace{6cm}
+\end{frame}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
