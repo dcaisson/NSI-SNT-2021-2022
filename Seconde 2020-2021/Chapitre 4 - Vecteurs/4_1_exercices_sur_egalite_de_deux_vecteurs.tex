@@ -1,0 +1,297 @@
+\documentclass[a4paper]{article}
+
+\input ../header
+\usepackage{gensymb}
+\usepackage[np]{numprint}
+\usepackage{xcolor}
+\usepackage{booktabs}
+
+\setlength{\multicolsep}{2pt}
+
+\begin{document}
+
+\title{Exercices sur l'égalité de deux vecteurs}
+\author{}
+
+\pagestyle{empty}
+
+\date{}
+
+\maketitle{}
+
+\thispagestyle{empty}
+
+\exo Tracer deux vecteurs ayant :
+\begin{multicols}{2}
+  \begin{enumerate}
+    \item la même direction, la même longueur et pas le même sens
+      \begin{center}
+	\psset{xunit=0.7cm,yunit=0.7cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+	\begin{pspicture*}(1.,1.)(7.,7.)
+	  \multips(0,1)(0,1.0){7}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(1.,0)(7.,0)}
+	  \multips(1,0)(1.0,0){7}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,1.)(0,7.)}
+	  \psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(1.,1.)(7.,7.)
+      \end{pspicture*}
+      \end{center}
+    \item la même direction, le même sens et pas la même longueur
+      \begin{center}
+	\psset{xunit=0.7cm,yunit=0.7cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+	\begin{pspicture*}(1.,1.)(7.,7.)
+	  \multips(0,1)(0,1.0){7}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(1.,0)(7.,0)}
+	  \multips(1,0)(1.0,0){7}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,1.)(0,7.)}
+	  \psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(1.,1.)(7.,7.)
+      \end{pspicture*}
+      \end{center}
+    \item la même direction mais pas la même longueur, ni le même sens
+      \begin{center}
+	\psset{xunit=0.7cm,yunit=0.7cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+	\begin{pspicture*}(1.,1.)(7.,7.)
+	  \multips(0,1)(0,1.0){7}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(1.,0)(7.,0)}
+	  \multips(1,0)(1.0,0){7}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,1.)(0,7.)}
+	  \psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(1.,1.)(7.,7.)
+      \end{pspicture*}
+      \end{center}
+    \item la même longueur, mais pas la même direction
+      \begin{center}
+	\psset{xunit=0.7cm,yunit=0.7cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+	\begin{pspicture*}(1.,1.)(7.,7.)
+	  \multips(0,1)(0,1.0){7}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(1.,0)(7.,0)}
+	  \multips(1,0)(1.0,0){7}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,1.)(0,7.)}
+	  \psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(1.,1.)(7.,7.)
+      \end{pspicture*}
+      \end{center}
+  \end{enumerate}
+\end{multicols}
+
+\bigskip
+
+\exo Compléter les phrases suivantes :
+
+\begin{multicols}{2}
+  \begin{enumerate}
+    \item Si je sais que les vecteurs $\vect{AB}$ et $\vect{CD}$ sont égaux, alors je peux affirmer que le quadrilatère $\hdots\hdots\hdots\hdots$ est un $\hdots\hdots\hdots\hdots\hdots$\columnbreak
+      \vspace*{3cm}
+  \end{enumerate}
+\end{multicols}
+
+\begin{multicols}{2}
+  \begin{enumerate}
+    \setcounter{enumi}{1}
+    \item Si je sais que le quadrilatère $EFGH$ est un parallélogramme, alors je peux écrire plusieurs égalités de vecteurs :
+      \vspace*{2mm}
+      \begin{multicols}{2}
+	\begin{enumerate}
+	  \item[] $\vect{EF}=\hdots\hdots$
+	    \smallskip
+	  \item[] $\hdots\hdots=\hdots\hdots$
+	    \smallskip
+	  \item[] $\hdots\hdots=\hdots\hdots$
+	  \item[] $\hdots\hdots=\hdots\hdots$
+	\end{enumerate}
+      \end{multicols}
+  \end{enumerate}\columnbreak
+  \vspace*{3cm}
+\end{multicols}
+
+\pagebreak
+
+\begin{multicols}{2}
+  \begin{enumerate}
+    \setcounter{enumi}{4}
+    \item $\vect{JK}=\vect{MI}$ donc \dotfill
+      \vspace{3cm}
+    \item $MATR$ est un parallélogramme donc $\vect{TR}=~\hdots\hdots$
+      \vspace{3cm}
+    \item $\vect{ST}=\vect{PR}$ donc \dotfill
+      \vspace{3cm}
+    \item $VAML$ est un parallélogramme donc $\vect{MA}=~\hdots\hdots$
+      \vspace*{3cm}
+  \end{enumerate} 
+\end{multicols}
+
+\bigskip
+
+\exo Parmi les représentations suivantes des vecteurs $\vect{u}$ et $\vect{v}$, laquelle permet de tracer le vecteur $\vect{u}+\vect{v}$ le plus facilement ? Tracer le vecteur $\vect{u}+\vect{v}$.
+\begin{enumerate}
+  \item 
+    \begin{multicols}{3}
+      \begin{itemize}
+	\item[] Représentation 1\\
+	  \smallskip
+	  \NormalCoor
+	  \psset{xunit=0.5cm,yunit=0.5cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+	  \begin{pspicture*}(0.,0.)(5.,5.)
+	    \multips(0,0)(0,1.0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(5.,0)}
+	    \multips(0,0)(1.0,0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,5.)}
+	    \psline[linecolor=red]{->}(1,1)(3,1)
+	    \uput[d](2,1){\color{red}$\vect{u}$}
+	    \psline[linecolor=blue]{->}(3,1)(4,3)
+	    \uput[u](4,3){\color{blue}$\vect{v}$}
+	  \end{pspicture*}
+	\item[] Représentation 2\\
+	  \smallskip
+	  \NormalCoor
+	  \psset{xunit=0.5cm,yunit=0.5cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+	  \begin{pspicture*}(0.,0.)(5.,5.)
+	    \multips(0,0)(0,1.0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(5.,0)}
+	    \multips(0,0)(1.0,0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,5.)}
+	    \psline[linecolor=red]{->}(1,1)(3,1)
+	    \uput[d](2,1){\color{red}$\vect{u}$}
+	    \psline[linecolor=blue]{->}(1,1)(2,3)
+	    \uput[u](2,3){\color{blue}$\vect{v}$}
+	  \end{pspicture*}
+	\item[] Représentation 3\\
+	  \NormalCoor
+	  \smallskip
+	  \psset{xunit=0.5cm,yunit=0.5cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+	  \begin{pspicture*}(0.,0.)(5.,5.)
+	    \multips(0,0)(0,1.0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(5.,0)}
+	    \multips(0,0)(1.0,0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,5.)}
+	    \psline[linecolor=red]{->}(2,3)(4,3)
+	    \uput[u](3,3){\color{red}$\vect{u}$}
+	    \psline[linecolor=blue]{->}(3,1)(4,3)
+	    \uput[d](3,1){\color{blue}$\vect{v}$}
+	  \end{pspicture*}
+      \end{itemize} 
+    \end{multicols}
+  \item 
+    \begin{multicols}{3}
+      \begin{itemize}
+	\item[] Représentation 1\\
+	  \smallskip
+	  \NormalCoor
+	  \psset{xunit=0.5cm,yunit=0.5cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+	  \begin{pspicture*}(0.,0.)(5.,5.)
+	    \multips(0,0)(0,1.0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(5.,0)}
+	    \multips(0,0)(1.0,0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,5.)}
+	    \psline[linecolor=red]{->}(1,2)(4,3)
+	    \uput[u](2.5,2.5){\color{red}$\vect{u}$}
+	    \psline[linecolor=blue]{->}(3,1)(4,3)
+	    \uput[d](3,1){\color{blue}$\vect{v}$}
+	  \end{pspicture*}
+	\item[] Représentation 2\\
+	  \smallskip
+	  \psset{xunit=0.5cm,yunit=0.5cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+	  \begin{pspicture*}(0.,0.)(5.,5.)
+	    \multips(0,0)(0,1.0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(5.,0)}
+	    \multips(0,0)(1.0,0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,5.)}
+	    \psline[linecolor=red]{->}(1,1)(4,2)
+	    \uput[d](2.5,1.5){\color{red}$\vect{u}$}
+	    \psline[linecolor=blue]{->}(1,1)(2,3)
+	    \uput[l](1.5,2){\color{blue}$\vect{v}$}
+	  \end{pspicture*}
+	\item[] Représentation 3\\
+	  \smallskip
+	  \psset{xunit=0.5cm,yunit=0.5cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+	  \begin{pspicture*}(0.,0.)(5.,5.)
+	    \multips(0,0)(0,1.0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(5.,0)}
+	    \multips(0,0)(1.0,0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,5.)}
+	    \psline[linecolor=red]{->}(2,3)(5,4)
+	    \uput[u](3.5,3.5){\color{red}$\vect{u}$}
+	    \psline[linecolor=blue]{->}(1,1)(2,3)
+	    \uput[l](1.5,2){\color{blue}$\vect{v}$}
+	  \end{pspicture*}
+      \end{itemize} 
+    \end{multicols}
+  \item 
+    \begin{multicols}{3}
+      \begin{itemize}
+	\item[] Représentation 1\\
+	  \smallskip
+	  \NormalCoor
+	  \psset{xunit=0.5cm,yunit=0.5cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+	  \begin{pspicture*}(0.,0.)(5.,5.)
+	    \multips(0,0)(0,1.0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(5.,0)}
+	    \multips(0,0)(1.0,0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,5.)}
+	    \psline[linecolor=red]{->}(2,1)(4,1)
+	    \uput[d](3,1){\color{red}$\vect{u}$}
+	    \psline[linecolor=blue]{->}(2,1)(0,3)
+	    \uput[dl](1,2){\color{blue}$\vect{v}$}
+	  \end{pspicture*}
+	\item[] Représentation 2\\
+	  \smallskip
+	  \psset{xunit=0.5cm,yunit=0.5cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+	  \begin{pspicture*}(0.,0.)(5.,5.)
+	    \multips(0,0)(0,1.0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(5.,0)}
+	    \multips(0,0)(1.0,0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,5.)}
+	    \psline[linecolor=red]{->}(2,1)(4,1)
+	    \uput[d](3,1){\color{red}$\vect{u}$}
+	    \psline[linecolor=blue]{->}(4,1)(2,3)
+	    \uput[ur](3,2){\color{blue}$\vect{v}$}
+	  \end{pspicture*}
+	\item[] Représentation 3\\
+	  \smallskip
+	  \psset{xunit=0.5cm,yunit=0.5cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+	  \begin{pspicture*}(0.,0.)(5.,5.)
+	    \multips(0,0)(0,1.0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(5.,0)}
+	    \multips(0,0)(1.0,0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,5.)}
+	    \psline[linecolor=red]{->}(0,3)(2,3)
+	    \uput[u](1,3){\color{red}$\vect{u}$}
+	    \psline[linecolor=blue]{->}(4,1)(2,3)
+	    \uput[ur](3,2){\color{blue}$\vect{v}$}
+	  \end{pspicture*}
+      \end{itemize} 
+    \end{multicols}
+  \item 
+    \begin{multicols}{3}
+      \begin{itemize}
+	\item[] Représentation 1\\
+	  \smallskip
+	  \NormalCoor
+	  \psset{xunit=0.5cm,yunit=0.5cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+	  \begin{pspicture*}(0.,0.)(5.,5.)
+	    \multips(0,0)(0,1.0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(5.,0)}
+	    \multips(0,0)(1.0,0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,5.)}
+	    \psline[linecolor=red]{->}(1,1)(3,1)
+	    \uput[d](2,1){\color{red}$\vect{u}$}
+	    \psline[linecolor=blue]{->}(1,1)(1,4)
+	    \uput[l](1,2.5){\color{blue}$\vect{v}$}
+	  \end{pspicture*}
+	\item[] Représentation 2\\
+	  \smallskip
+	  \psset{xunit=0.5cm,yunit=0.5cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+	  \begin{pspicture*}(0.,0.)(5.,5.)
+	    \multips(0,0)(0,1.0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(5.,0)}
+	    \multips(0,0)(1.0,0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,5.)}
+	    \psline[linecolor=red]{->}(1,4)(3,4)
+	    \uput[u](2,4){\color{red}$\vect{u}$}
+	    \psline[linecolor=blue]{->}(3,1)(3,4)
+	    \uput[r](3,2.5){\color{blue}$\vect{v}$}
+	  \end{pspicture*}
+	\item[] Représentation 3\\
+	  \smallskip
+	  \psset{xunit=0.5cm,yunit=0.5cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+	  \begin{pspicture*}(0.,0.)(5.,5.)
+	    \multips(0,0)(0,1.0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(5.,0)}
+	    \multips(0,0)(1.0,0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,5.)}
+	    \psline[linecolor=red]{->}(1,1)(3,1)
+	    \uput[d](2,1){\color{red}$\vect{u}$}
+	    \psline[linecolor=blue]{->}(3,1)(3,4)
+	    \uput[l](3,2.5){\color{blue}$\vect{v}$}
+	  \end{pspicture*}
+      \end{itemize} 
+    \end{multicols}
+\end{enumerate}
+
+\pagebreak
+
+\exo Le but de cet exercice est de s'habituer à écrire la relation de Chasles avec différents points :
+\begin{center}
+  \og{}Si l'on se rend de $\underbrace{A\text{ à }B}_{\textstyle\vect{AB}}$ $\underbrace{\text{puis}}_{\textstyle\vphantom{\dot{x}}+}$ de $\underbrace{B\text{ à }C}_{\textstyle\vect{BC}}$, $\underbrace{\text{on s'est rendu}}_{\textstyle\vphantom{\dot{1}}=}$ de $\underbrace{A\text{ à }C}_{\textstyle\vect{AC}}$.\fg{}
+\end{center}
+
+En utilisant le modèle précédent, compléter les phrases et égalités suivantes :
+\begin{enumerate}
+  \item \og{}Si l'on se rend de $D$ à $G$ puis de $G$ à $H$, on s'est rendu de $\hdots$ à $\hdots$\fg{}. La relation de Chasles s'écrit :
+    \[\vect{DG}+\vect{GH}=\hdots\hdots\]
+  \item \og{}Si l'on se rend de $E$ à $M$ puis de $M$ à $L$, on s'est rendu de $\hdots$ à $\hdots$\fg{}. La relation de Chasles s'écrit :
+    \[\hdots\hdots+\hdots\hdots=\hdots\hdots\]
+  \item \og{}Si l'on se rend de $J$ à $K$ puis de $\hdots$ à $T$, on s'est rendu de $\hdots$ à $\hdots$\fg{}. La relation de Chasles s'écrit :
+    \[\hdots\hdots+\hdots\hdots=\hdots\hdots\]
+  \item \og{}Si l'on se rend de $R$ à $P$ puis de $\hdots$ à $\hdots$, on s'est rendu de $\hdots$ à $I$\fg{}. La relation de Chasles s'écrit :
+    \[\hdots\hdots+\hdots\hdots=\hdots\hdots\]
+  \item \og{}Si l'on se rend de $\hdots$ à $H$ puis de $\hdots$ à $\hdots$, on s'est rendu de $N$ à $\hdots$\fg{}. La relation de Chasles s'écrit :
+    \[\hdots\hdots+\hdots\hdots=\hdots\hdots\]
+\end{enumerate}
+
+\end{document}

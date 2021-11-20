@@ -1,0 +1,4 @@
+#!/bin/bash         
+
+ls *.bbl *.blg *.xdv *.synctex.gz *.fls *.fdb_latexmk *.aux *.dvi *.ps *.log *.out *.aux *.nav *.snm *.toc | tee .hidden
+ls -d _* >> .hidden

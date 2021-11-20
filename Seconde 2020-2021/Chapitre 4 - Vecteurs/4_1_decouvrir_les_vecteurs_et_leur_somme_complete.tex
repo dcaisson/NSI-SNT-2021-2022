@@ -1,0 +1,276 @@
+\documentclass[handout]{beamer}
+
+% Lignes réponses
+\usepackage{pgffor} % pour la commande \foreach permettant de réaliser une boucle
+\newcommand{\pointilles}{{\\\rule{0pt}{1pt}\dotfill\rule{0pt}{1pt}}}
+\newcommand{\rep}[1]{\foreach \n in {1,...,#1} {\pointilles}}
+
+% Commandes pour cacher/révéler du texte facilement à l'aide d'un booléen
+\usepackage{xstring}
+\usepackage{ifthen}
+
+\newboolean{reveal}
+\setboolean{reveal}{true}
+
+\newlength{\stextwidth} % une nouvelle longueur
+
+\newcommand\x{6}
+
+\newcommand{\guess}[1]{\ifthenelse{\boolean{reveal}}{{\color{red}#1}}{\settowidth{\stextwidth}{#1}\makebox[\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmath}[1]{\ifthenelse{\boolean{reveal}}{\textcolor{red}{#1}}{\settowidth{\stextwidth}{$#1$}\makebox[1.9\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmathbin}[1]{\ifthenelse{\boolean{reveal}}{\mathbin{\color{red}#1}}{\settowidth{\stextwidth}{$#1$}\makebox[2\stextwidth]{\dotfill}}}
+
+% ========================================================================%
+
+\usetheme{focus}
+
+\usepackage{pgfpages}
+\pgfpagesuselayout{4 on 1}[a4paper,landscape]
+
+\usepackage[french]{babel}
+
+\usepackage{xcolor}
+
+\usepackage{pstricks,pst-plot,pst-text,pst-tree,pst-eps,pst-fill,pst-node,pst-math}
+\usepackage{pstricks-add,pst-xkey}
+
+\input ../tabvar
+
+\usepackage{multicol}
+\usepackage[np]{numprint}
+
+\usepackage{booktabs}
+
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+\newcommand{\Oij}{\left(O;\vect{i},\vect{j}\right)}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+
+\begin{document}
+
+\title{}
+
+\date{}
+
+\begin{frame}
+  \frametitle{1. Notion de vecteur}
+  Sur la figure suivante, on a construit l'image $\color{purple}\mathcal{F}'$\pause{} de la figure $\color{blue}\mathcal{F}$\pause{} par la \guess{translation} qui transforme $A$ en $B$.\pause{} 
+
+  \medskip
+
+  La flèche que l'on a tracée allant de $A$ jusqu'à $B$\pause{} indique la \guess{direction (celle de la droite $(AB)$}, \pause{}le \guess{sens (de $A$ vers $B$)}\pause{} et la \guess{longueur}\pause{} du déplacement que l'on doit effectuer pour construire l'image d'un point.
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+    \newrgbcolor{xdxdff}{0.49019607843137253 0.49019607843137253 1.}
+    \psset{xunit=0.7cm,yunit=0.7cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=0.8pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(0.,-1.)(15.,8.)
+      \multips(0,-1)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(15.,0)}
+      \multips(0,0)(1.0,0){16}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-1.)(0,8.)}
+      \uput[ul](1,5){\color{blue}$A$}
+%      \uput[d](1,2){\color{blue}$C$}
+      \uput[r](3,4.8){\color{blue}$C$}
+%      \uput[d](6,2){\color{blue}$C$}
+      \uput[l](4,3){\color{blue}$\mathcal{F}$}
+      \psline[linecolor=blue](1.,5.)(1.,2.)
+      \psline[linecolor=blue](1.,2.)(6.,2.)
+      \psline[linecolor=blue](1.,5.)(3.,5.)
+      \psline[linecolor=blue](3.,5.)(3.,4.)
+      \psline[linecolor=blue](3.,4.)(6.,4.)
+      \parametricplot[linecolor=blue]{-1.5707963267948966}{1.5707963267948966}{1.*1.*cos(t)+0.*1.*sin(t)+6.|0.*1.*cos(t)+1.*1.*sin(t)+3.}
+      \pause{}
+      \uput[ul](8,7){\color{purple}$B$}
+%      \uput[d](8,4){\color{purple}$B'$}
+      \uput[r](10,7){\color{purple}$D$}
+%      \uput[d](13,4){\color{purple}$C'$}
+      \uput[l](11,5){\color{purple}$\mathcal{F}'$}
+      \psline[linecolor=purple](8.,4.)(8.,7.)
+      \psline[linecolor=purple](8.,7.)(10.,7.)
+      \psline[linecolor=purple](10.,7.)(10.,6.)
+      \psline[linecolor=purple](10.,6.)(13.,6.)
+      \psline[linecolor=purple](8.,4.)(13.,4.)
+      \parametricplot[linecolor=purple]{-1.5707963267948966}{1.5707963267948966}{1.*1.*cos(t)+0.*1.*sin(t)+13.|0.*1.*cos(t)+1.*1.*sin(t)+5.}
+      \pause{}
+      \psline[linecolor=red]{->}(1.,5.)(8.,7.)
+      \pause{}
+%      \psline{->}(1.,2.)(8.,4.)
+%      \pause{}
+%      \psline{->}(6.,2.)(13.,4.)
+%      \pause{}
+      \psline{->}(3.,5.)(10.,7.)
+      \pause{}
+      \psline[linecolor=red]{->}(4.,0.)(11.,2.)
+      \uput[d](4,0){\color{red}$M$}
+      \uput[r](11,2){\color{red}$M'$}
+    \end{pspicture*}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \textbf{Définition. --} La translation précédente s'appelle la translation de \guess{vecteur $\vect{AB}$}\pause{}. L'image du point \guessmath{$A$} par cette translation est le point \guessmath{$B$}.\pause{}
+
+  \bigskip
+
+  \textbf{Propriété. --} Lorsque $A$ et $B$ sont distincts, \pause{}le vecteur $\vect{AB}$ est caractérisé par :\pause{}
+  \begin{itemize}
+    \item[--] \guess{sa direction (celle de la droite $(AB)$)};
+    \item[--] \guess{son sens (de $A$ vers $B$)};
+    \item[--] \guess{sa longueur (la longueur $AB$)}.
+  \end{itemize}
+
+  \bigskip
+
+  \textbf{Remarque. --} Lorsque $A$ et $B$ sont confondus,\pause{} le vecteur $\vect{AB}$ est appelé le \guess{vecteur nul}.\pause{} On le note $\guessmath{\vect{0}}$.\pause{} Le vecteur nul n'a \guess{ni direction, ni sens et sa longueur est égale à $0$}.
+\end{frame}
+
+\begin{frame}
+  \frametitle{2. Égalité de deux vecteurs}
+  \textbf{Définition. --} Des vecteurs (non nuls) égaux sont des vecteurs qui ont la même \guess{direction}, le \guess{même sens} et la \guess{même longueur}.
+
+  \bigskip
+
+  \textbf{Proposition. --} Soient $A$, $B$, $C$ et $D$ quatre points.\\\pause{} Dire que les vecteurs $\vect{AB}$ et $\vect{CD}$ sont égaux \pause{}signifie que \pause{}\guess{$D$} est l'image de \guess{$C$} \pause{}par la translation de vecteur $\vect{AB}$.\pause{} On écrit \guess{$\vect{AB}=\vect{CD}$}.
+  \begin{center}
+    \newrgbcolor{qqzzqq}{0 0.6 0}
+    \psset{xunit=0.6cm,yunit=0.6cm,algebraic=true,dotstyle=o,dotsize=3pt 0,linewidth=0.8pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(-1,-1)(6.5,5)
+      \psline[linestyle=dashed,dash=1pt 1pt,linecolor=qqzzqq](1,3)(6,4)
+      \psline[linestyle=dashed,dash=1pt 1pt](1,3)(0,0)
+      \psline[linestyle=dashed,dash=1pt 1pt,linecolor=red](0,0)(5,1)
+      \psline[linestyle=dashed,dash=1pt 1pt](6,4)(5,1)
+      \psline[linestyle=dashed,dash=1pt 1pt](3,2)(6,4)
+      \psline[linestyle=dashed,dash=1pt 1pt](4.42,3.06)(4.52,2.91)
+      \psline[linestyle=dashed,dash=1pt 1pt](4.48,3.09)(4.58,2.94)
+      \psline[linestyle=dashed,dash=1pt 1pt](5,1)(3,2)
+      \psline[linestyle=dashed,dash=1pt 1pt](3.96,1.42)(4.04,1.58)
+      \psline[linestyle=dashed,dash=1pt 1pt](3,2)(0,0)
+      \psline[linestyle=dashed,dash=1pt 1pt](1.58,0.94)(1.48,1.09)
+      \psline[linestyle=dashed,dash=1pt 1pt](1.52,0.91)(1.42,1.06)
+      \psline[linestyle=dashed,dash=1pt 1pt](1,3)(3,2)
+      \psline[linestyle=dashed,dash=1pt 1pt](2.04,2.58)(1.96,2.42)
+      \uput[l](0,0){\color{red}$C$}
+      \uput[r](5,1){\color{red}$D$}
+      \uput[u](1,3){\color{qqzzqq}$A$}
+      \uput[u](6,4){\color{qqzzqq}$B$}
+      \psline[linecolor=qqzzqq]{->}(1,3)(6,4)
+      \psline[linecolor=red]{->}(0,0)(5,1)
+    \end{pspicture*}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \textbf{Proposition. --} Soient $A$, $B$, $C$ et $D$ quatre points.\pause{}\\Les vecteurs $\vect{AB}$ et $\vect{CD}$ sont égaux\pause{} si, et seulement si, \guess{$ABDC$ est un parallélogramme} \guess{(éventuellement aplati)}.
+\end{frame}
+
+\begin{frame}
+  \frametitle{3. Somme de deux vecteurs}
+  \textbf{Définition. --} En enchaînant la translation de vecteur $\vect{u}$ et celle de vecteur $\vect{v}$, on obtient une nouvelle \guess{translation}. Le vecteur de cette translation est appelé la \guess{somme} des vecteurs $\color{red}\vect{u}$ et $\color{red}\vect{v}$.
+  \begin{center}
+    \NormalCoor
+    \newrgbcolor{qqwuqq}{0. 0.39215686274509803 0.}
+    \psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(0.,0.)(9.,4.)
+      \psline[linewidth=1.pt,linecolor=red]{->}(1.,2.)(4.,3.)
+      \uput[u](2.5,2.5){$\color{red}\vect{u}$}
+      \psline[linewidth=1.pt,linecolor=blue]{->}(4.,3.)(8.,1.)
+      \uput[u](6,2){$\color{blue}\vect{v}$}
+      \psline[linewidth=1.pt,linecolor=qqwuqq]{->}(1.,2.)(8.,1.)
+      \uput[d](4.5,1.5){$\color{qqwuqq}\vect{u}+\vect{v}$}
+    \end{pspicture*} 
+  \end{center}
+
+  \textit{Remarque. -- L'ordre n'a pas d'importance :
+    \[\vect{u}+\vect{v}=\vect{v}+\guessmath{\vect{u}}.\]
+  }
+\end{frame}
+
+\begin{frame}
+  \textit{Exemple. -- Représenter, sur la figure ci-dessous, le vecteur $\vect{u}+\vect{v}$.}
+  \begin{center}
+    \NormalCoor
+    \newrgbcolor{qqwuqq}{0. 0.39215686274509803 0.}
+    \psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(0.,0.)(9.,4.)
+      \psline[linewidth=1.pt,linecolor=red]{->}(1.,3.)(3.,1.)
+      \uput[dl](2,2){$\color{red}\vect{u}$}
+      \psline[linewidth=1.pt,linecolor=blue]{->}(3,1)(8.,2.)
+      \uput[d](5.5,1.5){$\color{blue}\vect{v}$}
+      %\psline[linewidth=1.pt,linecolor=qqwuqq]{->}(1,3)(8.,2.)
+      %\uput[u](4.5,2.5){$\color{qqwuqq}\vect{u}+\vect{v}$}
+    \end{pspicture*} 
+  \end{center}
+  \textit{Remarque. -- Pour représenter la somme de deux vecteurs, il est souvent \og{}pratique\fg{} de représenter les deux vecteurs \og{}bout à bout\fg{} (ou encore \og{}l'un à la suite de l'autre\fg{}).}
+\end{frame}
+
+\begin{frame}
+  \textit{Exemple. -- Représenter, sur la figure ci-dessous, le vecteur $\vect{u}+\vect{v}$.}
+
+  \begin{center}
+    \NormalCoor
+    \newrgbcolor{qqwuqq}{0. 0.39215686274509803 0.}
+    \psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(0.,0.)(8.,5.)
+      \multips(0,0)(0,1.0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(8.,0)}
+      \multips(0,0)(1.0,0){9}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,5.)}
+      \psline[linewidth=1.pt,linecolor=red]{->}(1.,2.)(2.,4.)
+      \uput[l](1.5,3){$\color{red}\vect{u}$}
+      %\psline[linewidth=1.pt,linecolor=blue]{->}(2.,4.)(6.,3.)
+      \psline[linewidth=1.pt,linecolor=blue]{->}(3.,2.)(7.,1.)
+      \uput[d](5,1.5){$\color{blue}\vect{v}$}
+      %\uput[u](4,3.5){$\color{blue}\vect{v}$}
+      %\psline[linewidth=1.pt,linecolor=qqwuqq]{->}(1.,2.)(6.,3.)
+      %\uput[u](3.5,2.5){$\color{qqwuqq}\vect{u}+\vect{v}$}
+    \end{pspicture*}
+  \end{center}
+
+  \textit{Remarque. -- De la même façon, on peut définir (et représenter) la somme de trois vecteurs ou plus (exemples en exercices).}
+\end{frame}
+
+\begin{frame}
+  \frametitle{4. Relation de Chasles}
+  \textbf{Proposition. --} Quels que soient les points $A$, $B$ et $C$ :
+  \[\vect{AC}=\vect{AB}+\guessmath{\vect{BC}}.\]
+  \begin{center}
+    \NormalCoor
+    \newrgbcolor{qqwuqq}{0. 0.39215686274509803 0.}
+    \psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(0.,0.5)(9.,4)
+      \psline[linewidth=1.pt,linecolor=red]{->}(1.,2.)(4.,3.)
+      \uput[l](1,2){$A$}
+      \psline[linewidth=1.pt,linecolor=blue]{->}(4.,3.)(8.,1.)
+      \uput[u](4,3){$B$}
+      \psline[linewidth=1.pt,linecolor=qqwuqq]{->}(1.,2.)(8.,1.)
+      \uput[r](8,1){$C$}
+    \end{pspicture*} 
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \textit{Remarque. -- De façon intuitive :
+    \begin{itemize}
+      \item[--] si l'on se rend du point $\color{red}A$ au point \guess{$B$} (vecteur $\vect{AB}$) ;
+      \item[--] puis (addition $\color{red}+$) du point \guess{$B$} au point \guessmath{$C$} (vecteur $\vect{BC}$), 
+    \end{itemize}
+    alors s'est rendu du point \guess{$A$} au point \guess{$C$} (vecteur $\vect{AC}$).
+  }
+
+  \bigskip
+
+  \textit{Exemples. -- Compléter les égalités suivantes à l'aide de la relation de Chasles :
+    \begin{multicols}{2}
+      \begin{itemize}
+	\item $\vect{E\guessmath{U}}+\vect{UH}=\vect{E\guessmath{H}}$
+	\item $\vect{{\guessmath{M}} B}+\guessmath{\vect{BL}}=\vect{ML}$
+      \end{itemize} 
+    \end{multicols}
+  }
+\end{frame}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

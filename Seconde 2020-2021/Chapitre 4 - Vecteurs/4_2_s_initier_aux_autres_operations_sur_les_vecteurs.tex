@@ -1,0 +1,171 @@
+\documentclass[handout,dvipsnames]{beamer}
+
+% Lignes réponses
+\usepackage{pgffor} % pour la commande \foreach permettant de réaliser une boucle
+\newcommand{\pointilles}{{\\\rule{0pt}{1pt}\dotfill\rule{0pt}{1pt}}}
+\newcommand{\rep}[1]{\foreach \n in {1,...,#1} {\pointilles}}
+
+% Commandes pour cacher/révéler du texte facilement à l'aide d'un booléen
+\usepackage{xstring}
+\usepackage{ifthen}
+
+\newboolean{reveal}
+\setboolean{reveal}{false}
+
+\newlength{\stextwidth} % une nouvelle longueur
+
+\newcommand\x{6}
+
+\newcommand{\guess}[1]{\ifthenelse{\boolean{reveal}}{{\color{red}#1}}{\settowidth{\stextwidth}{#1}\makebox[\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmath}[1]{\ifthenelse{\boolean{reveal}}{\textcolor{red}{#1}}{\settowidth{\stextwidth}{$#1$}\makebox[1.9\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmathbin}[1]{\ifthenelse{\boolean{reveal}}{\mathbin{\color{red}#1}}{\settowidth{\stextwidth}{$#1$}\makebox[2\stextwidth]{\dotfill}}}
+
+% ========================================================================%
+
+\usetheme{focus}
+
+\usepackage{pgfpages}
+\pgfpagesuselayout{4 on 1}[a4paper,landscape]
+
+\usepackage[french]{babel}
+
+\usepackage{xcolor}
+
+\usepackage{pstricks,pst-plot,pst-text,pst-tree,pst-eps,pst-fill,pst-node,pst-math}
+\usepackage{pstricks-add,pst-xkey}
+
+\input ../tabvar
+
+\usepackage{multicol}
+\usepackage[np]{numprint}
+
+\usepackage{booktabs}
+
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+\newcommand{\Oij}{\left(O;\vect{i},\vect{j}\right)}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+
+\begin{document}
+
+\title{}
+
+\date{}
+
+\begin{frame}
+  \frametitle{1. Opposé d'un vecteur}
+
+  \textbf{Définition. --} On a représenté ci-dessous un vecteur $\vect{u}$ et son opposé, noté $-\vect{u}$.
+  \begin{center}
+    \NormalCoor
+    \psset{xunit=0.7cm,yunit=0.7cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(0.,1.)(5.,5.)
+      \multips(0,1)(0,1.0){5}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(5.,0)}
+      \multips(0,0)(1.0,0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,1.)(0,5.)}
+      \psline[linewidth=1.pt,linecolor=red]{->}(1.,3.)(4.,4.)
+      \uput[u](2.5,3.5){$\color{red}\vect{u}$}
+      \psline[linewidth=1.pt,linecolor=blue]{->}(4.,3.)(1.,2.)
+      \uput[dr](2.5,2.5){$\color{blue}\vect{v}=-\vect{u}$}
+    \end{pspicture*}
+  \end{center}
+
+  \textit{Remarque. -- De façon intuitive, le vecteur $\vect{u}$ donne l'idée d'un déplacement. Le vecteur $-\vect{u}$ donne l'idée du déplacement \og{}contraire\fg{} : il a la même \guess{direction} et la même \guess{longueur} que le vecteur $\vect{u}$ mais est de sens \guess{contraire}.}
+\end{frame}
+
+\begin{frame}
+  \textit{Exemple. -- Sur la figure ci-dessous, représenter les vecteurs $-\vect{u}$ et $-\vect{v}$ :
+    \begin{center}
+      \NormalCoor
+      \newrgbcolor{ffwwzz}{1. 0.4 0.6}
+      \newrgbcolor{ffzzqq}{1. 0.6 0.}
+      \psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+      \begin{pspicture*}(0.,1.)(8.,7.)
+	\multips(0,1)(0,1.0){7}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(8.,0)}
+	\multips(0,0)(1.0,0){9}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,1.)(0,7.)}
+	\psline[linewidth=1.pt,linecolor=red]{->}(1.,3.)(3,6)
+	\uput[ul](2,4.5){$\color{red}\vect{u}$}
+	\psline[linewidth=1.pt,linecolor=blue]{->}(6.,2.)(6.,4.)
+	\uput[l](6,3){$\color{blue}\vect{v}$}
+	%\psline[linewidth=1.pt,linecolor=ffwwzz]{->}(4.,5.)(2.,2.)
+	%\uput[dr](3,3.5){$\color{ffwwzz}-\vect{u}$}
+	%\psline[linewidth=1.pt,linecolor=ffzzqq]{->}(7.,4.)(7.,2.)
+	%\uput[r](7,3){$\color{ffzzqq}-\vect{v}$}
+      \end{pspicture*}
+    \end{center}
+  }
+\end{frame}
+
+\begin{frame}
+  \textit{Exemple. -- Sur la figure ci-dessous, un vecteur $\vect{AB}$ est représenté. Représenter le vecteur opposé au vecteur $\vect{AB}$ (c'est-à-dire le vecteur $-\vect{AB}$).
+    \begin{center}
+      \NormalCoor
+      \newrgbcolor{ffwwzz}{1. 0.4 0.6}
+      \newrgbcolor{ffzzqq}{1. 0.6 0.}
+      \psset{xunit=0.7cm,yunit=0.7cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+      \begin{pspicture*}(0.,1.)(8.,7.)
+	\multips(0,1)(0,1.0){7}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(8.,0)}
+	\multips(0,0)(1.0,0){9}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,1.)(0,7.)}
+	\psline[linewidth=1.pt,linecolor=red]{->}(3,4)(7,5)
+	\uput[u](5,4.5){$\color{red}\vect{AB}$}
+	\uput[l](3,4){\color{red}$A$}
+	\uput[r](7,5){\color{red}$B$}
+	%\psline[linewidth=1.pt,linecolor=blue]{->}(7,4)(3,3)
+	%\uput[d](5,3.5){$\color{blue}-\vect{AB}$}
+      \end{pspicture*}
+    \end{center}
+  }
+  \textit{Remarque. -- L'opposé du vecteur $\vect{AB}$ est le vecteur \guess{$\vect{BA}$}.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{2. Produit d'un vecteur par un nombre (réel)}
+  \textbf{Définition. --} Soient $\vect{u}$ un vecteur et $k$ un nombre (réel).
+  \begin{itemize}
+    \item[$\bullet$] Si $\vect{u}=\vect{0}$ ou $k=0$, alors le vecteur $k\vect{u}$ est le vecteur nul.
+    \item[$\bullet$] Sinon, le vecteur $k\vect{u}$ est le vecteur ayant :
+      \begin{itemize}
+	\item[--] la même \guess{direction} que $\vect{u}$ ;
+	\item[--] le même sens que $\vect{u}$ si \guess{$k>0$} (le sens contraire si \guess{$k<0$}) ;
+	\item[--] une longueur égale à $|k|$ fois la longueur de $\vect{u}$.
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \textit{Exemple. -- Sur la figure suivante, deux vecteurs $\vect{u}$ et $\vect{v}$ sont représentés. Représenter les vecteurs $2\vect{u}$ et $-3\vect{v}$.}
+  \begin{center}
+    \NormalCoor
+    \psset{xunit=0.8cm,yunit=0.8cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(0.,0.)(10.,7.)
+      \multips(0,0)(0,1.0){8}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(10.,0)}
+      \multips(0,0)(1.0,0){11}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,7.)}
+      \psline[linecolor=red,linewidth=1.pt]{->}(3.,3.)(5.,4.)
+      \uput[u](4,3.5){$\color{red}\vect{u}$}
+      \psline[linecolor=blue,linewidth=1.pt]{->}(8.,2.)(9.,1.)
+      \uput[u](8,2){$\color{blue}\vect{v}$}
+      \psline[linecolor=BurntOrange,linewidth=1.pt]{->}(7.,3.)(4.,6.)
+      \uput[ur](5.5,4.5){$\color{BurntOrange}-3\vect{v}$}
+      \psline[linecolor=Periwinkle,linewidth=1.pt]{->}(1.,1.)(5.,3.)
+      \uput[d](3,2){$\color{Periwinkle}2\vect{u}$}
+    \end{pspicture*}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{3. Milieu d'un segment}
+  \textbf{Proposition. --} Le point $M$ est le milieu du segment $[AB]$ si, et seulement si, \guess{$\vect{MA}+\vect{MB}=\vect{0}$}.
+
+  \bigskip
+
+  \textit{Exercice. -- Réaliser une figure pour illustrer la proposition précédente.}
+
+  \vspace*{3.5cm}
+\end{frame}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
