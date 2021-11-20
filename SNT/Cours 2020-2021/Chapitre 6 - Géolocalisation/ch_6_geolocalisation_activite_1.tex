@@ -1,0 +1,101 @@
+\documentclass[a4paper]{article}
+
+\input ../header
+\usepackage{minted}
+\usepackage[np]{numprint}
+\usepackage{lscape}
+\usepackage{afterpage}
+\usepackage{hyperref}
+
+\setlength{\multicolsep}{2pt}
+
+% Commandes pour cacher/révéler du texte facilement à l'aide d'un booléen
+\usepackage{xstring}
+\usepackage{ifthen}
+
+\newboolean{reveal}
+\setboolean{reveal}{false}
+
+\newlength{\stextwidth} % une nouvelle longueur
+
+\newcommand\x{6}
+
+\newcommand{\guess}[1]{\ifthenelse{\boolean{reveal}}{{\color{red}#1}}{\settowidth{\stextwidth}{#1}\makebox[\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmath}[1]{\ifthenelse{\boolean{reveal}}{\textcolor{red}{#1}}{\settowidth{\stextwidth}{$#1$}\makebox[1.9\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmathbin}[1]{\ifthenelse{\boolean{reveal}}{\mathbin{\color{red}#1}}{\settowidth{\stextwidth}{$#1$}\makebox[2\stextwidth]{\dotfill}}}
+
+\begin{document}
+
+\title{Chapitre 6 -- Géolocalisation}
+
+\pagestyle{empty}
+
+\date{}
+\author{}
+
+\maketitle{}
+
+\thispagestyle{empty}
+\noindent\textbf{Activité 1}\hfill{}\textbf{Repères historiques}
+\smallskip
+\hrule
+\medskip
+
+Se repérer sur Terre, se déplacer, connaître et contrôler l'espace sont des objectifs stratégiques majeurs. Avec la géolocalisation et le déploiement des \guess{satellites}, plus aucun endroit sur Terre ne nous est inconnu.
+
+\bigskip
+
+Comment les premières cartes numériques ont-elles été établies ? Quand sont apparues les technologies permettant de se géolocaliser sur Terre ?
+
+\bigskip
+
+\subsection*{Premiers pas}
+Les satellites artificiels sont des outils permettant de recueillir des informations depuis l'espace, transmettre des télécommunications mais également de se \guess{localiser} sur la surface de la Terre.
+
+\begin{enumerate}
+  \item Nommer la technologie reposant sur les satellites qui a révolutionné la façon de se positionner sur une carte.\rep{2}
+    % Technologie GPS (Global Positioning System)
+  \item Quel président américain a initié cette technologie à la fin des années 1960 ?\rep{2}
+    % Il s'agit de Richard Nixon.
+  \item Quand cette technologie est-elle devenue pleinement opérationnelle pour le grand public ?\rep{2}
+    % Cette technologie est devenue pleinement opérationnelle en 1995.
+  \item Combien de satellites ce système utilise-t-il ? Donner un ordre de grandeur.\rep{2}
+    % Une trentaine
+\end{enumerate}
+
+\subsection*{Développement et démocratisation}
+En Europe, un système concurrent à la technologie américaine est initié en 1999.
+
+\begin{enumerate}[resume]
+  \item Rechercher le nom de ce système.\rep{2}
+    % Il s'agit de Galileo.
+  \item Ce système est-il déjà pleinement opérationnel ?\rep{2}
+    % Non, mais presque.
+  \item Combien de satellites ce système utilisera-t-il ? Donner un ordre de grandeur.\rep{2}
+    % 30 (incluant les satellites de secours)
+  \item À votre avis, pourquoi l'Europe a-t-elle souhaité se doter d'un autre système ?\rep{2}
+    % Pour ne pas être dépendante vis-à-vis du système américain
+\end{enumerate}
+
+Avec l'augmentation des capacités de stockage de données et le développement d'Internet, les premières ressources du Web proposant des cartes numériques ont vu le jour dans les années 1990. La plus important d'entre elles est Google Maps, elle a totalement révolutionné l'accès des cartes au grand public.
+
+\begin{enumerate}[resume]
+  \item En quelle année Google Maps a-t-il été créé par la société Google ?\rep{2}
+\end{enumerate}
+
+\subsection*{Aujourd'hui}
+Dans certains pays, des données publiques sont librement accessibles (\textit{open data}). Celles-ci peuvent être recoupées avec des cartes numériques pour offrir à la population l'accès à des représentations spatiales de multiples informations (densités de population, lignes de transport en commun, etc.).
+
+\begin{enumerate}[resume]
+  \item Rechercher le nom du site publié en 2006 qui permet d'accéder à des cartes numériques recoupant des données géographiques recueillies par l'IGN (Institut national de l'information géographique et forestière).\rep{2}
+\end{enumerate}
+
+D'autres sites mettent à contribution les internautes en leur proposant de participer collectivement à l'enrichissement des données accessibles. L'un d'entre eux, créé par Steve Coast à l'University College de Londres s'appelle \guess{OpenStreetMap}.
+
+\begin{enumerate}[resume]
+  \item Retrouver la date de mise en ligne de ce site Web.\rep{2}
+\end{enumerate}
+
+\end{document}

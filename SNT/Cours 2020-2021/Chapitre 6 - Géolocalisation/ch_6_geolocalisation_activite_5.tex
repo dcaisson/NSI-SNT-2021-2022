@@ -1,0 +1,175 @@
+\documentclass[a4paper]{article}
+
+\input ../header
+\usepackage{minted}
+\usepackage[np]{numprint}
+\usepackage{lscape}
+\usepackage{afterpage}
+\usepackage{hyperref}
+\usepackage{gensymb}
+
+\setlength{\multicolsep}{2pt}
+
+% Commandes pour cacher/révéler du texte facilement à l'aide d'un booléen
+\usepackage{xstring}
+\usepackage{ifthen}
+
+\newboolean{reveal}
+\setboolean{reveal}{false}
+
+\newlength{\stextwidth} % une nouvelle longueur
+
+\newcommand\x{6}
+
+\newcommand{\guess}[1]{\ifthenelse{\boolean{reveal}}{{\color{red}#1}}{\settowidth{\stextwidth}{#1}\makebox[\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmath}[1]{\ifthenelse{\boolean{reveal}}{\textcolor{red}{#1}}{\settowidth{\stextwidth}{$#1$}\makebox[1.9\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmathbin}[1]{\ifthenelse{\boolean{reveal}}{\mathbin{\color{red}#1}}{\settowidth{\stextwidth}{$#1$}\makebox[2\stextwidth]{\dotfill}}}
+
+\begin{document}
+
+\title{Chapitre 6 -- Géolocalisation}
+
+\pagestyle{empty}
+
+\date{}
+\author{}
+
+\maketitle{}
+
+\thispagestyle{empty}
+\noindent\textbf{Activité 5}\hfill{}\textbf{Algorithme de Dijkstra}
+\smallskip
+\hrule
+\medskip
+
+On considère le graphe ci-dessous, et on s'intéresse aux chemins d'origine A :
+
+\medskip
+
+\begin{center}
+  \scalebox{0.7}{$
+    \begin{psmatrix}[mnode=circle]
+ &  & A &  &  & B \\ 
+ &  &  &  &  &  &  & G \\ 
+      D &  &  &  & F \\ 
+	&  & C \\ 
+	&  & E &  &  &  & H 
+  \end{psmatrix}$}
+  \psset{arrows=-,shortput=nab}
+  \ncline{1,3}{1,6}^{12}
+  \ncline{1,3}{3,1}^{14}
+  \ncline{1,6}{3,5}^{9}
+  \ncline{1,6}{2,8}^{16}
+  \ncline{1,6}{5,7}^{21}
+  \ncline{4,3}{5,3}^{13}
+  \ncline{4,3}{3,5}^{10}
+  \ncline{3,1}{5,3}^{10}
+  \ncline{5,3}{5,7}^{10}
+  \ncline{3,5}{5,7}^{11}
+  \ncline{2,8}{5,7}^{11}
+\end{center}
+
+\medskip
+
+\begin{enumerate}
+  \item Le chemin A\,--\,D\,--\,E\,--\,C est un chemin d'origine A et d'extrémité C, de longueur 37. S'agit-il du plus court chemin de A vers C ?
+  \item Déterminer le plus court chemin de A vers H.
+  \item On considère maintenant l'algorithme suivant :
+
+    \medskip
+
+    \fbox{
+      \begin{minipage}{0.5\textwidth}
+	  Étape 1 : on commence en notant $0$ sur le sommet de départ et $\infty$ sur les autres sommets.\\
+	  \smallskip
+	  Étape 2 : parmi les sommets, on {\color{red}choisit} le sommet \og{}le plus petit\fg{} et on le {\color{red}traite} :
+	    \begin{itemize}
+	      \item on ajoute la distance notée sur ce sommet à la distance vers un autre sommet accessible ;
+	      \item si le résultat est inférieur à la distance notée sur le sommet d'arrivée, on modifie cette distance ;
+	      \item on marque le sommet comme traité.
+	    \end{itemize}
+	  Étape 3 : on recommence l'étape 2 tant que tous les sommets n'ont pas été traités.
+      \end{minipage}
+    }\hspace*{5mm}
+    \begin{tabular}{@{}cccccccc@{}}
+      \toprule
+      A & B & C & D & E & F & G & H\\
+      \midrule
+      \fbox{$0$} & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\infty$\\
+      $/$ & \fbox{$12_A$} & $\infty$ & $14_A$ & $\infty$ & $\infty$ & $\infty$ & $\infty$\\
+      $/$ & $/$ & $\infty$ & $14_A$ & $\infty$ & $21_B$ & $28_B$ & $33_B$\\
+      $/$ & $/$ & & & & & & \\
+      $/$ & $/$ & & & & & & \\
+      $/$ & $/$ & & & & & & \\
+      $/$ & $/$ & & & & & & \\
+      $/$ & $/$ & & & & & & \\
+
+      %$/$ & $/$ & $\infty$ & $ /$ & $24_D$ & \fbox{$21_B$} & $28_B$ & $33_B$\\
+      %$/$ & $/$ & $31_F$ & $/$ & \fbox{$24_D$} & $/$ & $28_B$ & $32_F$\\
+      %$/$ & $/$ & $31_F$ & $/$ & $/$ & $/$ & \fbox{$28_B$} & $32_F$\\
+      %$/$ & $/$ & \fbox{$31_F$} & $/$ & $/$ & $/$ & $/$ & $32_F$\\
+      %$/$ & $/$ & $/$ & $/$ & $/$ & $/$ & $/$ & \fbox{$32_F$}\\
+      \bottomrule
+    \end{tabular}
+
+    \medskip
+
+    On choisit le sommet A comme sommet de départ. Le début du déroulement de l'algorithme est détaillé ci-dessous et résumé dans le tableau précédent :
+    \textit{
+      \begin{itemize}
+	\item On choisit le sommet A puis on considère les sommets accessibles à partir de A :
+	  \begin{itemize}
+	    \item le sommet B : $0+12=12$ qui est inférieur à $\infty$ donc on modifie la distance dans la colonne de B ;
+	    \item le sommet D : $0+14=14$ qui est inférieur à $\infty$ donc on modifie la distance dans la colonne de~D ;
+	    \item on marque le sommet A comme traité.
+	  \end{itemize}
+	\item On choisit le sommet B puis on considère les sommets accessibles à partir de B :
+	  \begin{itemize}
+	    \item le sommet F : $12+9=21$ qui est inférieur à $\infty$ donc on modifie la distance dans la colonne de F ;
+	    \item le sommet G : $12+16=28$ qui est inférieur à $\infty$ donc on modifie la distance dans la colonne de~G ;
+	    \item le sommet H : $12+21=33$ qui est inférieur à $\infty$ donc on modifie la distance dans la colonne de~H ;
+	    \item on marque le sommet B comme traité.
+	  \end{itemize}
+      \end{itemize}
+    }
+    Quel est le prochain sommet choisi ?
+  \item Terminer le déroulement de l'algorithme et compléter le tableau.
+  \item Que signifie le dernier nombre de chacune des colonnes ?
+  \item Comment retrouver les plus courts chemins de A vers C et de A vers H à l'aide du tableau ?
+  \item L'algorithme présenté s'appelle l'\href{https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra}{algorithme} de \href{https://fr.wikipedia.org/wiki/Edsger_Dijkstra}{Dijkstra}. Utiliser à nouveau l'algorithme de Dijkstra afin de déterminer les plus courts chemins d'origine A du graphe ci-dessous :
+
+    \medskip
+
+    \begin{center}
+      \scalebox{0.7}{$
+	\begin{psmatrix}[mnode=circle]
+ &  &  &  & A \\ 
+ &  & B &  &  &  & C \\ 
+	  D &  &  &  &  &  &  & F \\ 
+	    &  &  & E \\ 
+	    & G &  &  &  &  & I \\ 
+	    &  &  & H \\ 
+	    &  &  & K &  &  & J 
+	\end{psmatrix}
+      $}
+      \psset{arrows=-,shortput=nab}
+      \ncline{1,5}{2,3}^{18}
+      \ncline{1,5}{2,7}^{22}
+      \ncline{2,3}{2,7}^{31}
+      \ncline{2,3}{3,1}^{12}
+      \ncline{2,3}{4,4}^{26}
+      \ncline{2,7}{3,8}^{17}
+      \ncline{3,1}{5,2}^{24}
+      \ncline{4,4}{3,8}^{12}
+      \ncline{4,4}{5,2}^{9}
+      \ncline{3,8}{5,7}^{13}
+      \ncline{5,2}{6,4}^{12}
+      \ncline{6,4}{5,7}^{7}
+      \ncline{6,4}{7,4}^{24}
+      \ncline{5,7}{7,7}^{12}
+      \ncline{7,7}{7,4}^{18}
+    \end{center}
+\end{enumerate}
+\end{document}
