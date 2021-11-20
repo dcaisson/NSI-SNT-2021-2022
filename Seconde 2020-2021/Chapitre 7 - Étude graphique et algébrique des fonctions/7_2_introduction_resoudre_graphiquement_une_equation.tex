@@ -1,0 +1,63 @@
+\documentclass[a4paper]{article}
+
+\input ../header
+\usepackage[np]{numprint}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{gensymb}
+
+\setlength{\multicolsep}{2pt}
+
+\begin{document}
+
+\title{Activité d'introduction -- Résoudre graphiquement une équation}
+
+\pagestyle{empty}
+
+\date{}
+\author{}
+
+\maketitle{}
+\thispagestyle{empty}
+
+Dans un club de modélisme, des amis essaient un petit avion télécommandé. Ils le posent sur un support situé à un mètre du sol et le font décoller. Au bout de quelques secondes, l'avion heurte un mur puis tombe au sol.
+
+\medskip
+
+La courbe ci-dessous donne la hauteur $h(t)$ de l'avion, exprimée en m, en fonction du temps $t$, exprimé en s, jusqu'à ce que celui-ci heurte le mur. L'instant $t=0$ correspond au moment où l'avion s'envole.
+
+\bigskip
+
+\begin{center}
+  \newrgbcolor{qqwuqq}{0. 0.39215686274509803 0.}
+  \psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+  \begin{pspicture*}(-1.,-1.)(12.,7.)
+    \multips(0,-1)(0,1.0){9}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-1.,0)(12.,0)}
+    \multips(-1,0)(1.0,0){14}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-1.)(0,7.)}
+    \psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0]{->}(0,0)(-1.,-1.)(12.,7.)
+    \psplot[linewidth=1.pt,linecolor=qqwuqq,plotpoints=200]{0}{9}{-1.0/5.0*x^(2.0)+2.0*x+1.0}
+    \uput[r](0,6.5){Hauteur $h(t)$ (en m)}
+    \uput[u](10.5,0){Temps $t$ (en s)}
+  \end{pspicture*}
+\end{center}
+
+\bigskip
+
+\begin{enumerate}
+  \item Lire graphiquement (on donnera des valeurs approchées à $0,2$ près) :
+    \begin{enumerate}
+      \item la hauteur de l'avion au bout de $2$ s;
+      \item la hauteur de l'avion quand il heurte le mur ;
+      \item le (ou les) instant(s) où l'avion a une hauteur égale à $5,80$ m.
+    \end{enumerate}
+  \item Reformuler chacune des réponses précédentes en utilisant les mots \og{}image\fg{}, \og{}antécédent\fg{}, \og{}équation\fg{}.
+  \item La hauteur $h(t)$ (en m) de l'avion en fonction du temps (en s) est donnée par : 
+    \[h(t)=-\dfrac{1}{5}t^2+2t+1.\]
+    \begin{enumerate}
+      \item Déterminer $h(9)$ par le calcul.
+      \item Déterminer $h(4)$ et $h(6)$.
+      \item Quels résultats obtenus précédemment sont confirmés ici ?
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}
