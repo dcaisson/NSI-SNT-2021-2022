@@ -1,0 +1,135 @@
+\documentclass[handout]{beamer}
+
+% Lignes réponses
+\usepackage{pgffor} % pour la commande \foreach permettant de réaliser une boucle
+\newcommand{\pointilles}{{\\\rule{0pt}{1pt}\dotfill\rule{0pt}{1pt}}}
+\newcommand{\rep}[1]{\foreach \n in {1,...,#1} {\pointilles}}
+
+% Commandes pour cacher/révéler du texte facilement à l'aide d'un booléen
+\usepackage{xstring}
+\usepackage{ifthen}
+
+\newboolean{reveal}
+\setboolean{reveal}{false}
+
+\newlength{\stextwidth} % une nouvelle longueur
+
+\newcommand\x{6}
+
+\newcommand{\guess}[1]{\ifthenelse{\boolean{reveal}}{{\color{red}#1}}{\settowidth{\stextwidth}{#1}\makebox[\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmath}[1]{\ifthenelse{\boolean{reveal}}{\textcolor{red}{#1}}{\settowidth{\stextwidth}{$#1$}\makebox[1\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmathbin}[1]{\ifthenelse{\boolean{reveal}}{\mathbin{\color{red}#1}}{\settowidth{\stextwidth}{$#1$}\makebox[2\stextwidth]{\dotfill}}}
+
+% ========================================================================%
+
+\usetheme{focus}
+
+\usepackage{pgfpages}
+\pgfpagesuselayout{4 on 1}[a4paper,landscape]
+
+\usepackage[french]{babel}
+
+\usepackage{xcolor}
+
+\usepackage{pstricks,pst-plot,pst-text,pst-tree,pst-eps,pst-fill,pst-node,pst-math}
+\usepackage{pstricks-add,pst-xkey}
+
+\input ../tabvar
+
+\usepackage{multicol}
+\usepackage[np]{numprint}
+
+\usepackage{booktabs}
+
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+\newcommand{\Oij}{\left(O;\vect{i},\vect{j}\right)}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+
+\begin{document}
+
+\title{}
+
+\date{}
+
+\begin{frame}
+  \frametitle{1. Médiane, quartiles et écart interquartile}
+
+  \textbf{Définition. --} La médiane $Me$ d'une série statistique de $n$ valeurs ordonnées est :
+  \begin{itemize}
+    \item la valeur centrale si $n$ est impair ;
+    \item la demi-somme des deux valeurs situées \og{}au milieu\fg{} si $n$ est pair.
+  \end{itemize}
+
+  \medskip
+
+  \textit{Exemple. -- Monsieur C., le professeur préféré de Henua, demande à quelques élèves de Seconde 1 combien de téléphones ils ont eu dans leur vie. Voici les résultats obtenus :
+    \begin{center}
+      $3$, $2$, $1$, $0$, $4$, $2$, $3$, $2$, $2$
+    \end{center}
+  Quelle est la médiane de cette série statistique ?}
+\end{frame}
+
+\begin{frame}
+  \textit{Exemple. -- Calculer la médiane de la série statistique suivante :
+  \begin{center}
+    $5$, $1$, $0$, $1$, $3$, $10$, $12$, $11$, $4$, $2$
+  \end{center}
+Calculer la médiane de la série statistique obtenue.}
+\end{frame}
+
+\begin{frame}
+  \textit{Exemple. -- Josh compte le nombre de \og{}like\fg{} obtenus chaque jour pendant un mois sur son compte Instagram. Il obtient les résultats suivants :
+    \begin{center}
+      \renewcommand{\arraystretch}{1.2}
+      \begin{tabular}{|>{\centering}m{3.5cm}|*{6}{>{\centering}m{7mm}|}}
+	\hline
+	Nombre de \og{}like\fg{} & $0$ & $1$ & $2$ & $3$ & $4$ & $5$\tabularnewline
+	\hline
+	Nombre de jours & $3$ & $10$ & $7$ & $7$ & $2$ & $2$\tabularnewline
+	\hline
+      \end{tabular} 
+    \end{center}
+    Moe fait de même :
+    \begin{center}
+      \renewcommand{\arraystretch}{1.2}
+      \begin{tabular}{|>{\centering}m{3.5cm}|*{6}{>{\centering}m{7mm}|}}
+	\hline
+	Nombre de \og{}like\fg{} & $0$ & $1$ & $2$ & $3$ & $4$ & $5$\tabularnewline
+	\hline
+	Nombre de jours & $5$ & $4$ & $6$ & $10$ & $2$ & $3$\tabularnewline
+	\hline
+      \end{tabular} 
+    \end{center}
+    Déterminer la moyenne puis la médiane de chacune des séries précédentes.
+  }
+\end{frame}
+
+\begin{frame}
+  \textbf{Définition. --} Le premier quartile, noté $Q_1$, est la plus petite valeur de la série telle \dotfill\\\dotfill
+
+  \smallskip
+
+  Le troisième quartile, noté $Q_3$, est la plus petite valeur de la série telle
+  \dotfill\\\dotfill
+
+  \bigskip
+  
+  \textit{Exemple. -- Déterminer le premier et le troisième quartile des deux séries précédentes.}
+\end{frame}
+
+\begin{frame}
+  \textbf{Définition. --} L'écart interquartile est la différence $\hdots\hdots\hdots\hdots$. L'intervalle interquartile est l'intervalle $\hdots\hdots\hdots\hdots$
+
+  \bigskip
+
+  \textit{Exemple. -- Déterminer l'écart interquartile puis l'intervalle interquartile des deux séries de l'exemple précédent.}
+\end{frame}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

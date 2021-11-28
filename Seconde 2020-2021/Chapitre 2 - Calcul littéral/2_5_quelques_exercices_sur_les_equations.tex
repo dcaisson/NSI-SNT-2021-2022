@@ -1,0 +1,352 @@
+\documentclass[a4paper]{article}
+
+\input ../header
+\usepackage[np]{numprint}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage[version=4]{mhchem}
+
+\setlength{\multicolsep}{2pt}
+
+\begin{document}
+
+\title{Quelques exercices sur les égalités et les équations}
+
+\pagestyle{empty}
+
+\date{}
+\author{}
+\maketitle{}
+\thispagestyle{empty}
+
+\exo Un papyrus trouvé dans la nécropole égyptienne d'Akhmim (env. 1900 avant J.-C.) comportait de nombreux problèmes de mathématiques. Voici l'énoncé du problème \no $17$ :
+
+\smallskip
+
+\begin{quotation}
+  À partir d'un trésor, quelqu'un a pris le $17$\ieme{} ; un autre, à partir du reste, a pris le $19$\ieme{} et dans le trésor il est resté $200$ unités. Nous voulons savoir combien il y avait dans le trésor au départ.
+  \flushright{\textit{Ed. J. Baillet, Mémoires de la Mission archéologique française au Caire, 1892}}
+\end{quotation}
+
+On désigne par $x$ la valeur initiale du trésor.
+
+\begin{enumerate}
+  \item Exprimer, en fonction de $x$, la part prise par la première personne.
+  \item Quelle fraction du trésor reste-t-il après le prélèvement de cette part ?
+  \item Quelle équation suffit-il de résoudre pour répondre au problème posé ?
+  \item Donner alors le contenu initial du trésor.
+\end{enumerate}
+
+\bigskip
+
+\exo On donne dans chaque cas une formule de physique. Exprimer la grandeur indiquée en fonction des autres.
+\begin{multicols}{3}
+  \begin{enumerate}
+    \item $V$ dans $PV=nRT\phantom{\sqrt{\dfrac{1}{2}}}$
+    \item $I$ dans $U=RI\phantom{\dfrac{1}{2}}$\columnbreak{}
+    \item $d$ dans $v=\dfrac{d}{t}\phantom{\sqrt{\dfrac{1}{2}}}$
+    \item $v$ dans $E=\dfrac{1}{2}mv^{2}$
+    \item $L$ dans $T=2\pi\sqrt{\dfrac{L}{g}}$
+    \item $r$ dans $a=\dfrac{4\pi^{2}r}{t^{2}}$
+  \end{enumerate}
+\end{multicols}
+
+\bigskip
+
+\exo Exprimer en fonction de $x$ les longueurs suivantes.
+\begin{multicols}{2}
+  \begin{enumerate}
+    \item Longueur $AB$\\
+      \psset{xunit=0.7cm,yunit=0.7cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=3pt
+      0,linewidth=0.8pt,arrowsize=3pt 2,arrowinset=0.25}
+      \begin{pspicture*}(0.5,0)(10.5,2.3) \psline(1.,1.)(10.,1.)
+	\psline(2.465,1.09)(2.465,0.91)
+	\psline(2.535,1.09)(2.535,0.91) \psline(4.,1.)(7.,1.)
+	\psline(5.465,1.09)(5.465,0.91)
+	\psline(5.535,1.09)(5.535,0.91) \psline(7.,1.)(10.,1.)
+	\psline(8.465,1.09)(8.465,0.91)
+	\psline(8.535,1.09)(8.535,0.91)
+	\psdots[dotstyle=*,dotsize=4pt](1,1)
+	\psdots[dotstyle=*,dotsize=4pt](4,1)
+	\psdots[dotstyle=*,dotsize=4pt](7,1)
+	\psdots[dotstyle=*,dotsize=4pt](10,1)
+	\psline{<->}(1,1.5)(4,1.5) \uput[u](2.5,1.5){$x$}
+	\uput[d](1,1){$A$} \uput[d](10,1){$B$}
+      \end{pspicture*}
+    \item Longueur $CD$\\
+      \psset{xunit=0.7cm,yunit=0.7cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=3pt
+      0,linewidth=0.8pt,arrowsize=3pt 2,arrowinset=0.25}
+      \begin{pspicture*}(0.5,0)(8.5,2.3)  \psline(1.,1.)(3.,1.)
+	\psline(1.965,1.09)(1.965,0.91)
+	\psline(2.035,1.09)(2.035,0.91) \psline(3.,1.)(5.,1.)
+	\psline(3.965,1.09)(3.965,0.91)
+	\psline(4.035,1.09)(4.035,0.91) \psline(5.,1.)(7.,1.)
+	\psline(5.965,1.09)(5.965,0.91)
+	\psline(6.035,1.09)(6.035,0.91) \psline(7.,1.)(8.,1.)
+	\psline(7.5,1.09)(7.5,0.91)
+	\psdots[dotstyle=*,dotsize=4pt](1,1)
+	\psdots[dotstyle=*,dotsize=4pt](3,1)
+	\psdots[dotstyle=*,dotsize=4pt](5,1)
+	\psdots[dotstyle=*,dotsize=4pt](7,1)
+	\psdots[dotstyle=*,dotsize=4pt](8,1)
+	\psline{<->}(1,1.5)(3,1.5) \psline{<->}(7,1.5)(8,1.5)
+	\uput[u](2,1.5){$x$} \uput[u](7.5,1.5){$4$} \uput[d](1,1){$C$}
+	\uput[d](8,1){$D$}
+      \end{pspicture*}
+    \item Longueur $EF$\\
+      \psset{xunit=0.7cm,yunit=0.7cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=3pt
+      0,linewidth=0.8pt,arrowsize=3pt 2,arrowinset=0.25}
+      \begin{pspicture*}(0.5,0)(10.5,2.3)  \psline(1.,1.)(3.,1.)
+	\psline(1.965,1.09)(1.965,0.91)
+	\psline(2.035,1.09)(2.035,0.91) \psline(3.,1.)(4.,1.)
+	\psline(3.5,1.09)(3.5,0.91) \psline(4.,1.)(6.,1.)
+	\psline(4.965,1.09)(4.965,0.91)
+	\psline(5.035,1.09)(5.035,0.91) \psline(6.,1.)(7.,1.)
+	\psline(6.5,1.09)(6.5,0.91) \psline(7.,1.)(9.,1.)
+	\psline(7.965,1.09)(7.965,0.91)
+	\psline(8.035,1.09)(8.035,0.91) \psline(9.,1.)(10.,1.)
+	\psline(9.5,1.09)(9.5,0.91)
+	\psdots[dotstyle=*,dotsize=4pt](1,1)
+	\psdots[dotstyle=*,dotsize=4pt](3,1)
+	\psdots[dotstyle=*,dotsize=4pt](4,1)
+	\psdots[dotstyle=*,dotsize=4pt](6,1)
+	\psdots[dotstyle=*,dotsize=4pt](7,1)
+	\psdots[dotstyle=*,dotsize=4pt](9,1)
+	\psdots[dotstyle=*,dotsize=4pt](10,1) \uput[d](1,1){$E$}
+	\uput[d](10,1){$F$} \psline{<->}(3,1.5)(4,1.5)
+	\uput[u](3.5,1.5){$4$} \psline{<->}(9,1.5)(7,1.5)
+	\uput[u](8,1.5){$x$}
+      \end{pspicture*}
+    \item Longueur $GH$\\
+      \psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=3pt
+      0,linewidth=0.8pt,arrowsize=3pt 2,arrowinset=0.25}
+      \begin{pspicture*}(0.5,0)(7.5,2)  \psline(1.,1.)(2.,1.)
+	\psline(1.5,1.09)(1.5,0.91) \psline(2.,1.)(5.,1.)
+	\psline(3.465,1.09)(3.465,0.91)
+	\psline(3.535,1.09)(3.535,0.91) \psline(5.,1.)(6.,1.)
+	\psline(5.5,1.09)(5.5,0.91) \psline(6.,1.)(7.,1.)
+	\psline(6.5,1.09)(6.5,0.91)
+	\psdots[dotstyle=*,dotsize=4pt](1,1)
+	\psdots[dotstyle=*,dotsize=4pt](2,1)
+	\psdots[dotstyle=*,dotsize=4pt](5,1)
+	\psdots[dotstyle=*,dotsize=4pt](6,1)
+	\psdots[dotstyle=*,dotsize=4pt](7,1) \uput[d](1,1){$G$}
+	\uput[d](7,1){$H$} \psline{<->}(1,1.5)(2,1.5)
+	\uput[u](1.5,1.5){$4$} \psline{<->}(2,1.5)(5,1.5)
+	\uput[u](3.5,1.5){$x$}
+      \end{pspicture*}\columnbreak{}
+    \item Longueur $IJ$\\
+      \psset{xunit=0.7cm,yunit=0.7cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=3pt
+      0,linewidth=0.8pt,arrowsize=3pt 2,arrowinset=0.25}
+      \begin{pspicture*}(0.5,0)(10.5,2.3)  \psline(1.,1.)(4.,1.)
+	\psline(2.465,1.09)(2.465,0.91)
+	\psline(2.535,1.09)(2.535,0.91) \psline(4.,1.)(7.,1.)
+	\psline(5.465,1.09)(5.465,0.91)
+	\psline(5.535,1.09)(5.535,0.91) \psline(7.,1.)(10.,1.)
+	\psline(8.465,1.09)(8.465,0.91)
+	\psline(8.535,1.09)(8.535,0.91)
+	\psdots[dotstyle=*,dotsize=4pt](1,1)
+	\psdots[dotstyle=*,dotsize=4pt](4,1)
+	\psdots[dotstyle=*,dotsize=4pt](7,1)
+	\psdots[dotstyle=*,dotsize=4pt](10,1) \uput[d](1,1){$I$}
+	\uput[d](4,1){$J$} \psline{<->}(1,1.5)(10,1.5)
+	\uput[u](5.5,1.5){$4+x$}
+      \end{pspicture*}
+    \item Longueur $KL$\\
+      \psset{xunit=0.7cm,yunit=0.7cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=3pt
+      0,linewidth=0.8pt,arrowsize=3pt 2,arrowinset=0.25}
+      \begin{pspicture*}(0.5,0)(10.5,2.3)  \psline(1.,1.)(7.,1.)
+	\psline(7.,1.)(8.,1.)  \psline(7.465,1.09)(7.465,0.91)
+	\psline(7.535,1.09)(7.535,0.91) \psline(8.,1.)(9.,1.)
+	\psline(8.465,1.09)(8.465,0.91)
+	\psline(8.535,1.09)(8.535,0.91) \psline(9.,1.)(10.,1.)
+	\psline(9.465,1.09)(9.465,0.91)
+	\psline(9.535,1.09)(9.535,0.91)
+	\psdots[dotstyle=*,dotsize=4pt](1,1)
+	\psdots[dotstyle=*,dotsize=4pt](7,1)
+	\psdots[dotstyle=*,dotsize=4pt](8,1)
+	\psdots[dotstyle=*,dotsize=4pt](9,1)
+	\psdots[dotstyle=*,dotsize=4pt](10,1) \uput[d](1,1){$K$}
+	\uput[d](7,1){$L$} \psline{<->}(1,1.5)(10,1.5)
+	\uput[u](5.5,1.5){$4$} \psline{<->}(9,0.5)(10,.5)
+	\uput[d](9.5,.5){$x$}
+      \end{pspicture*}
+    \item Longueur $MN$\\
+      \psset{xunit=0.7cm,yunit=0.7cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=3pt
+      0,linewidth=0.8pt,arrowsize=3pt 2,arrowinset=0.25}
+      \begin{pspicture*}(0.5,0)(8.5,2.3)  \psline(1.,1.)(3.,1.)
+	\psline(2.,1.09)(2.,0.91) \psline(3.,1.)(5.,1.)
+	\psline(4.,1.09)(4.,0.91) \psline(5.,1.)(7.,1.)
+	\psline(6.,1.09)(6.,0.91) \psline(7.,1.)(8.,1.)
+	\psline(7.465,1.09)(7.465,0.91)
+	\psline(7.535,1.09)(7.535,0.91)
+	\psdots[dotstyle=*,dotsize=4pt](1,1)
+	\psdots[dotstyle=*,dotsize=4pt](3,1)
+	\psdots[dotstyle=*,dotsize=4pt](5,1)
+	\psdots[dotstyle=*,dotsize=4pt](7,1)
+	\psdots[dotstyle=*,dotsize=4pt](8,1) \uput[d](5,1){$M$}
+	\uput[d](8,1){$N$} \psline{<->}(1,1.5)(7,1.5)
+	\uput[u](4,1.5){$4$} \psline{<->}(7,1.5)(8,1.5)
+	\uput[u](7.5,1.5){$x$}
+      \end{pspicture*}
+    \item Longueur $OP$\\
+      \psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=3pt
+      0,linewidth=0.8pt,arrowsize=3pt 2,arrowinset=0.25}
+      \begin{pspicture*}(0.5,0.)(8.5,2)  \psline(1.,1.)(2.,1.)
+	\psline(1.5,1.09)(1.5,0.91) \psline(2.,1.)(3.,1.)
+	\psline(2.5,1.09)(2.5,0.91) \psline(3.,1.)(4.,1.)
+	\psline(3.5,1.09)(3.5,0.91) \psline(4.,1.)(8.,1.)
+	\psline(5.965,1.09)(5.965,0.91)
+	\psline(6.035,1.09)(6.035,0.91)
+	\psdots[dotstyle=*,dotsize=4pt](1,1)
+	\psdots[dotstyle=*,dotsize=4pt](2,1)
+	\psdots[dotstyle=*,dotsize=4pt](3,1)
+	\psdots[dotstyle=*,dotsize=4pt](4,1)
+	\psdots[dotstyle=*,dotsize=4pt](8,1) \uput[d](3,1){$O$}
+	\uput[d](8,1){$P$} \psline{<->}(1,1.5)(4,1.5)
+	\uput[u](2.5,1.5){$x$} \psline{<->}(4,1.5)(8,1.5)
+	\uput[u](6,1.5){$4$}
+      \end{pspicture*}
+  \end{enumerate}
+\end{multicols}
+
+\pagebreak
+
+\exo Exprimer l'aire des surfaces jaunes en fonction des données.
+\begin{multicols}{2}
+  \begin{enumerate}
+    \item Figure 1
+      \vspace*{-6mm}
+      \begin{center}
+	\newrgbcolor{zzttqq}{0.6 0.2 0.}  \newrgbcolor{ffcctt}{1. 0.8
+	0.2}
+	\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=3pt
+	0,linewidth=0.8pt,arrowsize=3pt 2,arrowinset=0.25}
+	\begin{pspicture*}(0.,0.)(8.,5.)
+	  \pspolygon[linecolor=zzttqq,fillcolor=zzttqq,fillstyle=solid,opacity=0.1](1.,4.)(1.,1.)(3.,1.)(3.,4.)
+	  \pspolygon[linecolor=ffcctt,fillcolor=ffcctt,fillstyle=solid,opacity=0.1](3.,1.)(7.,1.)(7.,4.)(3.,4.)
+	  \psline[linecolor=zzttqq](1.,4.)(1.,1.)
+	  \psline[linecolor=zzttqq](1.,1.)(3.,1.)
+	  \psline[linecolor=zzttqq](3.,1.)(3.,4.)
+	  \psline[linecolor=zzttqq](3.,4.)(1.,4.)
+	  \psline[linecolor=ffcctt](3.,1.)(7.,1.)
+	  \psline[linecolor=ffcctt](7.,1.)(7.,4.)
+	  \psline[linecolor=ffcctt](7.,4.)(3.,4.)
+	  \psline[linecolor=ffcctt](3.,4.)(3.,1.)
+	  \psline{<->}(0.5,1)(0.5,4)
+	  \psline{<->}(1,0.5)(7,0.5)
+	  \psline{<->}(1,4.5)(3,4.5)
+	  \uput[l]{90}(0.5,2.5){$300$}
+	  \uput[u](2,4.5){$x$}
+	  \uput[d](4,0.5){$400$}
+	\end{pspicture*}
+      \end{center}
+    \item Figure 2
+      \vspace*{-6mm}
+      \begin{center}
+	\newrgbcolor{ffcctt}{0.6 0.2 0.}
+	\newrgbcolor{zzttqq}{1. 0.8 0.2}
+	\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=3pt 0,linewidth=0.8pt,arrowsize=3pt 2,arrowinset=0.25}
+	\begin{pspicture*}(0.,0.)(8.,5.)
+	  \pspolygon[linecolor=ffcctt,fillcolor=ffcctt,fillstyle=solid,opacity=0.1](7.,4.)(4.,4.)(4.,3.)(7.,3.)
+	  \pspolygon[linecolor=zzttqq,fillcolor=zzttqq,fillstyle=solid,opacity=0.1](4.,4.)(1.,4.)(1.,1.)(7.,1.)(7.,3.)(4.,3.)
+	  \psline[linecolor=ffcctt](7.,4.)(4.,4.)
+	  \psline[linecolor=ffcctt](4.,4.)(4.,3.)
+	  \psline[linecolor=ffcctt](4.,3.)(7.,3.)
+	  \psline[linecolor=ffcctt](7.,3.)(7.,4.)
+	  \psline[linecolor=zzttqq](4.,4.)(1.,4.)
+	  \psline[linecolor=zzttqq](1.,4.)(1.,1.)
+	  \psline[linecolor=zzttqq](1.,1.)(7.,1.)
+	  \psline[linecolor=zzttqq](7.,1.)(7.,3.)
+	  \psline[linecolor=zzttqq](7.,3.)(4.,3.)
+	  \psline[linecolor=zzttqq](4.,3.)(4.,4.)
+	  \psline{<->}(1,0.5)(7,0.5)
+	  \psline{<->}(0.5,1)(0.5,4)
+	  \psline{<->}(7.5,4)(7.5,3)
+	  \psline{<->}(4,4.5)(7,4.5)
+	  \uput[l]{90}(0.5,2.5){$180$}
+	  \uput[r](7.5,3.5){$a$}
+	  \uput[d](4,0.5){$b$}
+	  \uput[u](5.5,4.5){$200$}
+	\end{pspicture*}
+      \end{center}\columnbreak{}
+    \item Figure 3
+      \vspace*{-6mm}
+      \begin{center}
+	\newrgbcolor{ffcctt}{0.6 0.2 0.}
+	\newrgbcolor{zzttqq}{1. 0.8 0.2}
+	\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=3pt 0,linewidth=0.8pt,arrowsize=3pt 2,arrowinset=0.25}
+	\begin{pspicture*}(0.,0.)(8.,5.)
+	  \pspolygon[linecolor=ffcctt,fillcolor=ffcctt,fillstyle=solid,opacity=0.1](7.,4.)(4.,4.)(4.,3.)(7.,3.)
+	  \pspolygon[linecolor=zzttqq,fillcolor=zzttqq,fillstyle=solid,opacity=0.1](4.,4.)(1.,4.)(1.,1.)(7.,1.)(7.,3.)(4.,3.)
+	  \psline[linecolor=ffcctt](7.,4.)(4.,4.)
+	  \psline[linecolor=ffcctt](4.,4.)(4.,3.)
+	  \psline[linecolor=ffcctt](4.,3.)(7.,3.)
+	  \psline[linecolor=ffcctt](7.,3.)(7.,4.)
+	  \psline[linecolor=zzttqq](4.,4.)(1.,4.)
+	  \psline[linecolor=zzttqq](1.,4.)(1.,1.)
+	  \psline[linecolor=zzttqq](1.,1.)(7.,1.)
+	  \psline[linecolor=zzttqq](7.,1.)(7.,3.)
+	  \psline[linecolor=zzttqq](7.,3.)(4.,3.)
+	  \psline[linecolor=zzttqq](4.,3.)(4.,4.)
+	  \psline{<->}(1,0.5)(7,0.5)
+	  \uput[d](4,0.5){$500$}
+	  \psline{<->}(0.5,1)(0.5,4)
+	  \uput[l](0.5,2.5){$a$}          
+	  \psline{<->}(7.5,1)(7.5,3)
+	  \uput[r](7.5,2){$y$}
+	  \psline{<->}(1,4.5)(4,4.5)
+	  \uput[u](2.5,4.5){$x$}
+	\end{pspicture*}
+      \end{center}
+    \item Figure 4
+      \vspace*{-6mm}
+      \begin{center}
+	\newrgbcolor{zzttqq}{0.6 0.2 0.}
+	\newrgbcolor{ffcctt}{1. 0.8 0.2}
+	\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=3pt 0,linewidth=0.8pt,arrowsize=3pt 2,arrowinset=0.25}
+	\begin{pspicture*}(0.,0.)(8.,5)
+	  \pspolygon[linecolor=zzttqq,fillcolor=zzttqq,fillstyle=solid,opacity=0.1](1.,2.)(1.,1.)(4.,1.)(4.,2.)
+	  \pspolygon[linecolor=zzttqq,fillcolor=zzttqq,fillstyle=solid,opacity=0.1](7.,4.)(7.,3.)(4.,3.)(4.,4.)
+	  \pspolygon[linecolor=ffcctt,fillcolor=ffcctt,fillstyle=solid,opacity=0.1](1.,4.)(1.,2.)(4.,2.)(4.,1.)(7.,1.)(7.,3.)(4.,3.)(4.,4.)
+	  \psline[linecolor=zzttqq](1.,2.)(1.,1.)
+	  \psline[linecolor=zzttqq](1.,1.)(4.,1.)
+	  \psline[linecolor=ffcctt](4.,1.)(4.,2.)
+	  \psline[linecolor=ffcctt](4.,2.)(1.,2.)
+	  \psline[linecolor=zzttqq](7.,4.)(7.,3.)
+	  \psline[linecolor=ffcctt](7.,3.)(4.,3.)
+	  \psline[linecolor=ffcctt](4.,3.)(4.,4.)
+	  \psline[linecolor=zzttqq](4.,4.)(7.,4.)
+	  \psline[linecolor=ffcctt](1.,4.)(1.,2.)
+	  \psline[linecolor=ffcctt](1.,2.)(4.,2.)
+	  \psline[linecolor=ffcctt](4.,2.)(4.,1.)
+	  \psline[linecolor=ffcctt](4.,1.)(7.,1.)
+	  \psline[linecolor=ffcctt](7.,1.)(7.,3.)
+	  \psline[linecolor=ffcctt](7.,3.)(4.,3.)
+	  \psline[linecolor=ffcctt](4.,3.)(4.,4.)
+	  \psline[linecolor=ffcctt](4.,4.)(1.,4.)
+	  \psline{<->}(1,0.5)(4,0.5)
+	  \uput[d](2.5,0.5){$100$}
+	  \psline{<->}(0.5,1)(0.5,2)
+	  \uput[l](0.5,1.5){$x$}          
+	  \psline{<->}(0.5,2)(0.5,4)
+	  \uput[l](0.5,3){$80$}          
+	  \psline{<->}(7.5,3)(7.5,4)
+	  \uput[r](7.5,3.5){$x$}
+	  \psline{<->}(4,4.5)(7,4.5)
+	  \uput[u](5.5,4.5){$100$}
+	\end{pspicture*}
+      \end{center}
+  \end{enumerate}
+\end{multicols}
+
+\bigskip
+
+\exo La puissance électrique $P$ (en watts) reçue par un conducteur ohmique de résistance $R$ (en ohms) parcourue par un courant d'intensité $I$ (en ampères) est définie par la relation $P=R\times I^2$ (avec $P$, $R$ et $I$ non nuls).
+\begin{enumerate}
+  \item Exprimer la résistance $R$ en fonction de $I$ et $P$.
+  \item Un conducteur ohmique parcouru par un courant de $20$ A reçoit une puissance de $\np{2000}$ W. Quelle est la résistance de ce conducteur ?
+  \item Exprimer l'intensité $I$ en fonction de $P$ et $R$.
+\end{enumerate}
+
+\end{document}

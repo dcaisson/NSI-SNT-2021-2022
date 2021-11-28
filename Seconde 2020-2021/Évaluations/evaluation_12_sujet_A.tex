@@ -1,0 +1,111 @@
+\documentclass[a4paper,dvipsnames]{article}
+
+\input ../header
+\newcommand{\checkedbox}{\makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}$\checkmark$}}
+\newcommand{\checkbox}{\makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}}\hspace{3mm}}
+
+% Intervalle
+\def\intervalleFF(#1,#2){\psline[linecolor=red]{[-]}(#1,0)(#2,0)}
+\def\intervalleOO(#1,#2){\psline[linecolor=red]{]-[}(#1,0)(#2,0)}
+\def\intervalleFO(#1,#2){\psline[linecolor=red]{[-[}(#1,0)(#2,0)}
+\def\intervalleOF(#1,#2){\psline[linecolor=red]{]-]}(#1,0)(#2,0)}
+\def\intervalleFpI(#1,#2){\psline[linecolor=red]{[-}(#1,0)(#2,0)}
+\def\intervalleOpI(#1,#2){\psline[linecolor=red]{]-}(#1,0)(#2,0)}
+\def\intervalleFmI(#1,#2){\psline[linecolor=red]{-]}(#1,0)(#2,0)}
+\def\intervalleOmI(#1,#2){\psline[linecolor=red]{-[}(#1,0)(#2,0)}
+
+\begin{document}
+
+\title{Évaluation 12 -- Sujet A}
+\author{}
+\date{}
+
+\maketitle{}
+
+\pagestyle{empty}
+\thispagestyle{empty}
+
+
+% Résolution graphique d'équations
+\exo[3 points] Deux fonctions $f$ et $g$ définies sur $[-3;3]$ sont représentées ci-dessous :
+
+\begin{center}
+  \psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+  \begin{pspicture*}(-4.,-3.)(4.,3.)
+    \multips(0,-3)(0,1.0){7}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.,0)(4.,0)}
+    \multips(-4,0)(1.0,0){9}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.)(0,3.)}
+    \psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0]{->}(0,0)(-4.,-3.)(4.,3.)
+    \psset{linecolor=red}
+    \HermiteDDL(-3,1.5,0,0)(-2,-0.5,-1,0)(-1,-1,0,0)(0,-0.5,1,0)(1,1,2,0)(1.5,2,0,0)(2,1.5,0,0)
+    \uput[r](2,1.5){\color{red}$\mathcal{C}_f$}
+    \psset{linecolor=blue}
+    \HermiteDDL(-3,0.5,-2,0)(-2.5,-0.7,-1,0)(-2,-0.5,1.5,0)(-1,1,1,0)(0,1.7,0,0)(1,1,-1,0)(2,-0.5,-2,0)
+    \uput[l](-3,0.5){\color{blue}$\mathcal{C}_g$}
+  \end{pspicture*}
+\end{center}
+
+\begin{enumerate}
+  \item Résoudre graphiquement les équations :
+    \begin{multicols}{3}
+      \begin{enumerate}
+	\item $f(x)=2$
+	\item $g(x)=1$
+	\item $f(x)=g(x)$
+      \end{enumerate} 
+    \end{multicols}
+    \dotfill\rep{5}
+  \item Donner une équation du type $f(x)=k$ n'ayant aucune solution.\rep{3}
+\end{enumerate}
+\bigskip
+
+% Tracer la courbe d'une fonction vérifiant des conditions
+\exo[3 points] 
+
+\begin{multicols}{2}
+  Dans le repère ci-contre, tracer la courbe d'une fonction $h$ définie sur $[-4;3]$ telle que :
+  \begin{itemize}
+    \item l'équation $h(x)=1$ a quatre solutions ;
+    \item les solutions de l'équation $h(x)=-1$ sont $-3$ et $1$ ;
+    \item $h(0)=0,5$.
+  \end{itemize}
+  \vspace*{4.5cm}
+
+  \begin{center}
+    \psset{xunit=0.8cm,yunit=0.8cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(-5.,-4.)(5.,4.)
+      \multips(0,-4)(0,1.0){9}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-5.,0)(5.,0)}
+      \multips(-5,0)(1.0,0){11}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-4.)(0,4.)}
+      \psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0]{->}(0,0)(-5.,-4.)(5.,4.)
+    \end{pspicture*}
+  \end{center}
+\end{multicols}
+
+\bigskip
+
+% Pourcentage (déterminer effectif, proportion)
+\exo[2 points] Un smartphone possède une capacité de stockage de $32$ Go.
+\begin{enumerate}
+  \item Le système d'exploitation occupe $5$ Go. Quel pourcentage de la capacité totale du smartphone est occupée par ce système ?\rep{6}
+  \item Les photos, musiques et vidéos sauvegardées occupent $64\%$ de la mémoire restante. Quelle place (en Go) occupent ces fichiers personnels dans le smartphone ?\rep{6}
+\end{enumerate}
+
+\bigskip
+
+% Pourcentage de pourcentage
+\exo[1 point] Dans une grande surface de Tahiti, $30\%$ des smartphones vendus sont des smartphones de la marque Samsung. Parmi ceux-ci, $20\%$ possèdent plus de $64$ Go de stockage. Parmi les smartphones vendus, quelle est la proportion de smartphones de la marque Samsung avec plus de $64$ Go de stockage ?\rep{6}
+
+\bigskip
+
+% Taux d'évolution : déterminer la valeur finale, la valeur initiale
+\exo [3 points] Un hôtel proposait $40$ chambres en 2018 et $60$ chambres en 2019. 
+\begin{enumerate}
+  \item Calculer le pourcentage d'augmentation du nombre de chambres entre 2018 et 2019.\rep{6}
+  \item Des travaux ont été réalisés pour augmenter la taille des chambres. À la fin des travaux, en 2020, l'hôtel proposait $20\%$ de chambres en moins. Combien de chambres étaient proposées en 2020, après les travaux ?\rep{6}
+\end{enumerate}
+
+\bigskip
+
+% Exercice de réflexion : deux évolutions successives
+\exo[2 points] Le prix d'une console de jeux subit une augmentation de $20\%$ puis une réduction de $20\%$. Que peut-on dire du prix de cette console après ces deux évolutions ?\rep{6}
+
+\end{document}

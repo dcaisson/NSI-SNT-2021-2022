@@ -1,0 +1,120 @@
+\documentclass[a4paper,dvipsnames]{article}
+
+\input ../header
+\newcommand{\checkedbox}{\makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}$\checkmark$}}
+\newcommand{\checkbox}{\makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}}\hspace{3mm}}
+
+% Intervalle
+\def\intervalleFF(#1,#2){\psline[linecolor=red]{[-]}(#1,0)(#2,0)}
+\def\intervalleOO(#1,#2){\psline[linecolor=red]{]-[}(#1,0)(#2,0)}
+\def\intervalleFO(#1,#2){\psline[linecolor=red]{[-[}(#1,0)(#2,0)}
+\def\intervalleOF(#1,#2){\psline[linecolor=red]{]-]}(#1,0)(#2,0)}
+\def\intervalleFpI(#1,#2){\psline[linecolor=red]{[-}(#1,0)(#2,0)}
+\def\intervalleOpI(#1,#2){\psline[linecolor=red]{]-}(#1,0)(#2,0)}
+\def\intervalleFmI(#1,#2){\psline[linecolor=red]{-]}(#1,0)(#2,0)}
+\def\intervalleOmI(#1,#2){\psline[linecolor=red]{-[}(#1,0)(#2,0)}
+
+\begin{document}
+
+\title{Évaluation 13 -- Sujet B}
+\author{}
+\date{}
+
+\maketitle{}
+
+\pagestyle{empty}
+\thispagestyle{empty}
+
+
+% Résolution graphique d'équations
+\exo[3 points] Cet exercice est un QCM (questionnaire à choix multiples). Pour chacune des questions posées, une seule réponse est exacte. Entourer, sur l'énoncé, la lettre correspondant à la réponse exacte. Aucune justification n'est demandée. Une réponse exacte rapporte 1 point ; une réponse fausse, une réponse multiple ou l'absence de réponse ne rapporte ni n'enlève aucun point.
+
+\bigskip
+
+On considère la figure suivante, dans laquelle $CDEF$ est un rectangle :
+
+\begin{center}
+  \psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+  \begin{pspicture*}(4.,1.)(14.,6.)
+    \psline[linewidth=1.pt](5.,5.)(5.,2.)
+    \psline[linewidth=1.pt](5.,2.)(10.,2.)
+    \psline[linewidth=1.pt](10.,2.)(13.,5.)(10,2)
+    \psline[linewidth=1.pt](13.,5.)(5.,5.)
+    \psline[linewidth=1.pt](10,2)(10,5)
+    \uput[d](5,2){$C$}
+    \uput[d](10,2){$D$}
+    \uput[u](10,5){$E$}
+    \uput[u](13,5){$B$}
+    \uput[u](5,5){$F$}
+  \end{pspicture*}
+\end{center}
+
+\begin{enumerate}
+  \item Le projeté orthogonal de $D$ sur $(BF)$ est :
+    \vspace{-2mm}
+    \begin{multicols}{3}
+      \begin{enumerate}
+	\item $B$
+	\item $E$
+	\item $F$
+      \end{enumerate}
+    \end{multicols}
+    \vspace{-2mm}
+  \item $F$ est le projeté orthogonal de : 
+    \vspace{-2mm}
+    \begin{multicols}{3}
+      \begin{enumerate}
+	\item $E$ sur $(CD)$
+	\item $F$ sur $(ED)$
+	\item $E$ sur $(CF)$
+      \end{enumerate}
+    \end{multicols}
+    \vspace{-2mm}
+  \item $D$ est le projeté orthogonal de :
+    \vspace{-2mm}
+    \begin{multicols}{3}
+      \begin{enumerate}
+	\item $E$ sur $(FB)$
+	\item $C$ sur $(ED)$
+	\item $B$ sur $(CD)$
+      \end{enumerate}
+    \end{multicols}
+\end{enumerate}
+
+\bigskip
+
+\exo[1 point] Dans cet exercice, la figure n'est pas exigée (vous pouvez néanmoins la faire au brouillon). Deux droites $(AB)$ et $(JK)$ sont perpendiculaires et se coupent en un point $L$. Écrire deux phrases comportant l'expression \og{}projeté orthogonal\fg{}.\rep{4}
+
+\bigskip
+
+\exo[2 points] \vspace{-2mm}
+\begin{enumerate}
+  \item Tracer deux droites $\mathcal{D}$ et $\mathcal{D}'$ perpendiculaires en un point $J$.\rep{12}
+  \item Placer un point $N$ situé à $5$ cm de la droite $\mathcal{D}$ et à $2$ cm de la droite $\mathcal{D}'$.
+  \item Calculer la distance $JN$.\rep{10}
+\end{enumerate}
+
+\bigskip
+
+\exo[4 points] On considère la figure suivante, dans laquelle $JP=20$, $PL=21$ et $JL=29$. De plus, $KL=25$.
+
+\begin{center}
+  \psset{xunit=0.4cm,yunit=0.4cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+  \begin{pspicture*}(0.,0.)(36.,23.)
+    \psline[linewidth=1.pt](21.,1.)(21.,22.)
+    \psline[linewidth=1.pt](21.,22.)(1.,1.)
+    \psline[linewidth=1.pt](21.,22.)(34.56465996625054,1.)
+    \psline[linewidth=1.pt](1.,1.)(34.56465996625054,1.)
+    \uput[d](1,1){$J$}
+    \uput[d](21,1){$P$}
+    \uput[d](34.56,1){$K$}
+    \uput[u](21,22){$L$}
+  \end{pspicture*}
+\end{center}
+
+\begin{enumerate}
+  \item Justifier que $P$ est le projeté orthogonal de $L$ sur la droite $(JK)$.\rep{8}
+  \item Calculer la distance de $K$ à la droite $(PL)$.\rep{8}
+\end{enumerate}
+
+\end{document}

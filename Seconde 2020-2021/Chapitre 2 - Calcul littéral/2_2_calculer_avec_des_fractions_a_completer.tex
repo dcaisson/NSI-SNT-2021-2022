@@ -1,0 +1,106 @@
+\documentclass[handout]{beamer}
+
+% Lignes réponses
+\usepackage{pgffor} % pour la commande \foreach permettant de réaliser une boucle
+\newcommand{\pointilles}{{\\\rule{0pt}{1pt}\dotfill\rule{0pt}{1pt}}}
+\newcommand{\rep}[1]{\foreach \n in {1,...,#1} {\pointilles}}
+
+% Commandes pour cacher/révéler du texte facilement à l'aide d'un booléen
+\usepackage{xstring}
+\usepackage{ifthen}
+
+\newboolean{reveal}
+\setboolean{reveal}{false}
+
+\newlength{\stextwidth} % une nouvelle longueur
+
+\newcommand\x{6}
+
+\newcommand{\guess}[1]{\ifthenelse{\boolean{reveal}}{{\color{red}#1}}{\settowidth{\stextwidth}{#1}\makebox[\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmath}[1]{\ifthenelse{\boolean{reveal}}{\textcolor{red}{#1}}{\settowidth{\stextwidth}{$#1$}\makebox[1.9\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmathbin}[1]{\ifthenelse{\boolean{reveal}}{\mathbin{\color{red}#1}}{\settowidth{\stextwidth}{$#1$}\makebox[2\stextwidth]{\dotfill}}}
+
+% ========================================================================%
+
+\usetheme{focus}
+
+\usepackage{pgfpages}
+\pgfpagesuselayout{4 on 1}[a4paper,landscape]
+
+\usepackage[french]{babel}
+
+\usepackage{xcolor}
+
+\usepackage{pstricks,pst-plot,pst-text,pst-tree,pst-eps,pst-fill,pst-node,pst-math}
+\usepackage{pstricks-add,pst-xkey}
+
+\input ../tabvar
+
+\usepackage{multicol}
+\usepackage[np]{numprint}
+
+\begin{document}
+
+\title{}
+
+\date{}
+
+\begin{frame}
+  \frametitle{Calculer avec des fractions}
+  \textit{Remarque. -- 
+    \[a = \dfrac{a}{\guessmathbin{1}}\]
+    \[\dfrac{-a}{b}=\guessmath{\dfrac{a}{-b}}=\guessmath{-\dfrac{a}{b}}\]
+  }
+
+  \bigskip
+
+  On peut ajouter ou soustraire facilement des fractions qui ont le même dénominateur :
+
+  \bigskip
+
+  \textit{Exemples. -- 
+    \[\dfrac{5}{3}+\dfrac{8}{3}=\guessmath{\dfrac{13}{3}}\]
+    \[\dfrac{2}{7}-\dfrac{12}{7}=\guessmath{-\dfrac{10}{7}}\]
+  }
+\end{frame}
+
+\begin{frame}
+  Pour ajouter ou soustraire deux fractions qui n'ont pas le même dénominateur, il suffit de les réduire au même dénominateur :
+
+  \bigskip
+
+  \textit{Exemples. --
+    \[\dfrac{3}{4}+\dfrac{9}{8}=\guessmath{\dfrac{6}{8}+\dfrac{9}{8}}=\guessmath{\dfrac{15}{8}}\]
+    \[\dfrac{5}{6}-\dfrac{7}{9}=\guessmath{\dfrac{15}{18}-\dfrac{14}{18}}=\guessmath{\dfrac{1}{18}}\]
+  }
+\end{frame}
+
+\begin{frame}
+  Pour multiplier deux fractions, on peut multiplier les numérateurs entre eux et les dénominateurs entre eux, tout en faisant attention aux simplifications possibles :
+
+  \bigskip
+
+  \textit{Exemples. --
+    \[\dfrac{5}{6}\times\dfrac{9}{7}=\guessmath{\dfrac{5\times9}{6\times7}}=\guessmath{\dfrac{5\times3\times3}{2\times3\times7}}=\guessmath{\dfrac{15}{14}}\]
+    \[\dfrac{\np{7777531}}{37}\times\dfrac{5}{\np{7777531}}=\guessmath{\dfrac{\np{7777531}\times5}{37\times\np{7777531}}}=\guessmath{\dfrac{5}{37}}\]
+    }
+\end{frame}
+
+\begin{frame}
+  Diviser par une fraction revient à multiplier par son inverse :
+
+  \bigskip
+
+  \textit{Exemples. --
+    \[\dfrac{\dfrac{5}{6}}{\dfrac{9}{7}}=\guessmath{\dfrac{5}{6}\times\dfrac{7}{9}}=\guessmath{\dfrac{5\times7}{6\times9}}=\guessmath{\dfrac{35}{54}}\]
+  }
+\end{frame}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

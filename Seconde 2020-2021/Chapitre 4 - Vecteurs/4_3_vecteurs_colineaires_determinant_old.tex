@@ -1,0 +1,377 @@
+\documentclass[usenames,dvipsnames,handout]{beamer}
+
+\usepackage{pgfpages}
+\pgfpagesuselayout{4 on 1}[a4paper,landscape]
+
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+\newcommand{\Oij}{\left(O;\vect{i},\vect{j}\right)}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+
+\usepackage{pgffor} % pour la commande \foreach permettant de réaliser une boucle
+\newcommand{\pointilles}{{\\\rule{0pt}{1pt}\dotfill\rule{0pt}{1pt}}}
+\newcommand{\rep}[1]{\foreach \n in {1,...,#1} {\pointilles}}
+\usetheme{focus}
+
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{xcolor}
+
+\usepackage{pstricks,pst-plot,pst-text,pst-tree,pst-eps,pst-fill,pst-node,pst-math}
+\usepackage{pstricks-add,pst-xkey}
+
+\input tabvar
+
+\usepackage{multicol}
+\usepackage[np]{numprint}
+
+\begin{document}
+
+\title{Chapitre 8 -- Vecteurs colinéaires, déterminant de deux vecteurs}
+
+\date{}
+
+\maketitle{}
+
+\begin{frame}
+  \frametitle{9. Somme de deux vecteurs}
+  \textbf{Définition. --} En enchaînant la translation de vecteur $\vect{u}$ et celle de vecteur $\vect{v}$, on obtient une nouvelle {\color{red}translation} Le vecteur de cette translation est appelé la {\color{red}somme} des vecteurs $\color{red}\vect{u}$ et $\color{red}\vect{v}$.
+  \begin{center}
+    \NormalCoor
+    \newrgbcolor{qqwuqq}{0. 0.39215686274509803 0.}
+    \psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(0.,0.)(9.,4.)
+      \psline[linewidth=1.pt,linecolor=red]{->}(1.,2.)(4.,3.)
+      \uput[u](2.5,2.5){$\color{red}\vect{u}$}
+      \psline[linewidth=1.pt,linecolor=blue]{->}(4.,3.)(8.,1.)
+      \uput[u](6,2){$\color{blue}\vect{v}$}
+      \psline[linewidth=1.pt,linecolor=qqwuqq]{->}(1.,2.)(8.,1.)
+      \uput[d](4.5,1.5){$\color{qqwuqq}\vect{u}+\vect{v}$}
+    \end{pspicture*} 
+  \end{center}
+
+  \textit{Remarque. -- L'ordre n'a pas d'importance :
+    \[\vect{u}+\vect{v}=\vect{v}+{\color{red}\vect{u}}.\]
+  }
+\end{frame}
+
+\begin{frame}
+  \textit{Exemple. -- Représenter, sur la figure ci-dessous, le vecteur $\vect{u}+\vect{v}$.}
+  \begin{center}
+    \NormalCoor
+    \newrgbcolor{qqwuqq}{0. 0.39215686274509803 0.}
+    \psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(0.,0.)(9.,4.)
+      \psline[linewidth=1.pt,linecolor=red]{->}(1.,3.)(3.,1.)
+      \uput[dl](2,2){$\color{red}\vect{u}$}
+      \psline[linewidth=1.pt,linecolor=blue]{->}(3,1)(8.,2.)
+      \uput[d](5.5,1.5){$\color{blue}\vect{v}$}
+      \psline[linewidth=1.pt,linecolor=qqwuqq]{->}(1,3)(8.,2.)
+      \uput[u](4.5,2.5){$\color{qqwuqq}\vect{u}+\vect{v}$}
+    \end{pspicture*} 
+  \end{center}
+  \textit{Remarque. -- Pour représenter la somme de deux vecteurs, il est souvent \og{}pratique\fg{} de représenter les deux vecteurs \og{}bout à bout\fg{} (ou encore \og{}l'un à la suite de l'autre\fg{}).}
+\end{frame}
+
+\begin{frame}
+  \textit{Exemple. -- Représenter, sur la figure ci-dessous, le vecteur $\vect{u}+\vect{v}$.}
+
+  \begin{center}
+    \NormalCoor
+    \newrgbcolor{qqwuqq}{0. 0.39215686274509803 0.}
+    \psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(0.,0.)(8.,5.)
+      \multips(0,0)(0,1.0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(8.,0)}
+      \multips(0,0)(1.0,0){9}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,5.)}
+      \psline[linewidth=1.pt,linecolor=red]{->}(1.,2.)(2.,4.)
+      \uput[l](1.5,3){$\color{red}\vect{u}$}
+      \psline[linewidth=1.pt,linecolor=blue]{->}(2.,4.)(6.,3.)
+      \psline[linewidth=1.pt,linecolor=blue]{->}(3.,2.)(7.,1.)
+      \uput[d](5,1.5){$\color{blue}\vect{v}$}
+      \uput[u](4,3.5){$\color{blue}\vect{v}$}
+      \psline[linewidth=1.pt,linecolor=qqwuqq]{->}(1.,2.)(6.,3.)
+      \uput[u](3.5,2.5){$\color{qqwuqq}\vect{u}+\vect{v}$}
+    \end{pspicture*}
+  \end{center}
+
+  \textit{Remarque. -- De la même façon, on peut définir (et représenter) la somme de trois vecteurs ou plus (exemples en exercices).}
+\end{frame}
+
+\begin{frame}
+  \frametitle{10. Relation de Chasles}
+  \textbf{Proposition. --} Quels que soient les points $A$, $B$ et $C$ :
+  \[\vect{AC}=\vect{AB}+\vect{BC}.\]
+  \begin{center}
+    \NormalCoor
+    \newrgbcolor{qqwuqq}{0. 0.39215686274509803 0.}
+    \psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(0.,0.5)(9.,4)
+      \psline[linewidth=1.pt,linecolor=red]{->}(1.,2.)(4.,3.)
+      \uput[l](1,2){$A$}
+      \psline[linewidth=1.pt,linecolor=blue]{->}(4.,3.)(8.,1.)
+      \uput[u](4,3){$B$}
+      \psline[linewidth=1.pt,linecolor=qqwuqq]{->}(1.,2.)(8.,1.)
+      \uput[r](8,1){$C$}
+    \end{pspicture*} 
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \textit{Remarque. -- De façon intuitive :
+    \begin{itemize}
+      \item si l'on se rend du point $\color{red}A$ au point $\color{red}B$ (vecteur $\vect{AB}$) ;
+      \item puis (addition $\color{red}+$) du point $\color{red}B$ au point $\color{red}C$ (vecteur $\vect{BC}$), 
+      \item alors s'est rendu du point $\color{red}A$ au point $\color{red}C$ (vecteur $\vect{AC}$).
+    \end{itemize}
+  }
+
+  \bigskip
+
+  \textit{Exemples. -- Compléter les égalités suivantes à l'aide de la relation de Chasles :
+    \begin{multicols}{2}
+      \begin{itemize}
+	\item $\vect{E\color{red}U}+\vect{UH}=\vect{E\color{red}H}$
+	\item $\vect{{\color{red}M} B}+\vect{\color{red}BL}=\vect{ML}$
+      \end{itemize} 
+    \end{multicols}
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{11. Opposé d'un vecteur}
+  \textbf{Définition. --} On a représenté ci-dessous un vecteur $\vect{u}$ et son opposé, noté $-\vect{u}$.
+  \begin{center}
+    \NormalCoor
+    \psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(0.,1.)(5.,5.)
+      \multips(0,1)(0,1.0){5}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(5.,0)}
+      \multips(0,0)(1.0,0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,1.)(0,5.)}
+      \psline[linewidth=1.pt,linecolor=red]{->}(1.,3.)(4.,4.)
+      \uput[u](2.5,3.5){$\color{red}\vect{u}$}
+      \psline[linewidth=1.pt,linecolor=blue]{->}(4.,3.)(1.,2.)
+      \uput[dr](2.5,2.5){$\color{blue}\vect{v}=-\vect{u}$}
+    \end{pspicture*}
+  \end{center}
+
+  \textit{Remarque. -- De façon intuitive, le vecteur $\vect{u}$ donne l'idée d'un déplacement. Le vecteur $-\vect{u}$ donne l'idée du déplacement \og{}contraire\fg{}.}
+\end{frame}
+
+\begin{frame}
+  \textit{Exemple. -- Sur la figure ci-dessous, représenter les vecteurs $-\vect{u}$ et $-\vect{v}$ :
+    \begin{center}
+      \NormalCoor
+      \newrgbcolor{ffwwzz}{1. 0.4 0.6}
+      \newrgbcolor{ffzzqq}{1. 0.6 0.}
+      \psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+      \begin{pspicture*}(0.,1.)(8.,7.)
+	\multips(0,1)(0,1.0){7}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(8.,0)}
+	\multips(0,0)(1.0,0){9}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,1.)(0,7.)}
+	\psline[linewidth=1.pt,linecolor=red]{->}(1.,3.)(3,6)
+	\uput[ul](2,4.5){$\color{red}\vect{u}$}
+	\psline[linewidth=1.pt,linecolor=blue]{->}(6.,2.)(6.,4.)
+	\uput[l](6,3){$\color{blue}\vect{v}$}
+	\psline[linewidth=1.pt,linecolor=ffwwzz]{->}(4.,5.)(2.,2.)
+	\uput[dr](3,3.5){$\color{ffwwzz}-\vect{u}$}
+	\psline[linewidth=1.pt,linecolor=ffzzqq]{->}(7.,4.)(7.,2.)
+	\uput[r](7,3){$\color{ffzzqq}-\vect{v}$}
+      \end{pspicture*}
+    \end{center}
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{12. Produit d'un vecteur par un nombre (réel)}
+  \textbf{Définition. --} Soient $\vect{u}$ un vecteur et $k$ un nombre (réel).
+  \begin{itemize}
+    \item Si $\vect{u}=\vect{0}$ ou $k=0$, alors le vecteur $k\vect{u}$ est le vecteur nul.
+    \item Sinon, le vecteur $k\vect{u}$ est le vecteur ayant :
+      \begin{itemize}
+	\item[--] la même $\color{red}direction$ que $\vect{u}$ ;
+	\item[--] le même sens que $\vect{u}$ si $\color{red}k>0$ (le sens contraire si $\color{red}k<0$) ;
+	\item[--] une longueur égale à $|k|$ fois la longueur de $\vect{u}$.
+      \end{itemize}
+  \end{itemize}
+
+  \bigskip
+
+  \textit{Exemple. -- Sur la figure ci-contre, deux vecteurs $\vect{u}$ et $\vect{v}$ sont représentés. Représenter les vecteurs $2\vect{u}$ et $-3\vect{v}$.}
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+    \NormalCoor
+    \psset{xunit=0.8cm,yunit=0.8cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(0.,0.)(10.,7.)
+      \multips(0,0)(0,1.0){8}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(10.,0)}
+      \multips(0,0)(1.0,0){11}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,7.)}
+      \psline[linecolor=red,linewidth=1.pt]{->}(3.,3.)(5.,4.)
+      \uput[u](4,3.5){$\color{red}\vect{u}$}
+      \psline[linecolor=blue,linewidth=1.pt]{->}(8.,2.)(9.,1.)
+      \uput[u](8,2){$\color{blue}\vect{v}$}
+      \psline[linecolor=BurntOrange,linewidth=1.pt]{->}(7.,3.)(4.,6.)
+      \uput[ur](5.5,4.5){$\color{BurntOrange}-3\vect{v}$}
+      \psline[linecolor=Periwinkle,linewidth=1.pt]{->}(1.,1.)(5.,3.)
+      \uput[d](3,2){$\color{Periwinkle}2\vect{u}$}
+    \end{pspicture*}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \textbf{Définition. --} On dit que deux vecteurs $\vect{u}$ et $\vect{v}$ sont colinéaires lorsqu'on peut écrire l'un des deux comme produit de l'autre par un nombre réel.
+
+  \bigskip
+
+  \textit{Remarques. --} 
+  \begin{enumerate}
+    \item Quel que soit le vecteur $\vect{u}$, $0\times\vect{u}=\vect{0}$. Le vecteur $\color{red}nul$ est donc colinéaire à tout vecteur $\vect{u}$.
+    \item Deux vecteurs non nuls colinéaires ont la même $\color{red}direction$.
+  \end{enumerate}
+
+  \bigskip
+
+  \textit{Exemples. -- Dans l'exemple précédent, les vecteurs $\vect{u}$ et $\color{red}2\vect{u}$ sont colinéaires, ainsi que les vecteurs $\vect{v}$ et $\color{red}-3\vect{v}$.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{13. Déterminant de deux vecteurs}
+  \textbf{Définition. --} Dans une base, on considère les vecteurs $\vect{u}(x;y)$ et $\vect{v}(x';y')$. Le déterminant de $\vect{u}$ et $\vect{v}$ est le $\color{red}nombre$ noté $det(\vect{u};\vect{v})$ qu'on calcule à l'aide de la formule ci-dessous :
+  \[\color{red}det(\vect{u};\vect{v}) = x\times y'-x'\times y.\]
+
+  \medskip
+
+  \textit{Exemple. -- On considère les vecteurs $\vect{u}(3;4)$, $\vect{v}(-1;2)$ et $\vect{w}(2;-4)$ représentés sur la figure suivante.}
+\end{frame}
+
+\begin{frame}
+  \textit{Calculer $det(\vect{u};\vect{v})$ puis $det(\vect{v};\vect{w})$.}
+  \begin{center}
+    \NormalCoor
+    \psset{xunit=0.8cm,yunit=0.8cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(1.,0.)(9.,7.)
+      \multips(0,0)(0,1.0){8}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(1.,0)(9.,0)}
+      \multips(1,0)(1.0,0){9}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,7.)}
+      \psline[linecolor=red,linewidth=1.pt]{->}(2.,2.)(5.,6.)
+      \uput[l](3.5,4){$\color{red}\vect{u}$}
+      \psline[linecolor=blue,linewidth=1.pt]{->}(8.,2.)(7.,4.)
+      \uput[r](7.5,3){$\color{blue}\vect{v}$}
+      \psline[linecolor=BurntOrange,linewidth=1.pt]{->}(5.,5.)(7.,1.)
+      \uput[dl](6,3){$\color{BurntOrange}\vect{w}$}
+    \end{pspicture*} 
+  \end{center}
+  {\color{red}
+    \[det(\vect{u};\vect{v})=3\times2-4\times(-1)=10\]
+    \[det(\vect{v};\vect{w})=-1\times(-4)-2\times 2=0\]
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{14. Vecteurs colinéaires}
+  \textbf{Proposition. --} Soient $\vect{u}$ et $\vect{v}$ deux vecteurs non nuls. Les assertions suivantes sont équivalentes :
+  \begin{enumerate}
+    \item $\vect{u}$ et $\vect{v}$ sont colinéaires
+    \item $\vect{u}$ et $\vect{v}$ ont la même direction
+    \item on peut écrire l'un des vecteurs comme produit de l'autre par un nombre (réel)
+    \item $det(\vect{u};\vect{v})=0$
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \textit{Exemples. -- Utiliser l'équivalence entre l'assertion 1. ($\vect{u}$ et $\vect{u}$ sont colinéaires) et l'assertion 2. ($det(\vect{u};\vect{v})=0$) pour répondre aux questions suivantes :
+    \begin{enumerate}
+      \item Dans une base, les vecteurs $\vect{u}(3;-1)$ et $\vect{v}(-2;5)$ sont-ils colinéaires ?\\
+	{\color{red}On calcule $det(\vect{u};\vect{v})$ :
+	  \[det(\vect{u};\vect{v})=3\times5-(-2)\times(-1)=13.\]
+	}
+      \item Le plan est muni d'un repère orthonormé. On considère les points $A(1;2)$, $B(3;4)$, $C(-3;4)$ et $D(-2;5)$. Les vecteurs $\vect{AB}$ et $\vect{CD}$ sont-ils colinéaires ?\\
+    \end{enumerate}
+  }
+\end{frame}
+
+\begin{frame}
+  \color{red}On calcule les coordonnées des vecteurs $\vect{AB}$ et $\vect{CD}$ :
+  \begin{center}
+    $\vect{AB}(x_B-x_A;y_B-y_A)$ et $\vect{CD}(x_D-x_C;y_D-y_C)$
+  \end{center}
+  donc
+  \begin{center}
+    $\vect{AB}(3-1;4-2)$ et $\vect{CD}(-2-(-3);5-4)$
+  \end{center}
+  donc
+  \begin{center}
+    $\vect{AB}(2;2)$ et $\vect{CD}(1;1)$.
+  \end{center}
+  Alors :
+  \[det(\vect{AB};\vect{CD})=2\times 1 - 1\times 2=0.\]
+  Les vecteurs $\vect{AB}$ et $\vect{CD}$ sont donc colinéaires.
+\end{frame}
+
+\begin{frame}
+  \frametitle{15. Vecteurs colinéaires et droites parallèles}
+  \textbf{Proposition. --} Si les vecteurs $\vect{AB}$ et $\vect{CD}$ sont colinéaires, alors les droites $(AB)$ et $(CD)$ sont parallèles.
+  \medskip
+  \begin{center}
+    \NormalCoor
+    \newrgbcolor{ududff}{0.30196078431372547 0.30196078431372547 1.}
+    \psset{xunit=0.7cm,yunit=0.7cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(0.,0.)(11.,5.)
+      \multips(0,0)(0,1.0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(11.,0)}
+      \multips(0,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,5.)}
+      \psplot[linewidth=1.pt]{0.}{11.}{(--3.--1.*x)/2.}
+      \psplot[linewidth=1.pt]{0.}{11.}{(-4.--2.*x)/4.}
+      \psline[linecolor=red,linewidth=1.pt]{->}(3.,3.)(5.,4.)
+      \uput[u](3,3){$\color{red}A$}
+      \uput[u](5,4){$\color{red}B$}
+      \psline[linecolor=blue,linewidth=1.pt]{->}(4.,1.)(8.,3.)
+      \uput[d](4,1){$\color{blue}C$}
+      \uput[d](8,3){$\color{blue}D$}
+    \end{pspicture*}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \textit{Exemple. -- Dans un repère, on considère les points $A(1;3)$, $B(5;4)$, $C(-9;5)$, $D(-1;7)$ et $E(-12;4)$.
+    \begin{enumerate}
+      \item Montrer que les droites $(AB)$ et $(CD)$ sont parallèles.
+      \item Étudier la position relative des droites $(AB)$ et $(ED)$, c'est-à-dire répondre à la question \og{}les droites $(AB)$ et $(CD)$ sont-elles parallèles ?\fg{}.
+    \end{enumerate}
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{16. Vecteurs colinéaires et points alignés}
+  \textbf{Proposition. --} Si les vecteurs $\vect{AB}$ et $\vect{AC}$ sont colinéaires, alors les points $A$, $B$ et $C$ sont alignés.
+  \medskip
+  \begin{center}
+    \newrgbcolor{ududff}{0.30196078431372547 0.30196078431372547 1.}
+    \newrgbcolor{xdxdff}{0.49019607843137253 0.49019607843137253 1.}
+    \NormalCoor
+    \psset{xunit=0.7cm,yunit=0.7cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(-5.,0.)(6.,5.)
+      \multips(0,0)(0,1.0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-5.,0)(6.,0)}
+      \multips(-5,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,5.)}
+      \psplot[linewidth=1.pt]{-5.}{6.}{(--7.--1.*x)/3.}
+      \psline[linecolor=red,linewidth=1.pt]{->}(2.,3.)(5.,4.)
+      \uput[u](2,3){$A$}
+      \uput[u](5,4){$B$}
+      \psline[linecolor=blue,linewidth=1.pt]{->}(2.,3.)(-4.,1.)
+      \uput[u](-4,1){$C$}
+    \end{pspicture*} 
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \textit{Exemple. -- Dans un repère, on considère les points $A(1;4)$, $B(11;6)$, $C(-4;3)$ et $D(5;5)$.
+    \begin{enumerate}
+      \item Prouver que les points $A$, $B$ et $C$ sont alignés.
+      \item Les points $A$, $B$ et $D$ sont-ils alignés ?
+    \end{enumerate}
+  }
+\end{frame}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,107 @@
+\documentclass[handout]{beamer}
+
+% Lignes réponses
+\usepackage{pgffor} % pour la commande \foreach permettant de réaliser une boucle
+\newcommand{\pointilles}{{\\\rule{0pt}{1pt}\dotfill\rule{0pt}{1pt}}}
+\newcommand{\rep}[1]{\foreach \n in {1,...,#1} {\pointilles}}
+
+% Commandes pour cacher/révéler du texte facilement à l'aide d'un booléen
+\usepackage{xstring}
+\usepackage{ifthen}
+
+\newboolean{reveal}
+\setboolean{reveal}{false}
+
+\newlength{\stextwidth} % une nouvelle longueur
+
+\newcommand\x{6}
+
+\newcommand{\guess}[1]{\ifthenelse{\boolean{reveal}}{{\color{red}#1}}{\settowidth{\stextwidth}{#1}\makebox[\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmath}[1]{\ifthenelse{\boolean{reveal}}{\textcolor{red}{#1}}{\settowidth{\stextwidth}{$#1$}\makebox[1.9\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmathbin}[1]{\ifthenelse{\boolean{reveal}}{\mathbin{\color{red}#1}}{\settowidth{\stextwidth}{$#1$}\makebox[2\stextwidth]{\dotfill}}}
+
+% ========================================================================%
+
+\usetheme{focus}
+
+\usepackage{pgfpages}
+\pgfpagesuselayout{4 on 1}[a4paper,landscape]
+
+\usepackage[french]{babel}
+
+\usepackage{xcolor}
+
+\usepackage{pstricks,pst-plot,pst-text,pst-tree,pst-eps,pst-fill,pst-node,pst-math}
+\usepackage{pstricks-add,pst-xkey}
+
+\input ../tabvar
+
+\usepackage{multicol}
+\usepackage[np]{numprint}
+
+\begin{document}
+
+\title{}
+
+\date{}
+
+\begin{frame}
+  \frametitle{Calculer avec des racines carrées}
+  \textbf{Définition. --} Soit $a$ un nombre réel positif ou nul. La racine carrée de $a$, notée $\guessmath{\sqrt{a}}$, est l'unique nombre réel positif ou nul dont le \guess{carré} vaut $a$.
+
+  \bigskip
+
+  \textit{Exemples. -- On a ainsi :
+    \begin{center}
+      $\sqrt{16}=\guessmath{4\;}$, $\sqrt{0}=\guessmath{0\;}$ et $\sqrt{1}=\guessmath{1\;}$.
+    \end{center}
+  }
+\end{frame}
+
+\begin{frame}
+  \textbf{Proposition. --} Quels que soient les réels $a$ et $b$ positifs :
+  \[
+    \begin{aligned}
+      \left(\sqrt{a}\right)^2 &= \guessmath{a\;}\\
+			      &\\
+      \sqrt{a\times b} &= \guessmath{\sqrt{a}}\times\guessmath{\sqrt{b}}\\
+			      &\\
+      \sqrt{\dfrac{a}{b}} &= \dfrac{\guessmath{\sqrt{a}}}{\guessmath{\sqrt{b}}}
+    \end{aligned}
+  \]
+
+  \textit{Exemples. -- Compléter les lignes suivantes :
+    \begin{itemize}
+      \item[--] $\sqrt{18} = \sqrt{9\times\guessmath{2}} = \guessmath{\sqrt{9}} \times \guessmath{\sqrt{2}} = \guessmath{3}\sqrt{\guessmath{2}}$
+      \item[--] $\sqrt{7}\times\sqrt{5}=\sqrt{\guessmath{7}\times\guessmath{5}}=\sqrt{\guessmath{35}}$
+      \item[--] $\sqrt{\dfrac{16}{9}}=\dfrac{\sqrt{\guessmath{16}}}{\sqrt{\guessmath{9}}}=\dfrac{\guessmath{4}}{\guessmath{3}}$
+    \end{itemize}
+  }
+\end{frame}
+
+\begin{frame}
+  \textbf{Proposition. --} Quel que soit le réel $a$ positif ou nul :
+  \[\sqrt{a^2}=
+      \begin{cases}
+	a &\text{si $\guessmath{a\geq 0}$}\\
+	-a &\text{si $\guessmath{a<0}$}
+      \end{cases}\]
+
+  On a donc, pour tout réel $a$ positif ou nul :
+
+  \[\sqrt{a^2}=\guessmath{|a|}.\]
+\end{frame}
+
+\begin{frame}
+  \textbf{Proposition. --} Quels que soient les réels $a$ et $b$ strictement positifs :
+  \[\sqrt{a+b}<\guessmath{\sqrt{a}}+\guessmath{\sqrt{b}}.\]
+\end{frame}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

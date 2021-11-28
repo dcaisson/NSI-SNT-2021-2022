@@ -1,0 +1,133 @@
+\documentclass[handout]{beamer}
+
+% Lignes réponses
+\usepackage{pgffor} % pour la commande \foreach permettant de réaliser une boucle
+\newcommand{\pointilles}{{\\\rule{0pt}{1pt}\dotfill\rule{0pt}{1pt}}}
+\newcommand{\rep}[1]{\foreach \n in {1,...,#1} {\pointilles}}
+
+% Commandes pour cacher/révéler du texte facilement à l'aide d'un booléen
+\usepackage{xstring}
+\usepackage{ifthen}
+
+\newboolean{reveal}
+\setboolean{reveal}{false}
+
+\newlength{\stextwidth} % une nouvelle longueur
+
+\newcommand\x{6}
+
+\newcommand{\guess}[1]{\ifthenelse{\boolean{reveal}}{{\color{red}#1}}{\settowidth{\stextwidth}{#1}\makebox[\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmath}[1]{\ifthenelse{\boolean{reveal}}{\textcolor{red}{#1}}{\settowidth{\stextwidth}{$#1$}\makebox[1.9\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmathbin}[1]{\ifthenelse{\boolean{reveal}}{\mathbin{\color{red}#1}}{\settowidth{\stextwidth}{$#1$}\makebox[2\stextwidth]{\dotfill}}}
+
+% ========================================================================%
+
+\usetheme{focus}
+
+\usepackage{pgfpages}
+\pgfpagesuselayout{4 on 1}[a4paper,landscape]
+
+\usepackage[french]{babel}
+
+\usepackage{xcolor}
+
+\usepackage{pstricks,pst-plot,pst-text,pst-tree,pst-eps,pst-fill,pst-node,pst-math}
+\usepackage{pstricks-add,pst-xkey}
+
+\input ../tabvar
+
+\usepackage{multicol}
+\usepackage[np]{numprint}
+
+\begin{document}
+
+\title{}
+
+\date{}
+
+\begin{frame}
+  \frametitle{Caractériser un ensemble à l'aide d'une valeur absolue}
+  \textbf{Définition. --} Soit $x$ un nombre réel. On appelle \guess{valeur absolue} de $x$ le nombre noté $|x|$ défini par :
+  \[|x|=\left\{
+      \begin{aligned}
+	x & \text{ si \guess{$x\geq 0$}}\\
+	-x& \text{ si \guess{$x<0$}}
+    \end{aligned}\right.\]
+
+    \bigskip
+
+    \textit{Exemples. -- Donner la valeur absolue des nombres $5$, $-2$, $\pi-5$ et $\dfrac{1}{7}-0,1$.}\rep{3}
+\end{frame}
+
+\begin{frame}
+  \textbf{Proposition. --} On retiendra les propriétés suivantes :
+  \begin{itemize}
+    \item La valeur absolue d'un nombre est \guess{positive ou nulle}.
+    \item Un nombre et son opposé ont \guess{la même valeur absolue}.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \textbf{Définition. --} On appelle \guess{distance} entre deux réels $a$ et $b$ le nombre \guess{$|b-a|$} (qui est aussi égal à \guess{$|a-b|$}). Sur une droite graduée, si $A$ est le point d'abscisse $a$ et $B$ le point d'abscisse $b$, la distance entre $a$ et $b$ est égale à la distance $AB$.
+
+  \vspace{2cm}
+
+  \textit{Exemples. -- Déterminer la distance entre $3$ et $-1$, puis la distance entre $-15$ et $12$.}
+\end{frame}
+
+\begin{frame}
+  \textit{Remarque. -- La valeur absolue $|x|$ d'un réel $x$ est donc la distance entre \guess{$x$} et \guess{$0$}.}
+
+  \medskip
+
+  \textit{Exemples. -- Après avoir traduit chacune des égalités et inégalités suivantes à l'aide d'une distance, représenter l'ensemble des réels $x$ tels que :
+  \begin{multicols}{2}
+    \begin{enumerate}
+    \item $|x-4|=2$
+    \item $|x-2|=3$
+    \item $|x+3|=1$
+    \item $|x+1|=2$
+    \item $|x-3|\leq 2$
+    \item $|x+7|<1$
+    \item $|x-5|\geq 3$
+    \item $|x+6|>1$
+    \end{enumerate}
+  \end{multicols}
+}
+\end{frame}
+
+\begin{frame}
+  \textbf{Proposition. --} On remarquera que l'intervalle $[a-r;a+r]$ est l'ensemble des réels $x$ tels que \guess{$|x-a|\leq r$}.
+
+  \vspace{2cm}
+
+  \textit{Exemples. -- Compléter chacune des phrases suivantes :
+  \begin{enumerate}
+    \item L'intervalle $[2;8]$ est l'ensemble des réels $x$ tels que \rep{2}
+    \item L'intervalle $[2,25;6,35]$ est l'ensemble des réels $x$ tels que \rep{2}
+    \item Traduire à l'aide d'une valeur absolue la condition $y\in[7,4;7,6]$.\rep{2}
+  \end{enumerate}
+}
+\end{frame}
+
+\begin{frame}
+  \textbf{Proposition. --} On remarquera que l'intervalle $]a-r;a+r[$ est l'ensemble des réels $x$ tels que \guess{$|x-a|<r$}.
+
+  \vspace{2cm}
+
+  \textit{Exemples. -- Compléter chacune des phrases suivantes :
+  \begin{enumerate}
+    \item L'intervalle $]20;30[$ est l'ensemble des réels $x$ tels que \rep{2}
+    \item L'intervalle $]2,15;10,55[$ est l'ensemble des réels $x$ tels que \rep{2}
+    \item Traduire à l'aide d'une valeur absolue la condition $y\in]18;25[$.\rep{2}
+  \end{enumerate}
+}
+\end{frame}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

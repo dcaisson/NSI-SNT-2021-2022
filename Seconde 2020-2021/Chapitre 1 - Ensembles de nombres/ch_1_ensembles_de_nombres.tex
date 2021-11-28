@@ -1,0 +1,283 @@
+\documentclass[handout]{beamer}
+
+\usepackage{pgffor} % pour la commande \foreach permettant de réaliser une boucle
+\newcommand{\pointilles}{{\\\rule{0pt}{1pt}\dotfill\rule{0pt}{1pt}}}
+\newcommand{\rep}[1]{\foreach \n in {1,...,#1} {\pointilles}}
+\usetheme{focus}
+
+\usepackage{pgfpages}
+\pgfpagesuselayout{4 on 1}[a4paper,landscape]
+
+\usepackage[french]{babel}
+
+\usepackage{xcolor}
+
+\usepackage{pstricks,pst-plot,pst-text,pst-tree,pst-eps,pst-fill,pst-node,pst-math}
+\usepackage{pstricks-add,pst-xkey}
+
+\input ../tabvar
+
+\usepackage{multicol}
+\usepackage[np]{numprint}
+
+\begin{document}
+
+\title{Chapitre 1 -- Les ensembles de nombres}
+
+\date{}
+
+\maketitle{}
+
+\begin{frame}
+  \frametitle{1. Les ensembles de nombres}
+  \textbf{Définition. --} Les entiers naturels ou nuls sont\pause{} les nombres entiers positifs ou nuls.\pause{} L'ensemble des entiers naturels est noté $\mathbb{N}$.\pause{}
+  \[\mathbb{N}=\left\{0;1;2;\hdots\right\}\]\pause{}
+
+  \textit{Notation. --} On écrit par exemple $2\in\mathbb{N}$\pause{} (se lit \og{}$2$ appartient à $\mathbb{N}$\fg{}).
+\end{frame}
+
+\begin{frame}
+  \textbf{Définition. --} Les entiers relatifs sont\pause{} les entiers positifs, nuls ou négatifs.\pause{} L'ensemble des entiers relatifs est noté $\mathbb{Z}$.\pause{}
+  \[\mathbb{Z}=\left\{\hdots;-3;-2;-1;0;1;2;3;\hdots\right\}\]\pause{}
+
+  \bigskip
+
+  \textbf{Proposition. --} Tout entier naturel est aussi un entier relatif :\pause{} on dit que l'ensemble des entiers naturels $\mathbb{N}$ est inclus dans l'ensemble des entiers relatifs $\mathbb{Z}$.\pause{} Cette inclusion se note :
+
+  \[\mathbb{N}\subset\mathbb{Z}\]
+\end{frame}
+
+\begin{frame}
+  \textbf{Définition. --} Les nombres décimaux sont\pause{} les nombres qui s'écrivent comme quotient d'un entier (relatif) par une puissance de $10$, c'est-à-dire par $1$, $10$, $100$, $\np{1000}$ etc (ou plus généralement $10^k$ où $k$ est un entier naturel).\pause{}
+  L'ensemble des nombres décimaux est noté $\mathbb{D}$.\pause{}
+
+  \bigskip
+
+  \textit{Exemples. --} \begin{enumerate}
+    \item Par exemple, $0,2$ est un nombre décimal car on peut écrire $0,2=\dfrac{2}{10}$. Donner deux autres exemples de nombres décimaux.
+    \item L'entier naturel $4$ est-il un nombre décimal ? Et l'entier relatif $-7$ ?
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \textbf{Proposition. --} L'ensemble des entiers relatifs est inclus dans l'ensemble des nombres décimaux : $\mathbb{Z}\subset\mathbb{D}$.\pause{} On a donc :
+
+  \[\mathbb{N}\subset\mathbb{Z}\subset\mathbb{D}\]
+\end{frame}
+
+\begin{frame}
+  \textbf{Définition. --} Les nombres rationnels sont\pause{} les nombres qui s'écrivent comme le quotient de deux entiers.\pause{} L'ensemble des nombres rationnels est noté $\mathbb{Q}$.\pause{}
+
+ \bigskip
+
+ \textit{Exemples. --} 
+ \begin{enumerate}
+   \item Le nombre $\dfrac{2}{3}$ est le quotient des entiers $2$ et $3$ donc $\dfrac{2}{3}$ est un nombre rationnel.
+   \item Les nombres $\dfrac{4}{7}$, $3$, $-4$ et $0,23$ sont-ils des nombres rationnels?
+ \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \textbf{Proposition. --} L'ensemble des nombres décimaux est inclus dans l'ensemble des nombres rationnels :\pause{} $\mathbb{D}\subset\mathbb{Q}$.\pause{} On a donc :
+
+  \[\mathbb{N}\subset\mathbb{Z}\subset\mathbb{D}\subset\mathbb{Q}\]
+\end{frame}
+
+\begin{frame}
+  \textbf{Définition. --} À chaque point de la droite graduée ci-dessous, on a associé un nombre unique, qui est appelé\pause{} son abscisse.\pause{} Inversement, à chaque nombre correspond un unique point de la droite graduée.\pause{}
+
+  \begin{center}
+    \newrgbcolor{ududff}{0.30196078431372547 0.30196078431372547 1.}
+    \psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.6pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(-5.,-1.)(5.,1.)
+      \psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=false,Dx=10.,Dy=1.,ticksize=-2pt 0]{->}(0,0)(-5.,-1.)(5.,1.)
+      \begin{scriptsize}
+	\psline[linewidth=1pt,linecolor=blue](-3.33,-0.1)(-3.33,0.1)
+	\uput[u](-3.33,0){\ududff{$A$}}
+	\uput[d](-3.33,-0.07){\color{blue}$-\dfrac{11}{3}$}
+	\psline[linewidth=1pt,linecolor=blue](-2,-0.1)(-2,0.1)
+	\uput[u](-2,0){\ududff{$B$}}
+	\uput[d](-2,-0.07){\color{blue}$-2$}
+	\psline[linewidth=1pt,linecolor=blue](1.73,-0.1)(1.73,0.1)
+	\uput[u](1.73,0){\ududff{$C$}}
+	\uput[d](1.73,-0.07){\color{blue}$\sqrt{3}$}
+	\psline[linewidth=1pt,linecolor=blue](3.14,-0.1)(3.14,0.1)
+	\uput[u](3.14,0){\ududff{$D$}}
+	\uput[d](3.14,-0.07){\color{blue}$\pi$}
+	\psline[linewidth=1pt,linecolor=blue](4.6024,-0.1)(4.6024,0.1)
+	\uput[u](4.6024,0){\ududff{$E$}}
+	\uput[d](4.6024,-0.07){\color{blue}${4,6024}$}
+	\uput[d](0,-0.07){\color{red}$0$}
+	\uput[d](1,-0.07){\color{red}$1$}
+	\psline[linewidth=1pt,linecolor=red](0,-0.1)(0,0.1)
+	\psline[linewidth=1pt,linecolor=red](1,-0.1)(1,0.1)
+      \end{scriptsize}
+    \end{pspicture*}  
+  \end{center}\pause{}
+
+  Les nombres réels sont les abscisses de tous les points d'une droite graduée.\pause{} L'ensemble des nombres réels est noté $\mathbb{R}$.
+\end{frame}
+
+\begin{frame}
+  \textbf{Proposition. --} Il existe des nombres réels\pause{} qui ne sont pas rationnels, comme\pause{} $\sqrt{2}$\pause{} (il faudra savoir le démontrer) ou\pause{} $\pi$.\pause{} Ces nombres sont appelés des nombres irrationnels.
+\end{frame}
+
+\begin{frame}
+  \frametitle{2. Intervalles de $\mathbb{R}$}
+  \textbf{Définition. --} Soient $a$ et $b$ deux nombres réels tels que $a<b$. L'intervalle $[a;b]$ est l'ensemble des réels tels que $a\leq x\leq b$. On définit de même les intervalles $[a;b[$, $]a;b]$ et $]a;b[$.
+
+  \bigskip
+
+  \begin{center}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{|>{\centering}m{2cm}|>{\centering}m{4cm}|>{\centering}m{4cm}|}
+      \hline
+      \textbf{Intervalles} & \textbf{Ensemble des réels $x$ tels que \dots} & \textbf{Représentation graphique}\tabularnewline
+      \hline
+      $[a;b]$ & $a\leq x<b$ & \tabularnewline
+      \hline
+      $[a;b[$ & & \tabularnewline
+      \hline
+      $]a;b]$ & & \tabularnewline
+      \hline
+      $]a;b[$ & & \tabularnewline
+      \hline
+    \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \textbf{Définition. --} Soit $a$ un nombre réel. L'intervalle $[a;+\infty[$ est l'ensemble des réels tels que $x\geq a$. On définit de la même façon les intervalles $]a;+\infty[$, $]-\infty;a]$ et $]-\infty;a[$.
+
+  \begin{center}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{|>{\centering}m{2cm}|>{\centering}m{4cm}|>{\centering}m{4cm}|}
+      \hline
+      \textbf{Intervalles} & \textbf{Ensemble des réels $x$ tels que \dots} & \textbf{Représentation graphique}\tabularnewline
+      \hline
+      $[a;+\infty[$ & $x\geq a$ & \tabularnewline
+      \hline
+      $]a;+\infty[$ & & \tabularnewline
+      \hline
+      $]-\infty;a]$ & & \tabularnewline
+      \hline
+      $]-\infty;a[$ & & \tabularnewline
+      \hline
+    \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{3. Valeur absolue d'un nombre, distance entre deux nombres réels}
+  \textbf{Définition. --} Soit $x$ un nombre réel. On appelle valeur absolue de $x$ le nombre noté $|x|$ défini par :
+  \[x=\left\{
+      \begin{aligned}
+	x & \text{ si $x\geq 0$}\\
+	-x& \text{ si $x<0$}
+    \end{aligned}\right.\]
+
+    \bigskip
+
+    \textit{Exemples. --} Donner la valeur absolue des nombres $5$, $-2,4$, $\pi-5$ et $\dfrac{1}{7}-0,1$.
+\end{frame}
+
+\begin{frame}
+  \textbf{Proposition. --} On retiendra les propriétés suivantes :
+  \begin{itemize}
+    \item La valeur absolue d'un nombre est positive ou nulle.
+    \item Un nombre et son opposé ont la même valeur absolue.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \textbf{Définition. --} On appelle distance entre deux réels $a$ et $b$ le nombre $|b-a|$ (qui est aussi égal à $|a-b|$). Sur une droite graduée, si $A$ est le point d'abscisse $a$ et $B$ le point d'abscisse $b$, la distance entre $a$ et $b$ est égale à la distance $AB$.
+
+  \vspace{2cm}
+
+  \textit{Exemples. --} Déterminer la distance entre $3$ et $-1$, puis la distance entre $-15$ et $12$.
+\end{frame}
+
+\begin{frame}
+  \textit{Exemples. --} Après avoir traduit chacune des égalités et inégalités suivantes à l'aide d'une distance, représenter l'ensemble des réels $x$ tels que :
+  \begin{multicols}{2}
+    \begin{enumerate}
+    \item $|x-4|=2$
+    \item $|x-2|=3$
+    \item $|x+3|=1$
+    \item $|x+1|=2$
+    \item $|x-3|\leq 2$
+    \item $|x+7|<1$
+    \item $|x-5|\geq 3$
+    \item $|x+6|>1$
+    \end{enumerate}
+  \end{multicols}
+\end{frame}
+
+\begin{frame}
+  \textbf{Proposition. --} On remarquera que l'intervalle $[a-r;a+r]$ est l'ensemble des réels $x$ tels que \dotfill
+
+  \vspace{2cm}
+
+  \textit{Exemples. --} Compléter chacune des phrases suivantes :
+  \begin{enumerate}
+    \item L'intervalle $[2;8]$ est l'ensemble des réels $x$ tels que \rep{1}
+    \item L'intervalle $[2,25;6,35]$ est l'ensemble des réels $x$ tels que \rep{1}
+    \item Traduire à l'aide d'une valeur absolue la condition $y\in[7,4;7,6]$.\rep{1}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{4. Intersection et réunion de deux intervalles}
+  \textbf{Définition. --} Soient $I$ et $J$ deux intervalles.\pause{} L'intersection de $I$ et $J$\pause{} est l'ensemble des réels qui appartiennent à $I$ et à $J$.\pause{} Cet intervalle est noté $I\cap J$\pause{} (et se lit \og{}$I$ inter $J$\fg{}).\pause{}
+
+  \bigskip
+
+  \textit{Exemples. --} Dans chacun des cas suivants, préciser l'intersection des intervalles $I$ et $J$.
+  \begin{multicols}{2}
+    \begin{enumerate}
+      \item $I=[-3;5]$ et $J=]-1;7]$
+      \item $I=]-3;-1]$ et $J=]-1;10[$
+      \item $I=[5;10]$ et $J=]6;7[$
+      \item $I=]-\infty;10[$ et $J=]-3;12]$
+      \item $I=[-2;+\infty[$ et $J=]-4;6[$
+      \item $I=]-10;1]$ et $J=[1;+\infty[$
+    \end{enumerate}\columnbreak
+    \dotfill\rep{5}
+  \end{multicols}
+\end{frame}
+
+\begin{frame}
+  \textbf{Définition. --} Soient $I$ et $J$ deux intervalles.\pause{} La réunion de $I$ et $J$\pause{} est l'ensemble des réels qui appartiennent à $I$ ou à $J$ (ou aux deux !).\pause{} Cet ensemble n'est pas nécessairement un intervalle : il est noté $I\cup J$ (se lit \og{}$I$ union $J$\fg{}).\pause{}
+
+  \bigskip
+
+  \textit{Exemples. --} Dans chacun des cas précédents, décrire le plus simplement possible la réunion des intervalles $I$ et $J$.
+  \begin{multicols}{2}
+    \begin{enumerate}
+      \item $I=[-3;5]$ et $J=]-1;7]$
+      \item $I=]-3;-1]$ et $J=]-1;10[$
+      \item $I=[5;10]$ et $J=]6;7[$
+      \item $I=]-\infty;10[$ et $J=]-3;12]$
+      \item $I=[-2;+\infty[$ et $J=]-4;6[$
+      \item $I=]-10;1]$ et $J=[1;+\infty[$
+    \end{enumerate}\columnbreak
+    \dotfill\rep{5}
+  \end{multicols}
+\end{frame}
+
+\begin{frame}
+  \frametitle{5. Encadrement décimal d'un réel}
+
+  \textbf{Définition. --} L'encadrement décimal d'un réel $x$ à $10^{-n}$ près\pause{} (où $n$ est un entier naturel non nul)\pause{} est l'encadrement $d\leq x<d+10^{-n}$\pause{} où $d$ est un nombre décimal.\pause{}
+
+  \bigskip
+
+  \textit{Exemples. --} L'encadrement décimal de $\pi$ à $10^{-4}$ près est donc\pause{} $\np{3,1415}\leq\pi<\np{3,1416}$.\pause{}
+  Donner l'encadrement décimal de $\sqrt{2}$ à $10^{-5}$ près, puis celui de $\dfrac{215}{368}$ à $10^{-2}$ près.
+\end{frame}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

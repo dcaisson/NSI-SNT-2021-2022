@@ -1,0 +1,77 @@
+\documentclass[a4paper]{article}
+
+\input ../header
+\usepackage{minted}
+\usepackage[np]{numprint}
+\usepackage{lscape}
+\usepackage{afterpage}
+\usepackage{hyperref}
+
+\setlength{\multicolsep}{2pt}
+
+% Commandes pour cacher/révéler du texte facilement à l'aide d'un booléen
+\usepackage{xstring}
+\usepackage{ifthen}
+
+\newboolean{reveal}
+\setboolean{reveal}{false}
+
+\newlength{\stextwidth} % une nouvelle longueur
+
+\newcommand\x{6}
+
+\newcommand{\guess}[1]{\ifthenelse{\boolean{reveal}}{{\color{red}#1}}{\settowidth{\stextwidth}{#1}\makebox[\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmath}[1]{\ifthenelse{\boolean{reveal}}{\textcolor{red}{#1}}{\settowidth{\stextwidth}{$#1$}\makebox[1.9\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmathbin}[1]{\ifthenelse{\boolean{reveal}}{\mathbin{\color{red}#1}}{\settowidth{\stextwidth}{$#1$}\makebox[2\stextwidth]{\dotfill}}}
+
+\begin{document}
+
+\title{Le Web -- Activité 2}
+
+\pagestyle{empty}
+
+\date{}
+\author{}
+
+\maketitle{}
+
+\thispagestyle{empty}
+\noindent\textbf{Activité 2}\hfill{}\textbf{Repères historiques}
+\smallskip
+\hrule
+\medskip
+
+Voici quelques repères historiques importants :
+
+\begin{itemize}
+  \item 1965 : apparition du terme \og{}hypertexte\fg{} attribué au sociologue américain Ted Nelson ;
+  \item 1981 : développement d'un programme de stockage d'informations incluant des hypertextes au CERN ;
+  \item 1989 : invention du \textit{World Wide Web} par Tim Berners-Lee ;
+  \item 1993 : création du navigateur Mosaic qui va populariser le Web ;
+  \item 1994 : création d'annuaires (Yahoo) et de moteurs de recherche (Altavista) qui permettent l'indexation du Web ;
+  \item 1994 : création du W3C qui vise à uniformiser les standards du Web ;
+  \item 1995 : les pages deviennent dynamiques grâce à deux langages : Javascript et PHP ;
+  \item 1998 : standardisation des pages internet grâce au DOM (\textit{Document Object Model});
+  \item 1998 : naissance du moteur de recherche Google ;
+  \item 2004 : naissance du navigateur Firefox ;
+  \item 2005 : arrivée de la vidéo sur le Web (Vimeo, Dailymotion, YouTube) ;
+  \item 2010 : mise à disposition de technologies pour le développement d'applications mobiles ;
+\end{itemize}
+
+Réaliser une frise chronologique, puis la déposer au format PDF sur Moodle. Le nom du fichier déposé sera au format: 
+
+\begin{center}
+  \verb|[Classe]-[NOM]_[Prénom]_frise-web.pdf|,
+\end{center} 
+
+par exemple:
+
+\begin{center}
+  \verb|Seconde-15_RICARD_Louis_frise-web.pdf|.
+\end{center}
+
+Illustrer au moins la moitié des dates à l'aide d'une image en faisant attention aux droits d'utilisation de chaque image.
+
+\end{document}

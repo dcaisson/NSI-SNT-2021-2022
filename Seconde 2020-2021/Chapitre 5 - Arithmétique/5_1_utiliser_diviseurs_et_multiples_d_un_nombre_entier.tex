@@ -1,0 +1,150 @@
+\documentclass[handout]{beamer}
+
+% Lignes réponses
+\usepackage{pgffor} % pour la commande \foreach permettant de réaliser une boucle
+\newcommand{\pointilles}{{\\\rule{0pt}{1pt}\dotfill\rule{0pt}{1pt}}}
+\newcommand{\rep}[1]{\foreach \n in {1,...,#1} {\pointilles}}
+
+% Commandes pour cacher/révéler du texte facilement à l'aide d'un booléen
+\usepackage{xstring}
+\usepackage{ifthen}
+
+\newboolean{reveal}
+\setboolean{reveal}{false}
+
+\newlength{\stextwidth} % une nouvelle longueur
+
+\newcommand\x{6}
+
+\newcommand{\guess}[1]{\ifthenelse{\boolean{reveal}}{{\color{red}#1}}{\settowidth{\stextwidth}{#1}\makebox[\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmath}[1]{\ifthenelse{\boolean{reveal}}{\textcolor{red}{#1}}{\settowidth{\stextwidth}{$#1$}\makebox[1.9\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmathbin}[1]{\ifthenelse{\boolean{reveal}}{\mathbin{\color{red}#1}}{\settowidth{\stextwidth}{$#1$}\makebox[2\stextwidth]{\dotfill}}}
+
+% ========================================================================%
+
+\usetheme{focus}
+
+\usepackage{pgfpages}
+\pgfpagesuselayout{4 on 1}[a4paper,landscape]
+
+\usepackage[french]{babel}
+
+\usepackage{xcolor}
+
+\usepackage{pstricks,pst-plot,pst-text,pst-tree,pst-eps,pst-fill,pst-node,pst-math}
+\usepackage{pstricks-add,pst-xkey}
+
+\input ../tabvar
+
+\usepackage{multicol}
+\usepackage[np]{numprint}
+
+\usepackage{booktabs}
+
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+\newcommand{\Oij}{\left(O;\vect{i},\vect{j}\right)}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+
+\begin{document}
+
+\title{}
+
+\date{}
+
+\begin{frame}
+  \frametitle{Multiples et diviseurs}
+  \textbf{Définition. --} Soient $n$ et $m$ deux entiers. S'il existe un {\color{red}\fbox{entier}} $k$ tel que 
+  \[n = m\times k,\]
+  alors on dit que :
+  \begin{itemize}
+    \item $n$ est un \guess{multiple} de $m$ ;
+    \item $m$ est un \guess{diviseur} de $n$.
+  \end{itemize}
+
+  \bigskip
+
+  \textit{Exemples. -- Compléter les phrases suivantes :
+    \begin{itemize}
+      \item $6$ est un \guess{multiple} de $2$ car \guess{$6 = 2\times 3$}.
+      \item $10$ est un \guess{diviseur} de $100$ car \guess{$100 = 10\times 10$}.
+      \item $35$ est un multiple de \guess{$7$} car \guess{$35 = 7\times 5$}.
+      \item $18$ est un diviseur de \guess{$90$} car \guess{$90=18\times 5$}.
+    \end{itemize}
+  }
+\end{frame}
+
+\begin{frame}
+  \textbf{Proposition. --}Soit $a$ un entier. La somme de deux multiples de $a$ est un multiple de $a$.
+
+  \bigskip
+
+  \textit{Exercice. -- Démontrer la proposition précédente.\rep{9}}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Nombres premiers}
+  \textbf{Définition. --} Un entier \textbf{naturel} $n$ est un nombre premier s'il admet exactement deux diviseurs positifs.
+
+  \bigskip
+
+  \textit{Exercice. -- 
+    \begin{itemize}
+      \item $2$ est-il un nombre premier ?\dotfill
+      \item $45$ est-il un nombre premier ?\dotfill
+      \item Donner deux autres exemples de nombres premiers.\rep{2}
+      \item Donner deux autres exemples de nombres non premiers.\rep{2}
+    \end{itemize}
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Nombres pairs, nombres impairs}
+  \textbf{Proposition. --}
+  \begin{itemize}
+    \item Un nombre entier $n$ est pair si, et seulement s'il existe un entier $k$ tel que \dotfill
+    \item Un nombre entier $n$ est impair si, et seulement s'il existe un entier $k$ tel que \dotfill
+  \end{itemize}
+
+  \bigskip
+
+  \textbf{Proposition. --} 
+  \begin{itemize}
+    \item Le carré d'un entier pair est pair.
+    \item Le carré d'un entier impair est impair.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \textit{Exercice. -- Démontrer que le carré d'un nombre impair est impair en complétant le texte ci-dessous.\\
+    \medskip
+    Soit $n$ un entier impair.\\
+    Il existe un entier $k$ tel que $n=\guessmath{2k +1}$. On a donc :
+    \[
+      \begin{aligned}
+	n^2 &= \guessmath{(2k+1)^2}\\
+	    &= \guessmath{4k^2+4k+1}\\
+	    &= 2\times (\guessmath{\underbrace{2k^2+2k}_{\text{entier}}}) + 1
+      \end{aligned}
+    \]
+    Par conséquent, $n^2$ est \guess{impair}. On a donc démontré que\dotfill\rep{1}
+  }
+
+\end{frame}
+
+\begin{frame}
+  \textit{Exercice. -- Démontrer que le carré d'un entier pair est pair.\rep{10}}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Critères de divisibilité}
+  \textit{Exercice. -- Rappeler les critères de divisibilité par $2$, $3$, $5$ et $10$ et donner des exemples d'utilisation.\rep{10}}
+\end{frame}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

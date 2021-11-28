@@ -1,0 +1,115 @@
+\documentclass[handout]{beamer}
+
+% Lignes réponses
+\usepackage{pgffor} % pour la commande \foreach permettant de réaliser une boucle
+\newcommand{\pointilles}{{\\\rule{0pt}{1pt}\dotfill\rule{0pt}{1pt}}}
+\newcommand{\rep}[1]{\foreach \n in {1,...,#1} {\pointilles}}
+
+% Commandes pour cacher/révéler du texte facilement à l'aide d'un booléen
+\usepackage{xstring}
+\usepackage{ifthen}
+
+\newboolean{reveal}
+\setboolean{reveal}{true}
+
+\newlength{\stextwidth} % une nouvelle longueur
+
+\newcommand\x{6}
+
+\newcommand{\guess}[1]{\ifthenelse{\boolean{reveal}}{{\color{red}#1}}{\settowidth{\stextwidth}{#1}\makebox[\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmath}[1]{\ifthenelse{\boolean{reveal}}{\textcolor{red}{#1}}{\settowidth{\stextwidth}{$#1$}\makebox[1.9\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmathbin}[1]{\ifthenelse{\boolean{reveal}}{\mathbin{\color{red}#1}}{\settowidth{\stextwidth}{$#1$}\makebox[2\stextwidth]{\dotfill}}}
+
+% ========================================================================%
+
+\usetheme{focus}
+
+\usepackage{pgfpages}
+\pgfpagesuselayout{4 on 1}[a4paper,landscape]
+
+\usepackage[french]{babel}
+
+\usepackage{xcolor}
+
+\usepackage{pstricks,pst-plot,pst-text,pst-tree,pst-eps,pst-fill,pst-node,pst-math}
+\usepackage{pstricks-add,pst-xkey}
+
+\input ../tabvar
+
+\usepackage{multicol}
+\usepackage[np]{numprint}
+
+\usepackage{minted}
+
+\begin{document}
+
+\title{}
+
+\date{}
+
+\begin{frame}
+  \frametitle{Pourquoi utilise-t-on des puissances ?}
+  Les dimensions des objets de l'Univers qui nous entourent vont de l'échelle microscopique à l'échelle macroscopique. En physique et en biologie, on utilise surtout les \textbf{puissances de $10$} pour exprimer ces dimensions.
+
+  \begin{itemize}
+    \item Le diamètre de la Voie lactée est d'environ $10^{21}$ m.
+      \[10^{21}=\underbrace{10\times10\times10\times\hdots\times10}_{\guessmath{21} \text{ facteurs}}\]
+    \item Le diamètre d'un atome est d'environ $10^{-10}$ m.
+      \[10^{-10}=0,000\,000\,000\,{\color{red}1}.\]
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Calculer avec des puissances}
+  Dans toute la suite $a$ désigne un nombre réel, $n$ un entier naturel non nul, $p$ et $q$ deux entiers relatifs.
+
+  \[a^n = \underbrace{a\times a\times\hdots a}_{n \text{ facteurs}}\]
+
+  \[a^1 = \guessmath{a}\]
+
+  \[a^0 = \guessmath{1}\]
+
+  \[a^{-n}=\guessmath{\dfrac{1}{a^n}}\]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Règles de calcul (1)}
+  \[a^p\times a^q = \guessmath{a^{p+q}}\]
+
+  \[\dfrac{a^p}{a^q} = \guessmath{a^{p-q}}\]
+
+  \[\left(a^p\right)^q = \guessmath{a^{p\times q}}\]
+
+  \medskip
+
+  \textit{Exemples. -- Écrire les nombres suivants sous la forme d'une puissance de $7$ :
+    \begin{multicols}{4}
+      \begin{enumerate}
+	\item $7^5\times 7^{-2}\vphantom{\dfrac{1^3}{2^3}}$
+	\item $7^{-4}\times 7\vphantom{\dfrac{1^3}{2^3}}$
+	\item $\dfrac{7^{34}}{7^{21}}$
+	\item $\left(7^3\right)^6\vphantom{\dfrac{1^3}{2^3}}$
+      \end{enumerate} 
+    \end{multicols}
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Règles de calcul (2)}
+  \[a^p \times b^p = \guessmath{(ab)^p}\]
+
+  \[\dfrac{a^p}{b^p} = \guessmath{\left(\dfrac{a}{b}\right)^p}\]
+
+  \medskip
+
+  \textit{Exemples. -- Proposer un exemple d'application de chacune des règles précédentes.\rep{6}}
+\end{frame}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

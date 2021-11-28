@@ -1,0 +1,188 @@
+\documentclass[a4paper]{article}
+
+\input ../header
+\usepackage[np]{numprint}
+\usepackage{xcolor}
+\usepackage{booktabs}
+
+\setlength{\multicolsep}{2pt}
+
+\begin{document}
+
+\title{Activités -- Somme de deux vecteurs -- Éléments de correction}
+
+\pagestyle{empty}
+
+\date{}
+\author{}
+
+\maketitle{}
+
+% Math'x page 282
+\exo \vspace{-2mm}
+\begin{enumerate}
+  \item On considère la figure ci-dessous :
+    \begin{center}
+      \newrgbcolor{wwzzff}{0.4 0.6 1.}
+      \newrgbcolor{qqzzqq}{0. 0.6 0.}
+      \NormalCoor
+      \psset{xunit=0.7cm,yunit=0.7cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+      \begin{pspicture*}(0.,-3.)(17.,8.)
+	\multips(0,-3)(0,1.0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(17.,0)}
+	\multips(0,0)(1.0,0){18}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.)(0,8.)}
+	\pspolygon[linewidth=1.pt,linecolor=wwzzff,fillcolor=wwzzff,fillstyle=solid,opacity=0.1](1.,1.)(3.,1.)(3.,2.)(2.,2.)(2.,4.)(1.,4.)
+	\pspolygon[linewidth=1.pt,linecolor=qqzzqq,fillcolor=qqzzqq,fillstyle=solid,opacity=0.1](7.,3.)(9.,3.)(9.,4.)(8.,4.)(8.,6.)(7.,6.)
+	\pspolygon[linewidth=1.pt,linecolor=red,fillcolor=red,fillstyle=solid,opacity=0.1](14.,0.)(16.,0.)(16.,1.)(15.,1.)(15.,3.)(14.,3.)
+	\pspolygon[linewidth=1.pt,fillcolor=black,fillstyle=solid,opacity=0.1](8.,-2.)(10.,-2.)(10.,-1.)(9.,-1.)(9.,1.)(8.,1.)
+	\psline[linewidth=1.pt,linecolor=wwzzff](1.,1.)(3.,1.)
+	\psline[linewidth=1.pt,linecolor=wwzzff](3.,1.)(3.,2.)
+	\psline[linewidth=1.pt,linecolor=wwzzff](3.,2.)(2.,2.)
+	\psline[linewidth=1.pt,linecolor=wwzzff](2.,2.)(2.,4.)
+	\psline[linewidth=1.pt,linecolor=wwzzff](2.,4.)(1.,4.)
+	\psline[linewidth=1.pt,linecolor=wwzzff](1.,4.)(1.,1.)
+	\psline[linewidth=1.pt,linecolor=red]{->}(1.,5.)(7.,7.)
+	\psline[linewidth=1.pt,linecolor=red]{->}(4.,5.)(11.,2.)
+	\psline[linewidth=1.pt,linecolor=blue,linestyle=dashed]{->}(1.,4.)(7.,6.)
+	\psline[linewidth=1.pt,linecolor=blue,linestyle=dashed]{->}(7.,6.)(14.,3.)
+	\psline[linewidth=1.pt,linecolor=blue,linestyle=dashed]{->}(1.,4.)(8.,1.)
+	\psline[linewidth=1.pt,linecolor=blue]{->}(1,4)(14.,3.)
+	\psline[linewidth=1.pt,linecolor=qqzzqq](7.,3.)(9.,3.)
+	\psline[linewidth=1.pt,linecolor=qqzzqq](9.,3.)(9.,4.)
+	\psline[linewidth=1.pt,linecolor=qqzzqq](9.,4.)(8.,4.)
+	\psline[linewidth=1.pt,linecolor=qqzzqq](8.,4.)(8.,6.)
+	\psline[linewidth=1.pt,linecolor=qqzzqq](8.,6.)(7.,6.)
+	\psline[linewidth=1.pt,linecolor=qqzzqq](7.,6.)(7.,3.)
+	\psline[linewidth=1.pt,linecolor=red](14.,0.)(16.,0.)
+	\psline[linewidth=1.pt,linecolor=red](16.,0.)(16.,1.)
+	\psline[linewidth=1.pt,linecolor=red](16.,1.)(15.,1.)
+	\psline[linewidth=1.pt,linecolor=red](15.,1.)(15.,3.)
+	\psline[linewidth=1.pt,linecolor=red](15.,3.)(14.,3.)
+	\psline[linewidth=1.pt,linecolor=red](14.,3.)(14.,0.)
+	\psline[linewidth=1.pt](8.,-2.)(10.,-2.)
+	\psline[linewidth=1.pt](10.,-2.)(10.,-1.)
+	\psline[linewidth=1.pt](10.,-1.)(9.,-1.)
+	\psline[linewidth=1.pt](9.,-1.)(9.,1.)
+	\psline[linewidth=1.pt](9.,1.)(8.,1.)
+	\psline[linewidth=1.pt](8.,1.)(8.,-2.)
+	\uput[u](4,6){\color{red}$\vect{u}$}
+	\uput[d](11,2){\color{red}$\vect{v}$}
+	\uput[u](4,5){\color{blue}$\vect{u}$}
+	\uput[u](10.5,4.5){\color{blue}$\vect{v}$}
+	\uput[d](6,3.6){\color{blue}$\vect{w}$}
+      \end{pspicture*}
+    \end{center}
+    \begin{enumerate}
+      \item Tracer en vert l'image du motif bleu par la translation de vecteur $\vect{u}$.
+      \item Tracer en rouge l'image du motif vert par la translation de vecteur $\vect{v}$.
+      \item Peut-on trouver une translation qui transforme directement le motif bleu en le motif rouge ? Si oui, tracer le vecteur $\vect{w}$ associé à cette translation.
+	\begin{center}
+	  {\color{red}On apprendra que le vecteur $\vect{w}$ de cette translation (celle qui transforme directement le motif bleu en le motif rouge) est la \textbf{somme} des deux vecteurs $\vect{u}$ et $\vect{v}$ : on écrira \fbox{$\vect{w}=\vect{u}+\vect{v}$}.}
+	\end{center}
+    \end{enumerate}
+  \item 
+    \begin{enumerate}
+      \item Tracer en noir l'image du motif bleu par la translation de vecteur $\vect{v}$.
+      \item Quelle est l'image du motif noir par la translation de vecteur $\vect{u}$ ?
+	\begin{center}
+	  {\color{red}L'image du motif noir par la translation de vecteur $\vect{u}$ est le motif rouge.}
+	\end{center}
+    \end{enumerate}
+  \item Que constate-t-on ?
+    \begin{center}
+      {\color{red}Lorsqu'on \og{}enchaîne\fg{} les deux translations, l'ordre n'a pas d'importance.}
+    \end{center}
+\end{enumerate}
+
+\bigskip
+
+% Déclic page 128
+\exo Paul et Baptiste tentent d'arracher un poteau en tirant dessus. On donne ci-dessous les positions du poteau $P$, de Paul et de Baptiste.
+
+\medskip
+
+Les vecteurs $\vect{F}_1$ et $\vect{F}_2$ représentent les forces exercées respectivement par Paul et Baptiste sur le poteau.
+
+\begin{center}
+  \NormalCoor
+  \psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+  \begin{pspicture*}(0.,0.)(10.,5.)
+    \multips(0,0)(0,1.0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(10.,0)}
+    \multips(0,0)(1.0,0){11}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,5.)}
+    \psline[linecolor=red,linewidth=1.pt]{->}(2.,4.)(5.,4.)
+    \psline[linecolor=blue,linewidth=1.pt]{->}(2.,4.)(4.,2.)
+    \psline[linewidth=1.pt,linestyle=dashed,dash=1pt 1pt](5.,4.)(8.,4.)
+    \psline[linewidth=1.pt,linestyle=dashed,dash=1pt 1pt](4.,2.)(5.,1.)
+    \uput[u](3.5,4){\color{red}$\vect{F}_1$}
+    \uput[d](3,3){\color{blue}$\vect{F}_2$}
+    \psdots[dotstyle=x](8,4)(5,1)
+    \uput[u](2,4){$P$}
+    \uput[u](8,4){\text{Paul}}
+    \uput[d](5,1){\text{Baptiste}}
+    \uput[u](5,4){$A$}
+    \psline[linecolor=blue,linewidth=1.pt]{->}(5.,4.)(7.,2.)
+    \uput[u](6,3){\color{blue}$\vect{F}_2$}
+    \uput[r](7,2){$B=F$}
+    \psline[linecolor=red,linewidth=1.pt]{->}(4.,2.)(7.,2.)
+    \uput[d](5.5,2){\color{red}$\vect{F}_1$}
+    \uput[d](4,2){$E$}
+  \end{pspicture*} 
+\end{center}
+
+\bigskip
+
+\begin{enumerate}
+  \item 
+    \begin{enumerate}
+      \item Construire l'image $A$ du point $P$ par la translation de vecteur $\vect{F}_1$, puis l'image $B$ de $A$ par la translation de vecteur $\vect{F}_2$.
+      \item Construire l'image $E$ du point $P$ par la translation de vecteur $\vect{F}_2$, puis l'image $F$ de $E$ par la translation de vecteur $\vect{F}_1$.
+      \item Que constate-t-on ?
+	\begin{center}
+	  {\color{red}Les points $B$ et $F$ sont confondus.}
+	\end{center}
+      \item Dans quelle direction, le poteau va-t-il tomber ?
+	\begin{center}
+	  {\color{red}Le poteau va tomber dans la direction de la droite $(PB)$.}
+	\end{center}
+    \end{enumerate}
+  \item Compléter les égalités suivantes :
+    \[\vect{PA}+\vect{\color{red}AB}=\vect{P\color{red}B}\]
+    \[\vect{PE}+\vect{\color{red}EF}=\vect{\color{red}PF}\]
+
+    \bigskip
+
+    {\color{red}La première égalité peut se comprendre de la façon \og{}intuitive\fg{} suivante :
+      \begin{itemize}
+	\item si l'on se rend du point $P$ au point $A$ (vecteur $\vect{PA}$),
+	\item puis (addition $+$) du point $A$ au point $B$ (vecteur $\vect{AB}$),
+      \end{itemize}
+      alors on s'est rendu du point $P$ au point $B$ (vecteur $\vect{PB}$).
+      \bigskip
+      \bigskip
+    }
+    \begin{multicols}{2}
+      {\color{red}Nous verrons plus tard que, peu importe les points $A$, $B$ et $C$ :
+	\begin{itemize}
+	  \item si l'on se rend du point $A$ au point $B$ (vecteur $\vect{AB}$),
+	  \item puis (addition $+$) du point $B$ au point $C$ (vecteur $\vect{BC}$),
+	\end{itemize}
+	on s'est rendu du point $A$ au point $C$ (vecteur $\vect{AC}$).
+	Autrement dit :
+	\[\vect{AB}+\vect{BC}=\vect{AC}.\]
+	Cette égalité est ce qu'on appelle la relation~de~Chasles.
+	\begin{center}
+	  \NormalCoor
+	  \psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+	  \begin{pspicture*}(0.,0.)(6.,4.)
+	    \psline[linecolor=blue,linewidth=1.pt]{->}(1.,1.)(3.,3.)
+	    \psline[linecolor=blue,linewidth=1.pt]{->}(3.,3.)(5.,2.)
+	    \psline[linecolor=blue,linewidth=1.pt]{->}(1.,1.)(5.,2.)
+	    \uput[d](1,1){\color{blue}$A$}
+	    \uput[u](3,3){\color{blue}$B$}
+	    \uput[r](5,2){\color{blue}$C$}
+	  \end{pspicture*}
+	\end{center}
+      }
+    \end{multicols}
+\end{enumerate}
+
+\end{document}

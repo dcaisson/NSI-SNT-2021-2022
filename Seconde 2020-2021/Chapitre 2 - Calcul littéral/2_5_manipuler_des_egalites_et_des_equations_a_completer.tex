@@ -1,0 +1,119 @@
+\documentclass[handout]{beamer}
+
+% Lignes réponses
+\usepackage{pgffor} % pour la commande \foreach permettant de réaliser une boucle
+\newcommand{\pointilles}{{\\\rule{0pt}{1pt}\dotfill\rule{0pt}{1pt}}}
+\newcommand{\rep}[1]{\foreach \n in {1,...,#1} {\pointilles}}
+
+% Commandes pour cacher/révéler du texte facilement à l'aide d'un booléen
+\usepackage{xstring}
+\usepackage{ifthen}
+
+\newboolean{reveal}
+\setboolean{reveal}{false}
+
+\newlength{\stextwidth} % une nouvelle longueur
+
+\newcommand\x{6}
+
+\newcommand{\guess}[1]{\ifthenelse{\boolean{reveal}}{{\color{red}#1}}{\settowidth{\stextwidth}{#1}\makebox[\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmath}[1]{\ifthenelse{\boolean{reveal}}{\textcolor{red}{#1}}{\settowidth{\stextwidth}{$#1$}\makebox[1.9\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmathbin}[1]{\ifthenelse{\boolean{reveal}}{\mathbin{\color{red}#1}}{\settowidth{\stextwidth}{$#1$}\makebox[2\stextwidth]{\dotfill}}}
+
+% ========================================================================%
+
+\usetheme{focus}
+
+\usepackage{pgfpages}
+\pgfpagesuselayout{4 on 1}[a4paper,landscape]
+
+\usepackage[french]{babel}
+
+\usepackage{xcolor}
+
+\usepackage{pstricks,pst-plot,pst-text,pst-tree,pst-eps,pst-fill,pst-node,pst-math}
+\usepackage{pstricks-add,pst-xkey}
+
+\input ../tabvar
+
+\usepackage{multicol}
+\usepackage[np]{numprint}
+
+\usepackage{minted}
+
+\begin{document}
+
+\title{}
+
+\date{}
+
+\begin{frame}
+  \frametitle{1. Vocabulaire}
+  \begin{itemize}
+    \item Une équation d'inconnue $x$ est une égalité dans laquelle intervient un nombre inconnu $x$.
+
+      \medskip
+
+      \textit{Exemple. -- $2x+3 = 5$ est une équation d'inconnue $x$.}
+
+      \medskip
+
+    \item Une solution d'une équation est une valeur de l'inconnue qui rend l'égalité vraie.
+
+      \medskip
+
+      \textit{Exemples. -- Vérifier que $0$ n'est pas une solution de l'équation précédente, puis que $1$ est une solution de cette équation.\rep{2}}
+
+      \medskip
+
+    \item Résoudre une équation dans un ensemble $\mathcal{E}$ c'est trouver tous les nombres de $\mathcal{E}$ qui sont des solutions de l'équation.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{2. Équivalence de deux équations}
+  \begin{itemize}
+    \item On dit que deux équations sont équivalentes lorsqu'elles ont les mêmes solutions.
+
+      \medskip
+
+      \textit{Exemple. -- Les équations $2x-1=-4x+12$ et $\guessmath{6}x=\guessmath{13}$ sont équivalentes.}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \textbf{Proposition. --} Les manipulations suivantes transforment une équation en une équation équivalente :
+  \begin{itemize}
+    \item Ajouter (ou soustraire) un même nombre aux deux membres d'une équation.
+    \item Multiplier (ou diviser) les deux membres d'une équation par un même nombre non nul.
+    \item Développer, factoriser, réduire l'un des deux membres de l'équation.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{3. Équation-produit}
+  \textbf{Proposition. --} Un produit de deux nombres réels est nul si, et seulement si, \guess{l'un des deux nombres est nul}.
+
+  \medskip
+
+  \textit{Exemple. -- Résoudre l'équation $(x-2)(3x+6)=0$.\rep{7}}
+\end{frame}
+
+\begin{frame}
+  \frametitle{4. Équation-quotient}
+  \textbf{Proposition. --} Un quotient d'un nombre réel $A$ par un nombre réel non nul $B$ est nul si, et seulement si, \guess{$A$ est nul}.
+
+  \medskip
+
+  \textit{Exemple. -- Résoudre l'équation $\dfrac{x-3}{x+2}=0$.\\
+  \dotfill\rep{8}}
+\end{frame}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

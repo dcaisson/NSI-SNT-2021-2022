@@ -1,0 +1,249 @@
+\documentclass[handout,dvipsnames]{beamer}
+
+% Lignes réponses
+\usepackage{pgffor} % pour la commande \foreach permettant de réaliser une boucle
+\newcommand{\pointilles}{{\\\rule{0pt}{1pt}\dotfill\rule{0pt}{1pt}}}
+\newcommand{\rep}[1]{\foreach \n in {1,...,#1} {\pointilles}}
+
+% Commandes pour cacher/révéler du texte facilement à l'aide d'un booléen
+\usepackage{xstring}
+\usepackage{ifthen}
+
+\newboolean{reveal}
+\setboolean{reveal}{false}
+
+\newlength{\stextwidth} % une nouvelle longueur
+
+\newcommand\x{6}
+
+\newcommand{\guess}[1]{\ifthenelse{\boolean{reveal}}{{\color{red}#1}}{\settowidth{\stextwidth}{#1}\makebox[\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmath}[1]{\ifthenelse{\boolean{reveal}}{\textcolor{red}{#1}}{\settowidth{\stextwidth}{$#1$}\makebox[1.9\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmathbin}[1]{\ifthenelse{\boolean{reveal}}{\mathbin{\color{red}#1}}{\settowidth{\stextwidth}{$#1$}\makebox[2\stextwidth]{\dotfill}}}
+
+% ========================================================================%
+
+\usetheme{focus}
+
+\usepackage{pgfpages}
+\pgfpagesuselayout{4 on 1}[a4paper,landscape]
+
+\usepackage[french]{babel}
+
+\usepackage{xcolor}
+
+\usepackage{pstricks,pst-plot,pst-text,pst-tree,pst-eps,pst-fill,pst-node,pst-math}
+\usepackage{pstricks-add,pst-xkey}
+
+\input ../tabvar
+
+\usepackage{multicol}
+\usepackage[np]{numprint}
+
+\usepackage{booktabs}
+
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+\newcommand{\Oij}{\left(O;\vect{i},\vect{j}\right)}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+
+\begin{document}
+
+\title{}
+
+\date{}
+
+\begin{frame}
+  \frametitle{1. Produit d'un vecteur par un nombre (réel)}
+  \textbf{Définition. --} Soient $\vect{u}$ un vecteur et $k$ un nombre (réel).
+  \begin{itemize}
+    \item Si $\vect{u}=\vect{0}$ ou $k=0$, alors le vecteur $k\vect{u}$ est le vecteur nul.
+    \item Sinon, le vecteur $k\vect{u}$ est le vecteur ayant :
+      \begin{itemize}
+	\item[--] la même $\color{red}direction$ que $\vect{u}$ ;
+	\item[--] le même sens que $\vect{u}$ si $\color{red}k>0$ (le sens contraire si $\color{red}k<0$) ;
+	\item[--] une longueur égale à $|k|$ fois la longueur de $\vect{u}$.
+      \end{itemize}
+  \end{itemize}
+
+  \bigskip
+
+  \textit{Exemple. -- Sur la figure ci-contre, deux vecteurs $\vect{u}$ et $\vect{v}$ sont représentés. Représenter les vecteurs $2\vect{u}$ et $-3\vect{v}$.}
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+    \NormalCoor
+    \psset{xunit=0.8cm,yunit=0.8cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(0.,0.)(10.,7.)
+      \multips(0,0)(0,1.0){8}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(10.,0)}
+      \multips(0,0)(1.0,0){11}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,7.)}
+      \psline[linecolor=red,linewidth=1.pt]{->}(3.,3.)(5.,4.)
+      \uput[u](4,3.5){$\color{red}\vect{u}$}
+      \psline[linecolor=blue,linewidth=1.pt]{->}(8.,2.)(9.,1.)
+      \uput[u](8,2){$\color{blue}\vect{v}$}
+      %\psline[linecolor=BurntOrange,linewidth=1.pt]{->}(7.,3.)(4.,6.)
+      %\uput[ur](5.5,4.5){$\color{BurntOrange}-3\vect{v}$}
+      %\psline[linecolor=Periwinkle,linewidth=1.pt]{->}(1.,1.)(5.,3.)
+      %\uput[d](3,2){$\color{Periwinkle}2\vect{u}$}
+    \end{pspicture*}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \textbf{Définition. --} On dit que deux vecteurs $\vect{u}$ et $\vect{v}$ sont colinéaires lorsqu'on peut écrire l'un des deux comme produit de l'autre par un nombre réel.
+
+  \bigskip
+
+  \textit{Remarques. --} 
+  \begin{enumerate}
+    \item Quel que soit le vecteur $\vect{u}$, $0\times\vect{u}=\vect{0}$. Le vecteur $\color{red}nul$ est donc colinéaire à tout vecteur $\vect{u}$.
+    \item Deux vecteurs non nuls colinéaires ont la même $\color{red}direction$.
+  \end{enumerate}
+
+  \bigskip
+
+  \textit{Exemples. -- Dans l'exemple précédent, les vecteurs $\vect{u}$ et $\hdots\hdots\hdots\hdots$ sont colinéaires, ainsi que les vecteurs $\vect{v}$ et $\hdots\hdots\hdots\hdots$.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{2. Déterminant de deux vecteurs}
+  \textbf{Définition. --} Dans une base, on considère les vecteurs $\vect{u}(x;y)$ et $\vect{v}(x';y')$. Le déterminant de $\vect{u}$ et $\vect{v}$ est le $\hdots\hdots\hdots\hdots$ noté $det(\vect{u};\vect{v})$ qu'on calcule à l'aide de la formule ci-dessous :
+  \[\hdots\hdots\hdots\hdots\hdots\hdots\hdots\hdots\hdots\hdots\]
+
+  \medskip
+
+  \textit{Exemple. -- On considère les vecteurs $\vect{u}(3;4)$ et $\vect{v}(-1;2)$  représentés sur la figure suivante. Représenter le vecteur $\vect{w}(2;-4)$ puis calculer $det(\vect{u};\vect{v})$ et $det(\vect{v};\vect{w})$.}
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+    \NormalCoor
+    \psset{xunit=0.8cm,yunit=0.8cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(1.,0.)(9.,7.)
+      \multips(0,0)(0,1.0){8}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(1.,0)(9.,0)}
+      \multips(1,0)(1.0,0){9}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,7.)}
+      \psline[linecolor=red,linewidth=1.pt]{->}(2.,2.)(5.,6.)
+      \uput[l](3.5,4){$\color{red}\vect{u}$}
+      \psline[linecolor=blue,linewidth=1.pt]{->}(8.,2.)(7.,4.)
+      \uput[r](7.5,3){$\color{blue}\vect{v}$}
+      %\psline[linecolor=BurntOrange,linewidth=1.pt]{->}(5.,5.)(7.,1.)
+      %\uput[dl](6,3){$\color{BurntOrange}\vect{w}$}
+    \end{pspicture*} 
+  \end{center}
+  %{\color{red}
+  %  \[det(\vect{u};\vect{v})=3\times2-4\times(-1)=10\]
+  %  \[det(\vect{v};\vect{w})=-1\times(-4)-2\times 2=0\]
+  %}
+\end{frame}
+
+\begin{frame}
+  \frametitle{3. Vecteurs colinéaires}
+  \textbf{Proposition. --} Soient $\vect{u}$ et $\vect{v}$ deux vecteurs non nuls. Les assertions suivantes sont équivalentes :
+  \begin{enumerate}
+    \item $\vect{u}$ et $\vect{v}$ sont colinéaires
+    \item $\vect{u}$ et $\vect{v}$ ont la même direction
+    \item on peut écrire l'un des vecteurs comme produit de l'autre par un nombre (réel)
+    \item $det(\vect{u};\vect{v})=0$
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \textit{Exemples. -- Utiliser l'équivalence entre l'assertion 1. ($\vect{u}$ et $\vect{u}$ sont colinéaires) et l'assertion 2. ($det(\vect{u};\vect{v})=0$) pour répondre aux questions suivantes :
+    \begin{enumerate}
+      \item Dans une base, les vecteurs $\vect{u}(3;-1)$ et $\vect{v}(-2;5)$ sont-ils colinéaires ?\rep{4}
+	%{\color{red}On calcule $det(\vect{u};\vect{v})$ :
+	%  \[det(\vect{u};\vect{v})=3\times5-(-2)\times(-1)=13.\]
+	%}
+      \item Le plan est muni d'un repère orthonormé. On considère les points $A(1;2)$, $B(3;4)$, $C(-3;4)$ et $D(-2;5)$. Les vecteurs $\vect{AB}$ et $\vect{CD}$ sont-ils colinéaires ?\rep{4}
+    \end{enumerate}
+  }
+\end{frame}
+
+%\begin{frame}
+%  \color{red}On calcule les coordonnées des vecteurs $\vect{AB}$ et $\vect{CD}$ :
+%  \begin{center}
+%    $\vect{AB}(x_B-x_A;y_B-y_A)$ et $\vect{CD}(x_D-x_C;y_D-y_C)$
+%  \end{center}
+%  donc
+%  \begin{center}
+%    $\vect{AB}(3-1;4-2)$ et $\vect{CD}(-2-(-3);5-4)$
+%  \end{center}
+%  donc
+%  \begin{center}
+%    $\vect{AB}(2;2)$ et $\vect{CD}(1;1)$.
+%  \end{center}
+%  Alors :
+%  \[det(\vect{AB};\vect{CD})=2\times 1 - 1\times 2=0.\]
+%  Les vecteurs $\vect{AB}$ et $\vect{CD}$ sont donc colinéaires.
+%\end{frame}
+
+\begin{frame}
+  \frametitle{4. Vecteurs colinéaires et droites parallèles}
+  \textbf{Proposition. --} Si les vecteurs $\vect{AB}$ et $\vect{CD}$ sont colinéaires, alors les droites $(AB)$ et $(CD)$ sont parallèles.
+  \medskip
+  \begin{center}
+    \NormalCoor
+    \newrgbcolor{ududff}{0.30196078431372547 0.30196078431372547 1.}
+    \psset{xunit=0.7cm,yunit=0.7cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(0.,0.)(11.,5.)
+      \multips(0,0)(0,1.0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(11.,0)}
+      \multips(0,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,5.)}
+      \psplot[linewidth=1.pt]{0.}{11.}{(--3.--1.*x)/2.}
+      \psplot[linewidth=1.pt]{0.}{11.}{(-4.--2.*x)/4.}
+      \psline[linecolor=red,linewidth=1.pt]{->}(3.,3.)(5.,4.)
+      \uput[u](3,3){$\color{red}A$}
+      \uput[u](5,4){$\color{red}B$}
+      \psline[linecolor=blue,linewidth=1.pt]{->}(4.,1.)(8.,3.)
+      \uput[d](4,1){$\color{blue}C$}
+      \uput[d](8,3){$\color{blue}D$}
+    \end{pspicture*}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \textit{Exemple. -- Dans un repère, on considère les points $A(1;3)$, $B(5;4)$, $C(-9;5)$, $D(-1;7)$ et $E(-12;4)$.
+    \begin{enumerate}
+      \item Montrer que les droites $(AB)$ et $(CD)$ sont parallèles.\rep{4}
+      \item Étudier la position relative des droites $(AB)$ et $(ED)$, c'est-à-dire répondre à la question \og{}les droites $(AB)$ et $(CD)$ sont-elles parallèles ?\fg{}.\rep{4}
+    \end{enumerate}
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{5. Vecteurs colinéaires et points alignés}
+  \textbf{Proposition. --} Si les vecteurs $\vect{AB}$ et $\vect{AC}$ sont colinéaires, alors les points $A$, $B$ et $C$ sont alignés.
+  \medskip
+  \begin{center}
+    \newrgbcolor{ududff}{0.30196078431372547 0.30196078431372547 1.}
+    \newrgbcolor{xdxdff}{0.49019607843137253 0.49019607843137253 1.}
+    \NormalCoor
+    \psset{xunit=0.7cm,yunit=0.7cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(-5.,0.)(6.,5.)
+      \multips(0,0)(0,1.0){6}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-5.,0)(6.,0)}
+      \multips(-5,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,5.)}
+      \psplot[linewidth=1.pt]{-5.}{6.}{(--7.--1.*x)/3.}
+      \psline[linecolor=red,linewidth=1.pt]{->}(2.,3.)(5.,4.)
+      \uput[u](2,3){$A$}
+      \uput[u](5,4){$B$}
+      \psline[linecolor=blue,linewidth=1.pt]{->}(2.,3.)(-4.,1.)
+      \uput[u](-4,1){$C$}
+    \end{pspicture*} 
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \textit{Exemple. -- Dans un repère, on considère les points $A(1;4)$, $B(11;6)$, $C(-4;3)$ et $D(5;5)$.
+    \begin{enumerate}
+      \item Prouver que les points $A$, $B$ et $C$ sont alignés.\rep{4}
+      \item Les points $A$, $B$ et $D$ sont-ils alignés ?\rep{4}
+    \end{enumerate}
+  }
+\end{frame}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

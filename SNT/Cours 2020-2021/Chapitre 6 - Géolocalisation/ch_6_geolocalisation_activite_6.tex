@@ -1,0 +1,137 @@
+\documentclass[a4paper]{article}
+
+\input ../header
+\usepackage{minted}
+\usepackage[np]{numprint}
+\usepackage{lscape}
+\usepackage{afterpage}
+\usepackage{hyperref}
+\usepackage{gensymb}
+
+\setlength{\multicolsep}{2pt}
+
+% Commandes pour cacher/révéler du texte facilement à l'aide d'un booléen
+\usepackage{xstring}
+\usepackage{ifthen}
+
+\newboolean{reveal}
+\setboolean{reveal}{false}
+
+\newlength{\stextwidth} % une nouvelle longueur
+
+\newcommand\x{6}
+
+\newcommand{\guess}[1]{\ifthenelse{\boolean{reveal}}{{\color{red}#1}}{\settowidth{\stextwidth}{#1}\makebox[\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmath}[1]{\ifthenelse{\boolean{reveal}}{\textcolor{red}{#1}}{\settowidth{\stextwidth}{$#1$}\makebox[1.9\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmathbin}[1]{\ifthenelse{\boolean{reveal}}{\mathbin{\color{red}#1}}{\settowidth{\stextwidth}{$#1$}\makebox[2\stextwidth]{\dotfill}}}
+
+\begin{document}
+
+\title{Chapitre 6 -- Géolocalisation}
+
+\pagestyle{empty}
+
+\date{}
+\author{}
+
+\maketitle{}
+
+\thispagestyle{empty}
+\noindent\textbf{Activité 6}\hfill{}\textbf{Tribulations d'un Lillois à Papeete}
+\smallskip
+\hrule
+\medskip
+
+% Lien secret pour éditer la carte :
+% http://umap.openstreetmap.fr/en/map/anonymous-edit/449692:_W7PnSO4WBh5DqhzG9WvvbR4CqI
+
+\begin{enumerate}
+  \item Repérer les lieux ci-dessous sur la \href{http://u.osmfr.org/m/449692/}{carte} disponible à l'adresse suivante : \url{http://u.osmfr.org/m/449692/}.
+    \begin{multicols}{3}
+      \begin{itemize}
+	\item (L) Lycée Paul Gauguin
+	\item (C) Champion
+	\item (J) Jojo Pizza
+	\item (M) Monument aux morts
+	\item (V) Vahinerii Tea House
+	\item (D) Mc Donald's
+	\item (B) Parc Bougainville
+	\item (E) Cathédrale de Papeete
+	\item (P) Marché de Papeete
+	\item (R) Le Rétro
+	\item (T) Roulottes
+	\item[]
+      \end{itemize} 
+    \end{multicols}
+  \item Aymeric et ses amis décident de faire une petite promenade dans la ville de Papeete. Sur la carte précédente, les chemins qu'ils peuvent emprunter sont symbolisés par les segments bleus. Les tableaux ci-dessous donnent quelques distances obtenues grâce au projet \href{https://www.openstreetmap.org/}{Open Street Map} :
+
+    \medskip
+
+    \begin{center}
+      \begin{tabular}{@{}ccccccccc@{}}
+	\toprule
+	Trajet & L\,--\,C & L\,--\,M & C\,--\,J & C\,--\,M & C\,--\,V & J\,--\,B & M\,--\,D & V\,--\,B\\
+	\midrule
+	Distance (en m) & 250 & 780 & 250 & 650 & 350 & 780 & 540 & 400\\ 
+	\bottomrule
+      \end{tabular}
+    \end{center}
+
+    \begin{center}
+      \begin{tabular}{@{}cccccccc@{}}
+	\toprule
+	Trajet & V\,--\,D & D\,--\,E & B\,--\,R & R\,--\,E & R\,--\,T & T\,--\,P & P\,--\,E\\
+	\midrule
+	Distance (en m) & 450 & 190 & 200 & 170 & 240 & 250 & 160\\
+	\bottomrule
+      \end{tabular}
+    \end{center}
+
+    \smallskip
+
+  \item Construire un graphe pondéré ayant pour sommets les lieux par lesquels Léo et ses amis peuvent passer. Sur chaque arête du graphe, on reportera les distances entre deux noeuds voisins.
+    %      \begin{center}
+    %	\scalebox{0.7}{$
+    %	  \begin{psmatrix}[mnode=circle]
+    % &  &  &  &  &  &  &  & T \\ 
+    % &  &  &  &  &  &  &  &  &  & P \\ 
+    % &  &  &  &  &  &  & R \\ 
+    % &  &  &  &  &  &  &  &  & E \\ 
+    % &  &  &  &  & B \\ 
+    % &  &  &  &  &  &  & D \\ 
+    % & J &  &  & V \\ 
+    % &  & C \\ 
+    %	    L &  &  &  &  & M 
+    %	\end{psmatrix}$}
+    %	\psset{arrows=-,shortput=nab}
+    %	\ncline{9,1}{8,3}^{250}
+    %	\ncline{9,1}{9,6}^{780}
+    %	\ncline{8,3}{7,2}^{250}
+    %	\ncline{8,3}{9,6}^{650}
+    %	\ncline{8,3}{7,5}^{350}
+    %	\ncline{7,2}{5,6}^{780}
+    %	\ncline{9,6}{6,8}^{540}
+    %	\ncline{7,5}{5,6}^{400}
+    %	\ncline{7,5}{6,8}^{450}
+    %	\ncline{5,6}{3,8}^{200}
+    %	\ncline{6,8}{4,10}^{190}
+    %	\ncline{4,10}{3,8}^{170}
+    %	\ncline{4,10}{2,11}^{160}
+    %	\ncline{3,8}{1,9}^{240}
+    %	\ncline{1,9}{2,11}^{250}
+    %      \end{center}
+  \item Utiliser l'algorithme de Dijkstra avec pour sommet de départ L (le lycée Paul Gauguin) afin de déterminer les plus courts chemins d'origine L. On complètera le tableau ci-dessous :
+    \begin{center}
+      \begin{tabular}{@{}ccccccccccc@{}}
+	\toprule
+	L & J & B & D & M & C & V & T & P & R & E\\
+	\midrule
+	0 & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\infty$\\
+	\bottomrule
+      \end{tabular}
+    \end{center}
+  \item Quel est le plus court chemin du lycée au Mc Donald's ? du lycée aux roulottes ?
+\end{enumerate}
+  \end{document}

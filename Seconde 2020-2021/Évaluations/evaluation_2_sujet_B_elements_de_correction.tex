@@ -1,0 +1,155 @@
+\documentclass[a4paper,dvipsnames]{article}
+
+\input ../header
+\newcommand{\checkedbox}{\makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}$\checkmark$}}
+\newcommand{\checkbox}{\makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}}\hspace{3mm}}
+
+% Intervalle
+\def\intervalleFF(#1,#2){\psline[linecolor=red]{[-]}(#1,0)(#2,0)}
+\def\intervalleOO(#1,#2){\psline[linecolor=red]{]-[}(#1,0)(#2,0)}
+\def\intervalleFO(#1,#2){\psline[linecolor=red]{[-[}(#1,0)(#2,0)}
+\def\intervalleOF(#1,#2){\psline[linecolor=red]{]-]}(#1,0)(#2,0)}
+\def\intervalleFpI(#1,#2){\psline[linecolor=red]{[-}(#1,0)(#2,0)}
+\def\intervalleOpI(#1,#2){\psline[linecolor=red]{]-}(#1,0)(#2,0)}
+\def\intervalleFmI(#1,#2){\psline[linecolor=red]{-]}(#1,0)(#2,0)}
+\def\intervalleOmI(#1,#2){\psline[linecolor=red]{-[}(#1,0)(#2,0)}
+
+\begin{document}
+
+\title{Évaluation 2 -- Sujet B -- Éléments de correction}
+
+\date{}
+\author{}
+\maketitle{}
+
+\pagestyle{empty}
+
+% Valeur approchée par excès, par défaut
+\exo[2 points] En Chine, au $5$\ieme{} siècle, $\dfrac{355}{113}$ est utilisé comme valeur approchée de $\pi$.
+\begin{enumerate}
+  \item Compléter la phrase suivante :
+    \begin{center}
+      \og{}Cette valeur est une valeur approchée de $\pi$ par {\color{red}excès}.\fg{}
+    \end{center}
+  \item Donner un encadrement de $\pi$ d'amplitude $10^{-7}$.\\
+    {\color{red}Voici un encadrement de $\pi$ d'amplitude $10^{-7}$ :
+    \[\np{3,1415926}<\pi<\np{3,1415927}.\]}
+\end{enumerate}
+
+\bigskip
+
+% Encadrement d'amplitude donnée
+\exo[2 points] Compléter le tableau ci-dessous dans lequel $a<x<b$ et $b-a$ est l'amplitude indiquée :
+
+\begin{center}
+  \begin{tabular}{@{}cccc@{}}
+    \toprule
+    $x$ & $a$ & $b$ & amplitude\\
+    \midrule
+    \addlinespace[2mm]
+    $\dfrac{23}{\color{red}13}$ & $\np{1,76923}$ & $\np{1,76924}$ & {\color{red}$10^{-5}$}\\
+    \addlinespace[2mm]
+    $\sqrt{\color{red}45}$ & $6,70$ & $\color{red}6,71$ & $10^{-2}$\\
+  \end{tabular}
+\end{center}
+
+\bigskip
+
+% Appartient, n'appartient pas à un intervalle
+\exo[2 points] Compléter en utilisant $\in$ ou $\notin$ :
+\begin{multicols}{4}
+  \begin{enumerate}
+    \item [] $-3{\,\color{red}\in\,}[-3;-1[$\columnbreak
+    \item [] $-1{\,\color{red}\notin\,}[-3;-1[$\columnbreak
+    \item [] $0{\,\color{red}\notin\,}[-3;-1[$\columnbreak
+    \item [] $-2{\,\color{red}\in\,}[-3;-1[$
+  \end{enumerate}
+\end{multicols}
+
+\begin{multicols}{4}
+  \begin{enumerate}
+    \item [] $5{\,\color{red}\in\,}]-1;8]$\columnbreak
+    \item [] $8{\,\color{red}\in\,}]-1;8]$\columnbreak
+    \item [] $-1{\,\color{red}\notin\,}]-1;8]$\columnbreak
+    \item [] $-4{\,\color{red}\notin\,}]-1;8]$
+  \end{enumerate}
+\end{multicols}
+
+\begin{multicols}{4}
+  \begin{enumerate}
+    \item [] $10{\,\color{red}\in\,}[10;+\infty[$\columnbreak
+    \item [] $12{\,\color{red}\in\,}[10;+\infty[$\columnbreak
+    \item [] $2{\,\color{red}\notin\,}[10;+\infty[$
+  \end{enumerate}
+\end{multicols}
+
+\begin{multicols}{4}
+  \begin{enumerate}
+    \item [] $2{\,\color{red}\notin\,}]-\infty;2[$\columnbreak
+    \item [] $-1{\,\color{red}\in\,}]-\infty;2[$\columnbreak
+    \item [] $3{\,\color{red}\notin\,}]-\infty;2[$
+  \end{enumerate}
+\end{multicols}
+
+\bigskip
+
+% Encadrements, représentation graphique, appartenance à un intervalle
+\exo[2 points] Compléter le tableau suivant :
+\begin{center}
+  \begin{tabular}{@{}>{\centering}p{3.8cm}cp{4.5cm}@{}}
+    \toprule
+    Encadrement / Inégalité & Représentation & Appartenance à un intervalle\\
+    \midrule
+    \addlinespace[2mm]
+    \vspace*{-6mm}$-10<x\leq21$ & \psset{xunit=0.5cm,yunit=0.5cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.2pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(1.,-1)(8.,.5)
+      \psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=10.,Dy=1.,ticksize=-2pt 0]{->}(0,0)(1.,-1.)(8.,1.)
+      \intervalleOF(3,6)
+      \uput[d](3,-0.1){$\color{red}-10$}
+      \uput[d](6,-0.1){$\color{red}21$}
+    \end{pspicture*} & \vspace*{-6mm}\centering{}$x\in]-10;21]$\tabularnewline
+    \addlinespace[2mm]
+    \vspace*{-6mm}$\color{red}-1<x<3$ & \psset{xunit=0.5cm,yunit=0.5cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.2pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(1.,-1)(8.,.5)
+      \psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=10.,Dy=1.,ticksize=-2pt 0]{->}(0,0)(1.,-1.)(8.,1.)
+      \intervalleOO(3,6)
+      \uput[d](3,-0.1){$\color{red}-1$}
+      \uput[d](6,-0.1){$\color{red}3$}
+    \end{pspicture*} & \vspace*{-6mm}\centering$\color{red}x\in]-1;3[$\tabularnewline
+    \addlinespace[2mm]
+    \vspace*{-6mm}$5\leq x<9$ & \psset{xunit=0.5cm,yunit=0.5cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.2pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(1.,-1)(8.,.5)
+      \psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=10.,Dy=1.,ticksize=-2pt 0]{->}(0,0)(1.,-1.)(8.,1.)
+      \intervalleFO(3,6)
+      \uput[d](3,-0.1){$\color{red}5$}
+      \uput[d](6,-0.1){$\color{red}9$}
+    \end{pspicture*}&\vspace*{-6mm}\centering{\color{red}$x\in[5;9[$}\tabularnewline
+    \addlinespace[2mm]
+    \vspace*{-6mm}{\color{red}$x\geq -1$}&\psset{xunit=0.5cm,yunit=0.5cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.2pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(1.,-1)(8.,.5)
+      \psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=10.,Dy=1.,ticksize=-2pt 0]{->}(0,0)(1.,-1.)(8.,1.)
+      \intervalleFpI(3,8)
+      \uput[d](3,-0.1){$\color{red}-1$}
+    \end{pspicture*}& \vspace*{-6mm}\centering{}$x\in[-1;+\infty[$\tabularnewline
+	    \addlinespace[2mm]
+    \vspace*{-6mm}{\color{red}$x\leq -2$} & \psset{xunit=0.5cm,yunit=0.5cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.2pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(1.,-1)(8.,.5)
+      \psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=10.,Dy=1.,ticksize=-2pt 0]{->}(0,0)(1.,-1.)(8.,1.)
+      \intervalleFmI(1,6)
+      \uput[d](6,-0.1){$\color{red}-2$}
+    \end{pspicture*} & \vspace*{-6mm}\centering{\color{red}$x\in]-\infty;-2]$}\tabularnewline
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+\bigskip
+
+% Logique
+\exo[2 points] Dire, sans justifier, si chacune des affirmations suivantes est vraie (V) ou fausse (F):
+
+\begin{enumerate}
+  \item V \checkbox{} {\color{red}F \checkedbox{}} Tout réel de l'intervalle $[-6;10[$ appartient à l'intervalle $]-\infty;8[$.
+  \item V \checkbox{} {\color{red}F \checkedbox{}} Certains réels de l'intervalle $]-7;4[$ appartiennent à l'intervalle $[7;+\infty[$.
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,136 @@
+\documentclass[a4paper,dvipsnames]{article}
+
+\input ../header
+\newcommand{\checkedbox}{\makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}$\checkmark$}}
+\newcommand{\checkbox}{\makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}}\hspace{3mm}}
+
+% Intervalle
+\def\intervalleFF(#1,#2){\psline[linecolor=red]{[-]}(#1,0)(#2,0)}
+\def\intervalleOO(#1,#2){\psline[linecolor=red]{]-[}(#1,0)(#2,0)}
+\def\intervalleFO(#1,#2){\psline[linecolor=red]{[-[}(#1,0)(#2,0)}
+\def\intervalleOF(#1,#2){\psline[linecolor=red]{]-]}(#1,0)(#2,0)}
+\def\intervalleFpI(#1,#2){\psline[linecolor=red]{[-}(#1,0)(#2,0)}
+\def\intervalleOpI(#1,#2){\psline[linecolor=red]{]-}(#1,0)(#2,0)}
+\def\intervalleFmI(#1,#2){\psline[linecolor=red]{-]}(#1,0)(#2,0)}
+\def\intervalleOmI(#1,#2){\psline[linecolor=red]{-[}(#1,0)(#2,0)}
+
+\begin{document}
+
+\title{Évaluation 9 -- Sujet A}
+\author{}
+\date{}
+
+\maketitle{}
+
+\pagestyle{empty}
+\thispagestyle{empty}
+
+% QCM sur les multiples/diviseurs et les puissances
+\exo[3 points] Cet exercice est un QCM (questionnaire à choix multiples). Pour chacune des questions posées, une seule réponse est exacte. Entourer, sur l'énoncé, la lettre correspondant à la réponse exacte. Aucune justification n'est demandée. Une réponse exacte rapporte 1 point ; une réponse fausse, une réponse multiple ou l'absence de réponse ne rapporte ni n'enlève aucun point.
+
+\begin{enumerate}
+  \item Le nombre $30$ :
+    \vspace{-3mm}
+    \begin{multicols}{2}
+      \begin{enumerate}
+	\item est un diviseur de $15$ ;
+	\item est un multiple de $15$ ;
+	\item n'est ni un diviseur, ni un multiple de $15$ ;
+	\item est l'unique multiple de $15$.
+      \end{enumerate} 
+    \end{multicols}
+  \item Le nombre $50$ :
+    \vspace{-3mm}
+    \begin{multicols}{2}
+      \begin{enumerate}
+	\item est un diviseur de $200$ ;
+	\item est un multiple de $200$ ;
+	\item n'est ni un diviseur, ni un multiple de $200$ ;
+	\item est l'unique diviseur de $200$.
+      \end{enumerate} 
+    \end{multicols}
+  \item Parmi les nombres suivants, lequel est un nombre premier ?
+    \vspace{-3mm}
+    \begin{multicols}{4}
+      \begin{enumerate}
+	\item $312$
+	\item $\np{123456}$
+	\item $\np{14325}$
+	\item $\np{2791}$
+      \end{enumerate} 
+    \end{multicols}
+\end{enumerate}
+
+\bigskip
+
+% Question préliminaire
+\exo[2 points] Donner, sans justifier, la liste de tous les diviseurs de $60$.\rep{3}
+
+\bigskip
+
+% Exercice sur les multiples/diviseurs : rechercher le PGCD
+\exo[3 points] Pour le $1$\ier{} mai, Marama dispose de $90$ brins de muguet et $60$ roses. Il souhaite utiliser toutes ses fleurs pour constituer le plus grand nombre de bouquets \textbf{identiques}.
+\begin{enumerate}
+  \item Déterminer le nombre maximal de bouquets que Marama pourra constituer.\rep{8}
+  \item Quelle sera la composition de chaque bouquet ?\rep{4}
+\end{enumerate}
+
+\bigskip
+
+% Exercice théorique sur les multiples diviseurs
+\exo[3 points] Démontrer que la somme de deux nombres pairs est paire.\rep{12}
+
+\bigskip
+
+% Vrai/Faux sur les multiples et diviseurs : contre-exemple
+\exo[2 points] Dire si l'affirmation suivante est vraie ou fausse, en justifiant votre réponse :
+
+\begin{center}
+  \og{}Le produit de deux nombres impairs est un nombre pair.\fg{}
+\end{center}
+
+\dotfill\rep{7}
+
+\bigskip
+
+% Exercice sur les puissances (tableau multiplicativement magique)
+\exo[3 points] On considère le tableau suivant :
+
+\begin{center}
+  \renewcommand{\arraystretch}{1.2}
+  \begin{tabular}{|*{3}{>{\centering}m{1.5cm}|}}
+    \hline
+    $3\times 7$ & $3^4\times7^2$ & $3$\tabularnewline
+    \hline
+    $3^2$ & $3^2\times 7$ & $(3\times 7)^2$\tabularnewline
+    \hline
+    $7^2\times3^3$ & $1$ & $3^3\times 7$\tabularnewline
+    \hline
+  \end{tabular}
+\end{center}
+
+Vérifier que le produit des nombres de la deuxième colonne est égal au produit des nombres de la troisième colonne.\rep{5}
+
+\bigskip
+
+% Exercice de statistiques : comparaison de deux séries
+\exo[4 points] Un entraîneur de football a relevé les buts marqués par Tamahana et Kamalani lors des $20$ derniers matchs :
+
+\begin{center}
+  \begin{tabular}{@{}cccccc@{}}
+    \toprule
+    Nombre de buts & $0$ & $1$ & $2$ & $3$ & $4$ \\
+    \midrule
+    Nombre de matchs (Kamalani) & $4$ & $3$ & $7$ & $3$ & $3$\\
+    % Total (buts) : 38
+    Nombre de matchs (Tamahana) & $2$ & $5$ & $4$ & $3$ & $4$\\
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+\begin{enumerate}
+  \item Déterminer le nombre moyen de buts marqués par match pour chaque joueur.\rep{8}
+  \item Que constate-t-on ?\rep{4}
+  \item Quel est le joueur le plus régulier ?\rep{8}
+\end{enumerate}
+\end{document}

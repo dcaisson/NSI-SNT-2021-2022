@@ -1,0 +1,121 @@
+\documentclass[a4paper,dvipsnames]{article}
+
+\input ../header
+\newcommand{\checkedbox}{\makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}$\checkmark$}}
+\newcommand{\checkbox}{\makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}}\hspace{3mm}}
+
+% Intervalle
+\def\intervalleFF(#1,#2){\psline[linecolor=red]{[-]}(#1,0)(#2,0)}
+\def\intervalleOO(#1,#2){\psline[linecolor=red]{]-[}(#1,0)(#2,0)}
+\def\intervalleFO(#1,#2){\psline[linecolor=red]{[-[}(#1,0)(#2,0)}
+\def\intervalleOF(#1,#2){\psline[linecolor=red]{]-]}(#1,0)(#2,0)}
+\def\intervalleFpI(#1,#2){\psline[linecolor=red]{[-}(#1,0)(#2,0)}
+\def\intervalleOpI(#1,#2){\psline[linecolor=red]{]-}(#1,0)(#2,0)}
+\def\intervalleFmI(#1,#2){\psline[linecolor=red]{-]}(#1,0)(#2,0)}
+\def\intervalleOmI(#1,#2){\psline[linecolor=red]{-[}(#1,0)(#2,0)}
+
+\begin{document}
+
+\title{Évaluation 13 -- Sujet A}
+\author{}
+\date{}
+
+\maketitle{}
+
+\pagestyle{empty}
+\thispagestyle{empty}
+
+
+% Résolution graphique d'équations
+\exo[3 points] Cet exercice est un QCM (questionnaire à choix multiples). Pour chacune des questions posées, une seule réponse est exacte. Entourer, sur l'énoncé, la lettre correspondant à la réponse exacte. Aucune justification n'est demandée. Une réponse exacte rapporte 1 point ; une réponse fausse, une réponse multiple ou l'absence de réponse ne rapporte ni n'enlève aucun point.
+
+\bigskip
+
+On considère la figure suivante, dans laquelle $EFGH$ est un rectangle :
+
+\begin{center}
+  \psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+  \begin{pspicture*}(2.,1.)(11.,6.)
+    \psline[linewidth=1.pt](5.,5.)(5.,2.)
+    \psline[linewidth=1.pt](5.,2.)(10.,2.)
+    \psline[linewidth=1.pt](10.,2.)(10.,5.)
+    \psline[linewidth=1.pt](10.,5.)(5.,5.)
+    \psline[linewidth=1.pt](3.,2.)(5.,5.)
+    \psline[linewidth=1.pt](3.,2.)(5.,2.)
+    \uput[d](5,2){$E$}
+    \uput[d](10,2){$F$}
+    \uput[u](10,5){$G$}
+    \uput[u](5,5){$H$}
+    \uput[d](3,2){$D$}
+  \end{pspicture*}
+\end{center}
+
+\begin{enumerate}
+  \item Le projeté orthogonal de $G$ sur $(DE)$ est :
+    \vspace{-2mm}
+    \begin{multicols}{3}
+      \begin{enumerate}
+	\item $D$
+	\item $F$
+	\item $H$
+      \end{enumerate}
+    \end{multicols}
+    \vspace{-2mm}
+  \item $H$ est le projeté orthogonal de : 
+    \vspace{-2mm}
+    \begin{multicols}{3}
+      \begin{enumerate}
+	\item $G$ sur $(EH)$
+	\item $F$ sur $(DH)$
+	\item $E$ sur $(DH)$
+      \end{enumerate}
+    \end{multicols}
+    \vspace{-2mm}
+  \item $F$ est le projeté orthogonal de :
+    \vspace{-2mm}
+    \begin{multicols}{3}
+      \begin{enumerate}
+	\item $D$ sur $(FG)$
+	\item $H$ sur $(FG)$
+	\item $E$ sur $(GH)$
+      \end{enumerate}
+    \end{multicols}
+\end{enumerate}
+
+\bigskip
+
+\exo[1 point] Dans cet exercice, la figure n'est pas exigée (vous pouvez néanmoins la faire au brouillon). Deux droites $(DE)$ et $(FM)$ sont perpendiculaires et se coupent en un point $H$. Écrire deux phrases comportant l'expression \og{}projeté orthogonal\fg{}.\rep{4}
+
+\bigskip
+
+\exo[2 points] \vspace{-2mm}
+\begin{enumerate}
+  \item Tracer deux droites $\mathcal{D}$ et $\mathcal{D}'$ perpendiculaires en un point $O$.\rep{12}
+  \item Placer un point $M$ situé à $4$ cm de la droite $\mathcal{D}$ et à $6$ cm de la droite $\mathcal{D}'$.
+  \item Calculer la distance $OM$.\rep{10}
+\end{enumerate}
+
+\bigskip
+
+\exo[4 points] On considère la figure suivante, dans laquelle $AH=5$, $BH=12$ et $CH=13$. De plus, $BC=15$.
+
+\begin{center}
+  \psset{xunit=0.5cm,yunit=0.5cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+  \begin{pspicture*}(0.,0.)(16.,14.)
+    \psline[linewidth=1.pt](1.,1.)(15.,1.)
+    \psline[linewidth=1.pt](6.,1.)(6.,13.)
+    \psline[linewidth=1.pt](1.,1.)(6.,13.)
+    \psline[linewidth=1.pt](6.,13.)(15.,1.)
+    \uput[d](1,1){$A$}
+    \uput[d](6,1){$H$}
+    \uput[d](15,1){$C$}
+    \uput[u](6,13){$B$}
+  \end{pspicture*}
+\end{center}
+
+\begin{enumerate}
+  \item Justifier que $H$ est le projeté orthogonal de $B$ sur la droite $(AC)$.\rep{8}
+  \item Calculer la distance de $C$ à la droite $(BH)$.\rep{8}
+\end{enumerate}
+
+\end{document}

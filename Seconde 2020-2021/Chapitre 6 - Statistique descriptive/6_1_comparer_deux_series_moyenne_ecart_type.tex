@@ -1,0 +1,59 @@
+\documentclass[a4paper]{article}
+
+\input ../header
+\usepackage[np]{numprint}
+\usepackage{xcolor}
+\usepackage{booktabs}
+
+\setlength{\multicolsep}{2pt}
+
+\begin{document}
+
+\title{Comparer deux séries}
+
+\pagestyle{empty}
+
+\date{}
+\author{}
+
+\maketitle{}
+
+\exo Deux amis, Marion et Matthias, sont inscrits à la même auto-école et préparent l'examen du code. Pour s'entraîner, ils passent plusieurs tests. Voici leurs résultats durant une semaine :
+
+\begin{center}
+  \begin{tabular}{@{}ccccccc@{}}
+    \toprule
+    Nombre de fautes réalisées par Marion & 8 & 9 & 6 & 8 & 6 & 5\\
+    Nombre de fautes réalisées par Matthias & 10 & 8 & 9 & 6 & 4 & 5\\
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+\begin{enumerate}
+  \item Quel est l'effectif total pour les deux séries ?
+  \item Calculer la moyenne et l'écart type des résultats de chacun des deux amis.
+  \item Qui a les résultats les plus réguliers ?
+\end{enumerate}
+
+\bigskip
+
+\exo Deux tireurs à l'arc, Mauna et Yann ont chacun réalisé $25$ tirs sur une cible. Ils ont obtenu les résultats suivants :
+
+\begin{center}
+  \begin{tabular}{@{}cccccc@{}}
+    \toprule
+    Nombre de points & $0$ & $10$ & $30$ & $50$ & $100$\\
+    \midrule
+    Mauna & $1$ & $6$ & $2$ & $11$ & $5$\\
+    Yann & $2$ & $8$ & $3$ & $4$ & $8$\\
+    \bottomrule
+\end{tabular}
+\end{center}
+
+\begin{enumerate}
+  \item Calculer l'étendue et la moyenne de chaque série.
+  \item Ces indicateurs permettent-ils de départager Mauna et Yann ?
+  \item Qui est le tireur le plus régulier ?
+\end{enumerate}
+
+\end{document}

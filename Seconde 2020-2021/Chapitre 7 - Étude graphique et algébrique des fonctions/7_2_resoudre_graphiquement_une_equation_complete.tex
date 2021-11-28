@@ -1,0 +1,125 @@
+\documentclass[handout]{beamer}
+
+% Lignes réponses
+\usepackage{pgffor} % pour la commande \foreach permettant de réaliser une boucle
+\newcommand{\pointilles}{{\\\rule{0pt}{1pt}\dotfill\rule{0pt}{1pt}}}
+\newcommand{\rep}[1]{\foreach \n in {1,...,#1} {\pointilles}}
+
+% Commandes pour cacher/révéler du texte facilement à l'aide d'un booléen
+\usepackage{xstring}
+\usepackage{ifthen}
+
+\newboolean{reveal}
+\setboolean{reveal}{true}
+
+\newlength{\stextwidth} % une nouvelle longueur
+
+\newcommand\x{6}
+
+\newcommand{\guess}[1]{\ifthenelse{\boolean{reveal}}{{\color{red}#1}}{\settowidth{\stextwidth}{#1}\makebox[\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmath}[1]{\ifthenelse{\boolean{reveal}}{\textcolor{red}{#1}}{\settowidth{\stextwidth}{$#1$}\makebox[1.3\stextwidth]{\dotfill}}}
+
+\newcommand{\guessmathbin}[1]{\ifthenelse{\boolean{reveal}}{\mathbin{\color{red}#1}}{\settowidth{\stextwidth}{$#1$}\makebox[2\stextwidth]{\dotfill}}}
+
+% ========================================================================%
+
+\usetheme{focus}
+
+\usepackage{pgfpages}
+\pgfpagesuselayout{4 on 1}[a4paper,landscape]
+
+\usepackage[french]{babel}
+
+\usepackage{xcolor}
+
+\usepackage{pstricks,pst-plot,pst-text,pst-tree,pst-eps,pst-fill,pst-node,pst-math}
+\usepackage{pstricks-add,pst-xkey}
+
+\input ../tabvar
+
+\usepackage{multicol}
+\usepackage[np]{numprint}
+
+\usepackage{booktabs}
+
+\newcommand{\vect}[1]{\overrightarrow{#1}}
+\newcommand{\Oij}{\left(O;\vect{i},\vect{j}\right)}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+
+\begin{document}
+
+\title{}
+
+\date{}
+\begin{frame}
+  \frametitle{Résoudre graphiquement une équation}
+  \textbf{Définition. --} Soient $f$ une fonction définie sur un ensemble $\mathcal{D}$ et $k$ un réel. Résoudre graphiquement l'équation $f(x)=k$ consiste à déterminer les réels $x$ (appartenant à $\mathcal{D}$) qui ont pour \guess{image} $k$ par $f$.\\
+  Il s'agit aussi de déterminer les \guess{antécédents éventuels} de \guess{$k$} par \guess{$f$}.
+
+  \bigskip
+
+  \textit{Exemple. -- On a représenté ci-contre une fonction $h$ définie sur $[-3;3]$.
+  Pour résoudre l'équation $h(x)=3$, on a tracé la droite rouge.} 
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+    \newrgbcolor{ffvvqq}{1. 0.3333333333333333 0.}
+    \newrgbcolor{ccqqqq}{0.8 0. 0.}
+    \psset{xunit=1.0cm,yunit=0.7cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+    \begin{pspicture*}(-4.,-2.)(4.,6.)
+      \multips(0,-2)(0,1.0){9}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.,0)(4.,0)}
+      \multips(-4,0)(1.0,0){9}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-2.)(0,6.)}
+      \psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0]{->}(0,0)(-4.,-2.)(4.,6.)
+      \psplot[linewidth=1.pt,linecolor=ffvvqq,plotpoints=200]{-4.0}{4.0}{-0.5*x^(3.0)+3.0*x+2.0}
+      \psplot[linewidth=1.pt,linecolor=ccqqqq]{-4.}{4.}{(--3.-0.*x)/1.}
+      \psline[linewidth=1.pt,linestyle=dotted](-2.6016791318831545,3.)(-2.6016791318831545,0.)
+      \psline[linewidth=1.pt,linestyle=dotted](0.3398768866231824,3.)(0.3398768866231824,0.)
+      \psline[linewidth=1.pt,linestyle=dotted](2.2618022452599713,3.)(2.2618022452599713,0.)
+      \begin{scriptsize}
+	\psdots[dotsize=2pt 0,dotstyle=*,linecolor=darkgray](-2.6016791318831545,3.)
+	\psdots[dotsize=2pt 0,dotstyle=*,linecolor=darkgray](0.3398768866231824,3.)
+	\psdots[dotsize=2pt 0,dotstyle=*,linecolor=darkgray](2.2618022452599713,3.)
+      \end{scriptsize}
+    \end{pspicture*}
+  \end{center}
+  \textit{On constate alors que l'équation $h(x)=3$ a \guess{trois} solutions dont des valeurs approchées sont \guess{$-2,6$}, \guess{$0,3$} et \guess{$2,3$}.}
+\end{frame}
+
+\begin{frame}
+  \textit{Cas particulier des équations du type $f(x)=g(x)$ -- Exemple\\
+    Ci-dessous sont représentées deux fonctions $f$ et $g$, toutes deux définies sur l'intervalle $[-3;3]$.
+    \begin{center}
+      \newrgbcolor{ccqqqq}{0.8 0. 0.}
+      \psset{xunit=1.0cm,yunit=0.3cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.6pt,arrowsize=3pt 2,arrowinset=0.25}
+      \begin{pspicture*}(-4.,-6.)(5.,10.)
+	\multips(0,-6)(0,2.0){9}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.,0)(5.,0)}
+	\multips(-4,0)(1.0,0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-6.)(0,10.)}
+	\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=2.,ticksize=-2pt 0]{->}(0,0)(-4.,-6.)(5.,10.)
+	\psplot[linewidth=1.pt,linecolor=ccqqqq,plotpoints=200]{-3}{4}{x^(2.0)-3.0*x+2.0}
+	\psplot[linewidth=1.pt,linecolor=blue,plotpoints=200]{-3}{4}{-x^(2.0)+x+8.0}
+	\begin{scriptsize}
+	  \psdots[dotsize=2pt 0,dotstyle=*,linecolor=darkgray](-1,6)
+	  \psdots[dotsize=2pt 0,dotstyle=*,linecolor=darkgray](3,2)
+	\end{scriptsize}
+	\psline[linewidth=1.pt,linestyle=dotted](-1,6)(-1,0)
+	\psline[linewidth=1.pt,linestyle=dotted](3,2)(3,0)
+	\uput[u](4,6){\color{ccqqqq}$\mathcal{C}_f$}
+	\uput[r](4,-4){\color{blue}$\mathcal{C}_g$}
+      \end{pspicture*} 
+    \end{center}
+  }
+  L'équation $f(x)=g(x)$ a \guess{deux} solutions dont des valeurs approchées sont \guess{$-1$} et \guess{$3$}.
+\end{frame}
+
+\begin{frame}
+  \textit{Remarque. -- Lorsqu'on résout graphiquement une équation, on obtient une valeur \guess{approchée} de chaque solution éventuelle.}
+\end{frame}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

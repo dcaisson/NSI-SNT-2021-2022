@@ -1,0 +1,104 @@
+\documentclass[a4paper,dvipsnames]{article}
+
+\input ../header
+\usepackage{gensymb}
+\usepackage[np]{numprint}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tikz}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
+
+\setlength{\multicolsep}{2pt}
+
+\begin{document}
+
+\title{Activités -- Produit d'un vecteur par un nombre réel}
+
+\pagestyle{empty}
+
+\date{}
+\author{}
+
+\maketitle{}
+
+% Indice page 121
+\exo Un vecteur $\vect{u}$ est représenté ci-dessous. Le vecteur opposé de $\vect{u}$, noté $-\vect{u}$, est également représenté.
+\begin{center}
+  \NormalCoor
+  \psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+  \begin{pspicture*}(0.,0.)(16.,9.)
+    \multips(0,0)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(16.,0)}
+    \multips(0,0)(1.0,0){17}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,9.)}
+    \psline[linewidth=1.pt,linecolor=red]{->}(2.,5.)(4.,6.)
+    \uput[u](3,5.5){$\color{red}\vect{u}$}
+    %\psline[linewidth=1.pt]{->}(5.,5.)(9.,7.)
+    %\psline[linewidth=1.pt]{->}(9.,5.)(15.,8.)
+    \psline[linecolor=blue,linewidth=1.pt]{->}(15.,4.)(13.,3.)
+    \uput[u](14,3.5){$\color{blue}-\vect{u}$}
+    %\psline[linewidth=1.pt]{->}(12.,4.)(8.,2.)
+    %\psline[linewidth=1.pt]{->}(7.,4.)(1.,1.)
+  \end{pspicture*}
+\end{center}
+\begin{enumerate}
+  \item Représenter, sur la figure précédente, le vecteur $\vect{w}=\vect{u}+\vect{u}$. Ce vecteur $\vect{w}$ est noté $2\vect{u}$ :
+    \[\vect{w}=2\vect{u}.\]
+    Les vecteurs $\vect{w}$ et $\vect{u}$ ont la même direction et le même sens. La longueur de $\vect{w}$ est égale à $2$ fois la longueur de $\vect{u}$.
+  \item Représenter le vecteur $\vect{a}=\vect{u}+\vect{u}+\vect{u}$. Ce vecteur $\vect{a}$ est noté $\hdots\hdots\vect{u}$ :
+    \[\vect{a}=\hdots\hdots\vect{u}.\]
+    Les vecteurs $\vect{a}$ et $\vect{u}$ ont \dotfill\\
+    La longueur du vecteur $\vect{a}$ est égale à $\hdots\hdots$ fois celle du vecteur $\vect{u}$.
+  \item Représenter le vecteur $\vect{b}=(-\vect{u})+(-\vect{u})$. Ce vecteur $\vect{b}$ est noté $-2\vect{u}$ :
+    \[\vect{b}=-2\vect{u}.\]
+    Les vecteurs $\vect{b}$ et $\vect{u}$ ont la même direction mais des sens contraires. La longueur de $\vect{b}$ est égale à $2$ fois la longueur de $\vect{u}$.
+  \item Représenter le vecteur $\vect{c}=(-\vect{u})+(-\vect{u})+(-\vect{u})$. Ce vecteur $\vect{c}$ est noté $\hdots\hdots\vect{u}$ :
+    \[\vect{c}=\hdots\hdots\vect{u}.\]
+    Les vecteurs $\vect{c}$ et $\vect{u}$ ont \dotfill\\
+    La longueur de $\vect{c}$ est égale à \dotfill
+\end{enumerate}
+
+\pagebreak
+
+% Suite de Indice page 121
+\exo On a représenté ci-dessous plusieurs vecteurs. 
+
+\begin{center}
+  \NormalCoor
+  \psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=1.pt,arrowsize=3pt 2,arrowinset=0.25}
+  \begin{pspicture*}(0.,0.)(13.,6.)
+    \multips(0,0)(0,1.0){7}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0.,0)(13.,0)}
+    \multips(0,0)(1.0,0){14}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,0.)(0,6.)}
+    \psline[linewidth=1.pt]{->}(5.,5.)(9.,5.)
+    \uput[u](7,5){$\vect{u}$}
+    \psline[linewidth=1.pt,linecolor=red]{->}(5.,4.)(6.,4.)
+    \uput[u](5.5,4){$\color{red}\vect{u}_1$}
+    \psline[linewidth=1.pt,linecolor=blue]{->}(8.,3.)(6.,3.)
+    \uput[u](7,3){$\color{blue}\vect{u}_2$}
+    \psline[linewidth=1.pt,linecolor=ForestGreen]{->}(6.,2.)(12.,2.)
+    \uput[u](9,2){$\color{ForestGreen}\vect{u}_3$}
+    \psline[linewidth=1.pt,linecolor=Goldenrod]{->}(10.,1.)(2.,1.)
+    \uput[u](6,1){$\color{Goldenrod}\vect{u}_4$}
+  \end{pspicture*}
+\end{center}
+
+Compléter le tableau ci-dessous :
+
+\medskip
+
+\begin{center}
+  \begin{tabular}{@{}ccccc@{}}
+    \toprule
+	  & la même direction & le même sens & des sens contraires & égalité \\
+	  \cmidrule(lr){2-4} \cmidrule(lr){5-5}
+	  \addlinespace[5pt]
+    $\vect{u}$ et $\color{red}\vect{u}_1$ ont: & \checkmark & \checkmark && ${\color{red}\vect{u}_1}=\hdots\hdots\vect{u}$\\
+    \addlinespace[5pt]
+    $\vect{u}$ et $\color{blue}\vect{u}_2$ ont: &&&& ${\color{blue}\vect{u}_2}=\hdots\hdots\vect{u}$\\
+    \addlinespace[5pt]
+    $\vect{u}$ et $\color{ForestGreen}\vect{u}_3$ ont: &&&& ${\color{ForestGreen}\vect{u}_3}=\hdots\hdots\vect{u}$\\
+    \addlinespace[5pt]
+    $\vect{u}$ et $\color{Goldenrod}\vect{u}_4$ ont: &&&& ${\color{Goldenrod}\vect{u}_4}=\hdots\hdots\vect{u}$\\
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+\end{document}
