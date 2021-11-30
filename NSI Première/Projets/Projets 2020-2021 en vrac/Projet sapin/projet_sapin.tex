@@ -79,11 +79,11 @@ Rafraîchir la page ouverte dans Firefox : à quoi cette ligne a-t-elle servi ?
 	\url{https://www.w3schools.com/css/default.asp},\\
 	\url{https://www.w3schools.com/js/default.asp},\\
 	\url{https://www.w3schools.com/python/default.asp};
-      \end{center} 
+      \end{center}
     \item le lien Raspberry Pi 3 modèle B pointera vers :
       \begin{center}
 	\url{https://www.raspberrypi.org/products/raspberry-pi-3-model-b/}.
-      \end{center} 
+      \end{center}
   \end{itemize}
 \end{enumerate}
 
@@ -123,7 +123,7 @@ h1 {
 <strong>interfaces</strong>
     \end{minted}
 
-    par : 
+    par :
 
     \begin{minted}[bgcolor=bg]{html}
 <strong id="interfaces">interfaces</strong>
@@ -183,7 +183,7 @@ ul {
     \bigskip
 
     \textbf{Remarque importante. -- Dans un fichier HTML, un identifiant est unique alors que plusieurs éléments peuvent avoir la même classe.}
-    
+
     \bigskip
 
   \item Modifier l'apparence des boutons grâce aux lignes :
@@ -216,13 +216,23 @@ input {
 \pagebreak
 
 \subsection{Le langage JavaScript}
-JavaScript est l'un des langages les plus importants du web. Il est principalement utilisé pour gérer l'interactivité dans un navigateur web (côté client) mais peut également être utilisé côté serveur via la plateforme NodeJS.
+JavaScript est l'un des langages les plus importants du web. Il est
+principalement utilisé pour gérer l'interactivité dans un navigateur web (côté
+client) mais peut également être utilisé côté serveur via la plateforme NodeJS.
+Il est aussi possible d'utiliser un autre langage comme python ou OCaml côté
+client et serveur et le code sera traduit en JavaScript avant d'être envoyé au
+client.
+
+Le code JavaScript sur le client est par exemple chargé d'adapter les pages web
+à la taille de l'écran ou de faire certaines vérifications des formulaires avant
+de les envoyer au serveur. L'idée est de minimiser les communications pour
+améliorer l'expérience utilisateur avec des pages plus réactives.
 
 \bigskip
 
 \activite
 \begin{enumerate}
-  \item Dans le dossier \verb|Projet_sapin| créer le dossier \verb|js|, puis créer à l'intérieur de ce dossier le fichier \verb|script.js|. L'arborescence du projet doit ressembler à ceci : 
+  \item Dans le dossier \verb|Projet_sapin| créer le dossier \verb|js|, puis créer à l'intérieur de ce dossier le fichier \verb|script.js|. L'arborescence du projet doit ressembler à ceci :
 
     \begin{center}
       \fbox{
@@ -246,7 +256,7 @@ JavaScript est l'un des langages les plus importants du web. Il est principaleme
     Mettre à jour, dans \verb|index.html|, les liens vers le fichier \verb|style.css| et les images et icônes (\verb|boule.ico|, \verb|christmas_tree_favicon.ico|, \verb|raspberry_pi.jpg| et \verb|relais.jpg|).
   \item Ouvrir le fichier \verb|index.html| dans Firefox et le fichier \verb|script.js| dans Atom.
     \begin{enumerate}
-      \item Ajouter le code suivant dans le fichier \verb|script.js| : 
+      \item Ajouter le code suivant dans le fichier \verb|script.js| :
 
     \begin{minted}[bgcolor=bg]{javascript}
 function Bouton_ascendant() {
@@ -254,7 +264,7 @@ function Bouton_ascendant() {
   }
 	\end{minted}
 
-      \item Afin d'appeler la fonction \mintinline{javascript}{Bouton_ascendant()} dans le fichier \verb|index.html|, ajouter dans le fichier \verb|index.html|, avant la balise \mintinline{html}{</body>} la ligne suivante : 
+      \item Afin d'appeler la fonction \mintinline{javascript}{Bouton_ascendant()} dans le fichier \verb|index.html|, ajouter dans le fichier \verb|index.html|, avant la balise \mintinline{html}{</body>} la ligne suivante :
 
 	\begin{minted}[bgcolor=bg]{html}
 <script type="text/javascript" src="./js/script.js"></script>
@@ -264,20 +274,20 @@ function Bouton_ascendant() {
 
 	\medskip
 
-	Modifier la ligne : 
+	Modifier la ligne :
 
 	\begin{minted}[bgcolor=bg]{html}
 <input type="button" value="Ascendant" />
 	\end{minted}
 
-	en : 
+	en :
 
 	\begin{minted}[bgcolor=bg]{html}
 <input type="button" value="Ascendant" onclick="Bouton_ascendant();" />
 	\end{minted}
 
-      \item Rafraîchir la page \verb|index.html|, puis cliquer sur le bouton \og{}Ascendant\fg{}. Que se passe-t-il ? 
-      \item Modifier le fichier \verb|script.js| en remplaçant l'instruction : 
+      \item Rafraîchir la page \verb|index.html|, puis cliquer sur le bouton \og{}Ascendant\fg{}. Que se passe-t-il ?
+      \item Modifier le fichier \verb|script.js| en remplaçant l'instruction :
 
 	\begin{minted}[bgcolor=bg]{javascript}
 alert("Bouton Ascendant cliqué ! ");
@@ -293,14 +303,14 @@ console.log("Bouton Ascendant cliqué ! ")
       \item Dans Firefox, ouvrir la \verb|Console Web| : \verb|Outils > Développement Web > Console Web|. Qu'observe-t-on ?
     \end{enumerate}
 
-    \pagebreak 
+    \pagebreak
 
-  \item Afin de pouvoir interagir avec le serveur, nous allons envoyer une requête \verb|GET| au serveur pour qu'il exécute la commande associée au bouton cliqué. 
+  \item Afin de pouvoir interagir avec le serveur, nous allons envoyer une requête \verb|GET| au serveur pour qu'il exécute la commande associée au bouton cliqué.
     \begin{enumerate}
-      \item Ajouter à la fonction \mintinline{javascript}{Bouton_ascendant()} du fichier \verb|script.js| les lignes suivantes : 
+      \item Ajouter à la fonction \mintinline{javascript}{Bouton_ascendant()} du fichier \verb|script.js| les lignes suivantes :
 
 	\begin{minted}[bgcolor=bg]{javascript}
-var request = new XMLHttpRequest(); //Initialisation 
+var request = new XMLHttpRequest(); //Initialisation
 request.open("GET", "/Ascendant"); //Création de la requête GET
 request.send(); //Envoi de la requête GET au serveur
 	\end{minted}
@@ -308,9 +318,9 @@ request.send(); //Envoi de la requête GET au serveur
 	\textit{La requête GET ne va pas aboutir pour le moment puisque le serveur web n'a pas été mis en place.}
 
 	Quelle erreur obtient-on dans la \verb|Console Web| lorsqu'on clique sur le bouton \og{}Ascendant\fg{} ?
-      \item Écrire une fonction pour chacun des boutons de la page web : 
+      \item Écrire une fonction pour chacun des boutons de la page web :
 
-	\begin{center}\mintinline{javascript}{Bouton_descendant()}, \mintinline{javascript}{Bouton_alterne()} et \mintinline{javascript}{Bouton_aleatoire()}. 
+	\begin{center}\mintinline{javascript}{Bouton_descendant()}, \mintinline{javascript}{Bouton_alterne()} et \mintinline{javascript}{Bouton_aleatoire()}.
 	\end{center}
 
 	Ces fonctions, enverront respectivement les requêtes GET :
@@ -339,11 +349,11 @@ Effectuer les modifications nécessaires dans les fichiers \verb|script.js| et \
 
 \begin{center}
   \includegraphics[width=14.5cm]{images/tex/client-serveur.eps}
-\end{center} 
+\end{center}
 
 \activite
 \begin{enumerate}
-  \item Dans le dossier \verb|Projet_sapin| créer les dossiers \verb|templates| et \verb|static| puis créer le fichier \verb|app.py| afin de reproduire l'arborescence ci-dessous : 
+  \item Dans le dossier \verb|Projet_sapin| créer les dossiers \verb|templates| et \verb|static| puis créer le fichier \verb|app.py| afin de reproduire l'arborescence ci-dessous :
 
     \begin{center}
       \fbox{
@@ -367,7 +377,7 @@ Effectuer les modifications nécessaires dans les fichiers \verb|script.js| et \
 	  }
       \end{minipage}}
     \end{center}
-  \item Ouvrir le fichier \verb|app.py| dans Atom, puis y ajouter les lignes suivantes : 
+  \item Ouvrir le fichier \verb|app.py| dans Atom, puis y ajouter les lignes suivantes :
 
 	\begin{minted}[bgcolor=bg]{python}
 #!/usr/bin/python
@@ -394,19 +404,19 @@ if __name__ == "__main__":
 	\end{minted}
 
     {\itshape La bibliothèque externe \verb|Flask| permet de créer un serveur web en langage Python. Pour en savoir plus : \url{https://flask-doc.readthedocs.io/}.}
-  \item Ouvrir les fichiers \verb|index.html| et \verb|style.css| dans Atom, puis modifier les chemins des ressources. Par exemple :  
+  \item Ouvrir les fichiers \verb|index.html| et \verb|style.css| dans Atom, puis modifier les chemins des ressources. Par exemple :
 
 	\begin{minted}[bgcolor=bg]{html}
 <link rel="stylesheet" href="./css/style.css" type="text/css" />
 	\end{minted}
 
-    devient : 
+    devient :
 
 	\begin{minted}[bgcolor=bg]{html}
 <link rel="stylesheet" href="./static/css/style.css" type="text/css" />
     \end{minted}
   \item Activer l'environnement virtuel en écrivant la commande \verb|env_python| dans le terminal, puis lancer le script \verb|app.py| avec la commande \verb|python app.py|.
-  \item Ouvrir un navigateur web et écrire l'adresse \url{http://localhost:5555}. 
+  \item Ouvrir un navigateur web et écrire l'adresse \url{http://localhost:5555}.
     \begin{enumerate}
       \item Dans Firefox, ouvrir la \verb|Console Web| puis cliquer sur le bouton \og{}Ascendant\fg. Que constate-t-on ?
       \item Dans le terminal, d'où le fichier \verb|app.py| a été lancé, que constate-t-on ?
@@ -414,8 +424,8 @@ if __name__ == "__main__":
   \item
 
     \begin{enumerate}
-      \item Reprendre la question 5. avec l'adresse \url{http://127.0.0.1:5555}.  Quelle est la différence entre les deux adresses utilisées ? 
-      \item À quoi sert le nombre \verb|5555| ajouté à la fin de l'adresse ? 
+      \item Reprendre la question 5. avec l'adresse \url{http://127.0.0.1:5555}.  Quelle est la différence entre les deux adresses utilisées ?
+      \item À quoi sert le nombre \verb|5555| ajouté à la fin de l'adresse ?
     \end{enumerate}
   \item Ajouter les routes correspondant aux différentes requêtes \verb|GET| construites dans l'activité 3 puis vérifier que les actions sont bien prises en compte côté client et côté serveur.
   \item {\itshape Les 4 routes construites, correspondant aux actions à exécuter sur les guirlandes lumineuses, sont très similaires. Il est possible de faire passer en variable la commande de la requête en écrivant \mintinline{python}{@app.route('/<command>', methods=['GET'])} et d'insérer la variable \mintinline{python}{command} comme paramètre dans la fonction associée à la route.\\ Effectuer les modifications nécessaires dans le fichier \verb|app.py| pour \og factoriser \fg{} votre code.}
