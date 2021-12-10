@@ -1,0 +1,228 @@
+\documentclass[a4paper,dvipsnames]{article}
+
+\input ../header
+
+\newcommand{\un}{\left(u_n\right)_{n\in\mathbb{N}}}
+\newcommand{\uns}{\left(u_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\vn}{\left(v_n\right)_{n\in\mathbb{N}}}
+\newcommand{\vns}{\left(v_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\wn}{\left(w_n\right)_{n\in\mathbb{N}}}
+\newcommand{\wns}{\left(w_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\tn}{\left(t_n\right)_{n\in\mathbb{N}}}
+\newcommand{\tns}{\left(t_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\qn}{\left(q_n\right)_{n\in\mathbb{N}}}
+\newcommand{\qns}{\left(q_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\N}{\mathbb{N}}
+
+\usepackage{dirtree}
+
+\title{Devoir 4 -- Les listes}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\renewcommand{\contentsname}{}
+
+\pagestyle{fancy}
+
+\begin{tcolorbox}[colframe=blue!75, colback=blue!45, valign=center, height=1.5cm, top=5mm]
+  \maketitle
+\end{tcolorbox}
+
+%\tableofcontents
+
+\vspace{1cm}
+
+\thispagestyle{fancy}
+
+\begin{exercice}{4 points}{}
+  Cet exercice est un QCM. Pour chaque question, une seule des réponses proposées est correcte. Une mauvaise réponse, l'absence de réponse ou choisir plusieurs réponses ne rapporte, ni n'enlève aucun point.
+  Écrire sur votre copie le numéro de la question ainsi que la réponse choisie.
+  
+  \begin{enumerate}
+    \item On considère le tableau \mintinline{python}{t} suivant :
+
+      \begin{minted}[linenos=false,frame=single,xleftmargin=1cm,xrightmargin=1cm]{python}
+t = [[1, 2, 3], [2, 3, 4], [3, 4, 5], [4, 5, 6]
+      \end{minted}
+
+      Quelle est la valeur de \mintinline{python}{t[1][2]} ?
+      \begin{multicols}{4}
+	\begin{enumerate}
+	  \item \mintinline{python}{1}                    
+	  \item \mintinline{python}{2}
+	  \item \mintinline{python}{3}
+	  \item \mintinline{python}{4}
+	\end{enumerate} 
+      \end{multicols}
+    \item On considère le tableau \mintinline{python}{tableau} suivant :
+
+      \begin{minted}[linenos=false,frame=single,xleftmargin=1cm,xrightmargin=1cm]{python}
+tableau = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+      \end{minted}
+
+      Laquelle des expressions suivantes vaut \mintinline{python}{7} ?
+      \begin{multicols}{4}
+       \begin{enumerate}
+	 \item \mintinline{python}{tableau[3, 1]}   
+	 \item \mintinline{python}{tableau[3][1]}
+	 \item \mintinline{python}{tableau[2, 0]}
+	 \item \mintinline{python}{tableau[2][0]}
+       \end{enumerate} 
+      \end{multicols}
+    \item Qu'affiche la suite d'instructions ci-dessous ?
+
+      \begin{minted}[linenos=false,frame=single,xleftmargin=1cm,xrightmargin=1cm]{python}
+mat = [[6, 7], [8, 9], [10, 11]
+for i in range(len(mat)):
+    print(mat[i])
+      \end{minted}
+
+      \begin{multicols}{2}
+        \begin{enumerate}
+	  \item \mintinline{python}{6 8 10}
+	  \item \mintinline{python}{7 9 11}
+	  \item \mintinline{python}{[6, 7] [8, 9] [10, 11]}
+	  \item \mintinline{python}{6 7 8 9 10 11}
+        \end{enumerate}
+      \end{multicols}
+
+    \item Que contient la variable \mintinline{python}{image} après les instructions ci-dessous ?
+
+      \begin{minted}[linenos=false,frame=single,xleftmargin=1cm,xrightmargin=1cm]{python}
+image = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+for i in range(4):
+    for j in range(4):
+        if (i+j) == 3:
+            image[i][j] = 1
+      \end{minted}
+
+      \begin{enumerate}
+	\item \mintinline{python}{[[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [1, 1, 1, 1]]} 
+	\item \mintinline{python}{[[0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 1]]}
+	\item \mintinline{python}{[[0, 0, 0, 1], [0, 0, 1, 0], [0, 1, 0, 0], [1, 0, 0, 0]]}
+	\item \mintinline{python}{[[0, 0, 0, 1], [0, 0, 1, 1], [0, 1, 1, 1], [1, 1, 1, 1]]}
+      \end{enumerate}
+  \end{enumerate}
+\end{exercice}
+
+\medskip
+
+\begin{exercice}{3 points}{}
+  \begin{multicols}{2}
+    \vspace*{1cm}
+    Écrire des instructions permettant d'obtenir la liste de listes ci-contre. Il est entendu qu'on ne saisira pas la liste \og{}élément par élément\fg{}. \columnbreak
+
+      \begin{minted}[linenos=false,frame=single,xleftmargin=1cm,xrightmargin=0cm]{python}
+liste = [
+         [3, 4, 5, 6, 7],
+         [6, 8, 10, 12, 14],
+         [9, 12, 15, 18, 21],
+         [12, 16, 20, 24, 28],
+         [15, 20, 25, 30, 35],
+         [18, 24, 30, 36, 42]
+        ]
+      \end{minted}
+  \end{multicols}
+\end{exercice}
+
+\medskip
+
+% Fonction qui inverse une chaine de caractères
+\begin{exercice}{4 points}{}
+ \begin{multicols}{2}
+   Le code ci-contre définit une fonction \mintinline{python}{retourne} qui prend en paramètre une chaîne de caractères et renvoie la chaîne de caractères \og{}inverse\fg{}. Par exemple, l'appel \mintinline{python}{retourne("Vive Zorglub !")} renvoie la chaîne de caractères \mintinline{python}{"! bulgroZ eviV"}. Cependant, le professeur de NSI, distrait, a tout mélangé et les différentes indentations ont été perdues ! \columnbreak
+
+      \begin{minted}[linenos=true,frame=single,xleftmargin=1cm,xrightmargin=0cm]{python}
+return inverse
+for i in range(len(chaine)):
+def retourne(chaine):
+pos = len(chaine) - i - 1
+inverse = inverse + chaine[pos]
+inverse = ""
+      \end{minted}
+ \end{multicols}
+
+ \begin{enumerate}
+   \item Réécrire correctement la fonction \mintinline{python}{retourne}.
+   \item Proposer une autre façon d'écrire cette fonction \mintinline{python}{retourne} sans utiliser la variable \mintinline{python}{pos}.
+ \end{enumerate}
+\end{exercice}
+
+\medskip
+
+% Fonction pour les voyelles
+\begin{exercice}{4 points}{}
+  Chez le dentiste, la bouche grande ouverte, lorsqu'on essaie de parler, il ne reste que les voyelles. Le but de cet exercice est d'écrire une fonction \mintinline{python}{dentiste} qui prend en paramètre une chaîne de caractères et qui renvoie la chaîne de caractères obtenue en ne gardant que les voyelles. Par exemple, l'appel \mintinline{python}{dentiste("J'ai mal !")} renvoie la chaîne de caractères \mintinline{python}{"aia"}.
+
+  \medskip
+
+  \textdbend{} On rappelle que les voyelles sont les lettres a, e, i, o, u et y.
+
+  \begin{enumerate}
+    \item On suppose qu'une fonction \mintinline{python}{est_voyelle} a déjà été écrite. Cette fonction renvoie \mintinline{python}{True} si la lettre (chaîne de caractères) donnée en paramètre est une voyelle, et \mintinline{python}{False} sinon.
+
+      Écrire la fonction \mintinline{python}{dentiste}.
+    \item Écrire la fonction \mintinline{python}{est_voyelle}.
+  \end{enumerate}
+\end{exercice}
+
+\medskip
+
+% Fonction pour les coefficients binomiaux
+\begin{exercice}[breakable]{5 points}{}
+  Voici les premières lignes du triangle de Pascal :
+  \begin{center}
+    \begin{tabular}{@{}ccccc@{}}
+      1 & & & & \\
+      1 & 1 & & &\\
+      1 & 2 & 1 & &\\
+      1 & 3 & 3 & 1 &\\
+      1 & 4 & 6 & 4 & 1
+    \end{tabular}
+  \end{center}
+  Chaque ligne de ce triangle commence et se termine par un $1$, et chaque nombre (à part le premier et le dernier) est égal à la somme du nombre situé au-dessus et du nombre situé \og{}au-dessus et à gauche\fg{}.
+
+  La ligne suivante de ce triangle est donc :
+
+  \begin{center}
+    \begin{tabular}{@{}cccccc@{}}
+      1 & 5 & 10 & 10 & 5 & 1\\
+    \end{tabular}
+  \end{center}
+
+  \begin{enumerate}
+    \item On décide de représenter chaque ligne de ce triangle par une liste d'entiers en Python. On représente par exemple la cinquième ligne du triangle par la liste \mintinline{python}{[1, 4, 6, 4, 1]}.
+
+      Écrire une fonction \mintinline{python}{ligne_suivante} qui prend en paramètre une liste représentant une ligne du triangle de Pascal et qui renvoie la liste représentant la ligne suivante du triangle. Par exemple, \mintinline{python}{ligne_suivante([1, 3, 3, 1])} renvoie la liste \mintinline{python}{[1, 4, 6, 4, 1]}.
+
+    \item On représente maintenant les premières lignes du triangle de Pascal par une liste de listes :
+
+      \begin{center}
+	\mintinline{python}{[[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1]]} 
+      \end{center}
+
+      Compléter la fonction \mintinline{python}{triangle} ci-dessous afin qu'elle renvoie les $n$ premières lignes du triangle de Pascal, \mintinline{python}{n} étant un entier naturel non nul donné en paramètre de la fonction.
+
+      Par exemple, \mintinline{python}{triangle(3)} renvoie \mintinline{python}{[[1], [1, 1], [1, 2, 1]]}.
+
+      \begin{minted}[linenos=true,frame=single,xleftmargin=1cm,xrightmargin=0cm]{python}
+def triangle(n):
+    if n == 1:
+        ...
+    elif n == 2:
+        ...
+    else:
+        ...
+        ...
+        ...
+        ...
+      \end{minted}
+
+      \textit{Remarque. -- Il n'y a pas nécessairement exactement 4 lignes à ajouter dans le \mintinline{python}{else}.}
+  \end{enumerate}
+\end{exercice}
+
+\end{document}
