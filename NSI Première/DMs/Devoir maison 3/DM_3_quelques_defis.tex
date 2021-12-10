@@ -1,0 +1,101 @@
+\documentclass[a4paper,dvipsnames]{article}
+
+\input ../../header
+
+\newcommand{\un}{\left(u_n\right)_{n\in\mathbb{N}}}
+\newcommand{\uns}{\left(u_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\vn}{\left(v_n\right)_{n\in\mathbb{N}}}
+\newcommand{\vns}{\left(v_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\wn}{\left(w_n\right)_{n\in\mathbb{N}}}
+\newcommand{\wns}{\left(w_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\tn}{\left(t_n\right)_{n\in\mathbb{N}}}
+\newcommand{\tns}{\left(t_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\qn}{\left(q_n\right)_{n\in\mathbb{N}}}
+\newcommand{\qns}{\left(q_n\right)_{n\in\mathbb{N}^\ast}}
+\newcommand{\N}{\mathbb{N}}
+
+\usepackage{dirtree}
+
+\title{Devoir maison 3}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\renewcommand{\contentsname}{}
+
+\pagestyle{fancy}
+
+\begin{tcolorbox}[colframe=blue!75, colback=blue!45, valign=center, height=1.5cm, top=5mm]
+  \maketitle
+\end{tcolorbox}
+
+%\tableofcontents
+
+\vspace{1cm}
+
+\thispagestyle{fancy}
+
+\begin{exercice}{}{}
+  \begin{enumerate}
+    \item Écrire une fonction \mintinline{python}{maximum} qui prend en paramètre une liste de nombres et qui renvoie la valeur maximale de ces nombres.
+
+      \begin{minted}[xleftmargin=1cm,xrightmargin=1cm,frame=single]{python}
+assert maximum([3, 5, -9, 2, 5]) == 5
+      \end{minted}
+
+    \item Écrire une fonction \mintinline{python}{position_maximum} qui prend en paramètre une liste de nombres et qui renvoie la position de la valeur maximale de ces nombres.
+
+      \begin{minted}[xleftmargin=1cm,xrightmargin=1cm,frame=single]{python}
+assert position_maximum([3, 5, -9, 2, 5]) == 2
+      \end{minted}
+
+    \item Écrire une fonction \mintinline{python}{positions_maximum} qui prend en paramètre une liste de nombres et qui renvoie une liste contenant les positions de la valeur maximale de ces nombres.
+
+      \begin{minted}[xleftmargin=1cm,xrightmargin=1cm,frame=single]{python}
+assert positions_maximum([3, 5, -9, 2, 5]) == [1, 4]
+      \end{minted}
+  \end{enumerate}
+\end{exercice}
+
+\medskip
+
+\begin{exercice}{}{}
+  Écrire une fonction \mintinline{python}{occurrences} qui prend en paramètre une liste d'entiers et un entier et qui renvoie le nombre de fois où ce dernier apparaît dans la liste.
+
+      \begin{minted}[xleftmargin=1cm,xrightmargin=1cm,frame=single]{python}
+assert occurrences([3, 5, -9, 5, 4], 5) == 2
+assert occurrences([3, 5, -9, 5, 4], 1) == 0
+      \end{minted}
+
+\end{exercice}
+
+\medskip
+
+\begin{exercice}{}{}
+  Écrire une fonction \mintinline{python}{entremele} qui prend en paramètres deux listes de même longueur et qui renvoie une liste contenant alternativement un élément de la première liste suivi d'un élément de la seconde.
+
+      \begin{minted}[xleftmargin=1cm,xrightmargin=1cm,frame=single]{python}
+assert entremele([1, 2, 3], [5, 6, 7]) == [1, 5, 2, 6, 3, 7]
+      \end{minted}
+
+\end{exercice}
+
+\medskip
+
+\begin{exercice}{}{}
+  Les sorciers ne comptent pas en euros. Ce serait trop facile. Les sorciers fortunés comptent en gallions. Un gallion vaut $17$ mornilles. Et une mornille vaut $29$ noises.
+
+  Sirius a laissé une belle somme à Harry. C'est un nombre entier de gallions, mais qui ne dépasse tout de même pas le million.
+
+  Cette somme a une particularité : qu'on l'exprime en gallions, en mornilles ou en noises, dans les trois cas, on a besoin exactement des mêmes chiffres (utilisés éventuellement plusieurs fois) pour l'écrire.
+
+  \begin{enumerate}
+    \item La somme de $125$ gallions s'écrit avec les chiffres $1$, $2$ et $5$. À combien de mornilles équivaut cette somme ?
+    \item À combien de noises équivaut-elle ?
+    \item Expliquer alors pourquoi la somme laissée par Sirius n'est pas égale à $125$ gallions.
+    \item En utilisant Python, retrouver la somme donnée par Sirius à Harry (en gallions).
+  \end{enumerate}
+\end{exercice}
+\end{document}
